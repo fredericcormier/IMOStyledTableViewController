@@ -1,0 +1,45 @@
+//
+//  IMOStyledCell.h
+//  
+//
+//  Created by Cormier Frederic on 12/07/12.
+//  Copyright (c) 2012 International MicrOondes. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "IMOStyledCellKeys.h"
+
+
+@class IMOStyledTableViewController;
+
+@interface IMOStyledCell : UITableViewCell
+
+
+
+
+
+
+
++ (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style ;
+/** returns a IMOStyledCell with a style variation corresponding to UITableViewCellStyle's - ie 
+ IMOStyledCellStyleDefault,
+ IMOStyledCellStyleValue1,
+ IMOStyledCellStyleValue2,
+ IMOStyledCellStyleSubtitle
+*/
+
++ (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath;
+/** Returns an instance of the requested IMOStyledCell's subclass*/
+
+
+
+
+
+//SUBCLASSING
+// subclasses might override this next 2 methods
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier position:(IMOStyledCellPosition)cellPosition styleSheet:(NSDictionary *)styleSheet;
+/** subclasses must override this one in order to set up their properties */
+
+- (void)setUpCellStyleSheet:(NSDictionary *)sheet;
+/** subclasses must override this one in order to setup cell styles */
+@end

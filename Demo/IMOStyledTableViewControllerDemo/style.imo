@@ -1,0 +1,54 @@
+//
+// BackgroundImage   
+// TopGradientColor 
+// BottomGradientColor 
+// SelectedTopGradientColor 
+// SelectedBottomGradientColor 
+// TextLabelTextColor 
+// DetailTextLabelTextColor 
+// TextLabelFont 
+// DetailTextLabelFont 
+//
+// UseCustomHeader 
+// HeaderFont 
+// HeaderTextColor 
+//
+// UseCustomFooter 
+// FooterFont 
+// FooterTextColor 
+//
+//
+// TextFieldFontKey 
+// TextFieldTextColorKey 
+//
+// TextCaptionFontKey 
+// TextCaptionTextColorKey 
+//
+// NoteViewFontKey 
+// NoteViewTextColorKey 
+// NoteViewLineColorKey 
+
+
+
+BackgroundImage         snow.png
+
+TextLabelFont           Helvetica       17.0 
+
+
+TopGradientColor        #F6F8FD
+BottomGradientColor     #ddd
+
+TopSeparatorColor       #fff
+BottomSeparatorColor    #e6e6e6
+
+//TopSeparatorColor       #DA3221
+//BottomSeparatorColor    #096E16
+
+
+
+TextLabelTextColor      #555
+
+
+
+
+
