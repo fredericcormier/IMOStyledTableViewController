@@ -1,14 +1,14 @@
 //
-//  IMOStyledTableViewControllerDemoTests.m
-//  IMOStyledTableViewControllerDemoTests
+//  Unit_Test.m
+//  Unit Test
 //
 //  Created by Frederic Cormier on 28/05/13.
 //  Copyright (c) 2013 Frederic Cormier. All rights reserved.
 //
 
-#import "IMOStyledTableViewControllerDemoTests.h"
+#import "Unit_Test.h"
 
-@implementation IMOStyledTableViewControllerDemoTests
+@implementation Unit_Test
 
 - (void)setUp
 {
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-//    STFail(@"Unit tests are not implemented yet in IMOStyledTableViewControllerDemoTests");
+    STFail(@"Unit tests are not implemented yet in Unit Test");
 }
 
 @end

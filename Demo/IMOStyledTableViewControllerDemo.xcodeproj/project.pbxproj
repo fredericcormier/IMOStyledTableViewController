@@ -55,6 +55,11 @@
 		6A15D2441754E86800B06708 /* IMOStyledNoteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2361754E86800B06708 /* IMOStyledNoteViewCell.m */; };
 		6A15D2451754E86800B06708 /* IMOStyledTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2381754E86800B06708 /* IMOStyledTableViewController.m */; };
 		6A15D2461754E86800B06708 /* IMOStyledTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2381754E86800B06708 /* IMOStyledTableViewController.m */; };
+		6A39EEBD1755194C00417A20 /* HexValue_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEBA1755194C00417A20 /* HexValue_Test.m */; };
+		6A39EEBE1755194C00417A20 /* ICTestKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEBC1755194C00417A20 /* ICTestKeys.m */; };
+		6A39EEC2175519DC00417A20 /* UIColor+equality.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEC1175519DC00417A20 /* UIColor+equality.m */; };
+		6A39EEC3175519DC00417A20 /* UIColor+equality.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEC1175519DC00417A20 /* UIColor+equality.m */; };
+		6A39EEC417551A0900417A20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1D31754E78900B06708 /* CoreGraphics.framework */; };
 		6AB8728D1754F4B3002B7346 /* style.imo in Resources */ = {isa = PBXBuildFile; fileRef = 6AB8728C1754F4B3002B7346 /* style.imo */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +120,12 @@
 		6A15D2361754E86800B06708 /* IMOStyledNoteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledNoteViewCell.m; sourceTree = "<group>"; };
 		6A15D2371754E86800B06708 /* IMOStyledTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMOStyledTableViewController.h; sourceTree = "<group>"; };
 		6A15D2381754E86800B06708 /* IMOStyledTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledTableViewController.m; sourceTree = "<group>"; };
+		6A39EEB91755194C00417A20 /* HexValue_Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexValue_Test.h; sourceTree = "<group>"; };
+		6A39EEBA1755194C00417A20 /* HexValue_Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexValue_Test.m; sourceTree = "<group>"; };
+		6A39EEBB1755194C00417A20 /* ICTestKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICTestKeys.h; sourceTree = "<group>"; };
+		6A39EEBC1755194C00417A20 /* ICTestKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICTestKeys.m; sourceTree = "<group>"; };
+		6A39EEC0175519DC00417A20 /* UIColor+equality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+equality.h"; sourceTree = "<group>"; };
+		6A39EEC1175519DC00417A20 /* UIColor+equality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+equality.m"; sourceTree = "<group>"; };
 		6AB8728C1754F4B3002B7346 /* style.imo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = style.imo; path = IMOStyledTableViewControllerDemo/style.imo; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -133,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A39EEC417551A0900417A20 /* CoreGraphics.framework in Frameworks */,
 				6A15D1EE1754E78A00B06708 /* SenTestingKit.framework in Frameworks */,
 				6A15D1EF1754E78A00B06708 /* UIKit.framework in Frameworks */,
 				6A15D1F01754E78A00B06708 /* Foundation.framework in Frameworks */,
@@ -145,6 +157,7 @@
 		6A15D1C31754E78900B06708 = {
 			isa = PBXGroup;
 			children = (
+				6A39EEBF175519DC00417A20 /* Helpers */,
 				6A15D1D51754E78900B06708 /* IMOStyledTableViewControllerDemo */,
 				6A15D2291754E86800B06708 /* IMOStyledTableViewController */,
 				6A15D20D1754E82E00B06708 /* graphics */,
@@ -205,6 +218,10 @@
 		6A15D1F31754E78A00B06708 /* IMOStyledTableViewControllerDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				6A39EEB91755194C00417A20 /* HexValue_Test.h */,
+				6A39EEBA1755194C00417A20 /* HexValue_Test.m */,
+				6A39EEBB1755194C00417A20 /* ICTestKeys.h */,
+				6A39EEBC1755194C00417A20 /* ICTestKeys.m */,
 				6A15D1F91754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.h */,
 				6A15D1FA1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.m */,
 				6A15D1F41754E78A00B06708 /* Supporting Files */,
@@ -266,6 +283,15 @@
 				6A15D2361754E86800B06708 /* IMOStyledNoteViewCell.m */,
 			);
 			path = IMOStyledTableViewCells;
+			sourceTree = "<group>";
+		};
+		6A39EEBF175519DC00417A20 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6A39EEC0175519DC00417A20 /* UIColor+equality.h */,
+				6A39EEC1175519DC00417A20 /* UIColor+equality.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +434,7 @@
 				6A15D2411754E86800B06708 /* IMOStyledImageCell.m in Sources */,
 				6A15D2431754E86800B06708 /* IMOStyledNoteViewCell.m in Sources */,
 				6A15D2451754E86800B06708 /* IMOStyledTableViewController.m in Sources */,
+				6A39EEC2175519DC00417A20 /* UIColor+equality.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +450,9 @@
 				6A15D2421754E86800B06708 /* IMOStyledImageCell.m in Sources */,
 				6A15D2441754E86800B06708 /* IMOStyledNoteViewCell.m in Sources */,
 				6A15D2461754E86800B06708 /* IMOStyledTableViewController.m in Sources */,
+				6A39EEBD1755194C00417A20 /* HexValue_Test.m in Sources */,
+				6A39EEBE1755194C00417A20 /* ICTestKeys.m in Sources */,
+				6A39EEC3175519DC00417A20 /* UIColor+equality.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
