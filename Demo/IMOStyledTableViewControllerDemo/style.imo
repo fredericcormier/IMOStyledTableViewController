@@ -31,10 +31,10 @@
 
 
 
-//BackgroundImage         snow.png
+BackgroundImage         snow.png
 
-BackgroundColor         #8DA6CE
-TextLabelFont           Helvetica       17.0 
+//BackgroundColor         #8DA6CE
+TextLabelFont           Helvetica       17.0
 
 
 TopGradientColor        #F6F8FD

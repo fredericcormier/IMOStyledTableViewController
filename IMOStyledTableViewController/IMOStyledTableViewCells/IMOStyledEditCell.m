@@ -34,14 +34,15 @@
 @synthesize rightSeparatorColor = rightSeparatorColor_;
 
 
+const CGFloat kSeparator_X = 102.f;
 
 
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet {
     [super setUpCellStyleSheet:sheet];
-   textfieldFont_ = [sheet objectForKey:IMOStyledCellTextFieldFontKey] ? [sheet objectForKey:IMOStyledCellTextFieldFontKey] : defaultTextFieldFont;
-   textfieldFontColor_ = [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] ? [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] : defaultTextFieldColor;
-   textCaptionFont_ = [sheet objectForKey:IMOStyledCellTextCaptionFontKey] ? [sheet objectForKey:IMOStyledCellTextCaptionFontKey] : defaultCaptionFont;
-   textCaptionFontColor_ = [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] ? [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] : defaultCaptionColor;
+    textfieldFont_ = [sheet objectForKey:IMOStyledCellTextFieldFontKey] ? [sheet objectForKey:IMOStyledCellTextFieldFontKey] : defaultTextFieldFont;
+    textfieldFontColor_ = [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] ? [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] : defaultTextFieldColor;
+    textCaptionFont_ = [sheet objectForKey:IMOStyledCellTextCaptionFontKey] ? [sheet objectForKey:IMOStyledCellTextCaptionFontKey] : defaultCaptionFont;
+    textCaptionFontColor_ = [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] ? [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] : defaultCaptionColor;
     
     // separators uses the bottom and top gradient colors for now
     leftSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ? [sheet objectForKey:IMOStyledCellBottomGradientColorKey] : [UIColor colorWithWhite:0.838 alpha:1.000];
@@ -53,7 +54,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
            position:(IMOStyledCellPosition)cellPosition
-      styleSheet:(NSDictionary *)styleSheet{
+         styleSheet:(NSDictionary *)styleSheet{
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier position:cellPosition styleSheet:styleSheet];
     if (self) {
@@ -91,7 +92,6 @@
 - (void)drawRect:(CGRect)rect {
     
     const CGFloat LINE_WIDTH = 1.f;
-    const CGFloat separatorX = 102.f;
     const CGFloat offsetY = 1.f;
     
     [super drawRect:rect];
@@ -101,16 +101,16 @@
     CGContextSetStrokeColorWithColor(c, [[self leftSeparatorColor] CGColor]);
     CGContextSetLineWidth(c, LINE_WIDTH);
     CGContextSetLineCap(c, kCGLineCapSquare);
-    CGContextMoveToPoint(c, separatorX , offsetY);
-    CGContextAddLineToPoint(c, separatorX , rect.size.height - offsetY);
+    CGContextMoveToPoint(c, kSeparator_X , offsetY);
+    CGContextAddLineToPoint(c, kSeparator_X , rect.size.height - offsetY);
     CGContextStrokePath(c);
     
     // right
     CGContextSetStrokeColorWithColor(c, [[self rightSeparatorColor] CGColor]);
     CGContextSetLineWidth(c, LINE_WIDTH);
     CGContextSetLineCap(c, kCGLineCapSquare);
-    CGContextMoveToPoint(c, separatorX + 1.f, offsetY);
-    CGContextAddLineToPoint(c, separatorX + 1.f, rect.size.height - offsetY);
+    CGContextMoveToPoint(c, kSeparator_X + 1.f, offsetY);
+    CGContextAddLineToPoint(c, kSeparator_X + 1.f, rect.size.height - offsetY);
     CGContextStrokePath(c);
     
     
@@ -123,20 +123,21 @@
     
     const float cellHeight = [self bounds].size.height;
     const float cellWidth = [self bounds].size.width;
-    const float accessoryWidth = 22.0;
-    const float kPad = 4.0;
+    const float accessoryWidth = 22.f;
+    const float kPad = 4.f;
     
-    CGRect textFieldRect = CGRectMake(round((cellWidth / 4.0) + (kPad * 6.f)),
+    CGRect textFieldRect = CGRectMake(round(kSeparator_X + (kPad * 1.f)),
                                       round(kPad),
-                                      round(((cellWidth / 4.0) * 3.0) - (accessoryWidth +(kPad * 6.0))),
-                                      round(cellHeight - (kPad * 2.0 )));
+                                      round(((cellWidth / 4.f) * 3.f) - (accessoryWidth +(kPad * 6.f))),
+                                      round(cellHeight - (kPad * 2.f )));
     
     [[self textField] setFrame:textFieldRect];
     
-    CGRect captionRect = CGRectMake(round(kPad * 2),
+    
+    CGRect captionRect = CGRectMake(round(kPad * 2.f),
                                     round(kPad),
-                                    round((cellWidth / 4.0) - kPad),
-                                    round(cellHeight - (kPad * 2.0 )));
+                                    round(kSeparator_X -(kPad * 6.f)),
+                                    round(cellHeight - (kPad * 2.f)));
     
     [[self textCaption] setFrame:captionRect];
 }
