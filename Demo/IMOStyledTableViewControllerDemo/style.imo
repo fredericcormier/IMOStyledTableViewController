@@ -38,18 +38,12 @@ TextLabelFont           HelveticaNeue-Bold       17.0
 
 
 TextLabelTextColor      #3F3B35
-//DetailTextLabelTextColor    #402F2E
 
 TopGradientColor        1.000   0.995   0.995   1.000
 BottomGradientColor     0.825   0.780   0.724   1.000
-//
-//TopSeparatorColor       #fff
-//BottomSeparatorColor    #e6e6e6
 
-//TopSeparatorColor       #DA3221
-//BottomSeparatorColor    #096E16
-
-
+SelectedTopGradientColor #8A6F48
+SelectedBottomGradientColor #725C3C
 
 
 
