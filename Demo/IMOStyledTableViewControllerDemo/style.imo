@@ -1,4 +1,4 @@
-//
+// NavBarTintColor
 // BackgroundImage   
 // BackgroundColor
 // TopGradientColor 
@@ -31,19 +31,20 @@
 
 
 
-//BackgroundImage         snow.png
+///////////////////////////////////////////////////////////////////////////////////////
 
-BackgroundColor         #CDC3B9
-TextLabelFont           HelveticaNeue-Bold       17.0
+NavBarTintColor                 0.600   0.492   0.331   1.000
+BackgroundColor                 #CDC3B9
+TextLabelFont                   HelveticaNeue-Bold       17.0
 
 
-TextLabelTextColor      #3F3B35
+TextLabelTextColor              #3F3B35
 
-TopGradientColor        1.000   0.995   0.995   1.000
-BottomGradientColor     0.825   0.780   0.724   1.000
+TopGradientColor                1.000   0.995   0.995   1.000
+BottomGradientColor             0.825   0.780   0.724   1.000
 
-SelectedTopGradientColor #8A6F48
-SelectedBottomGradientColor #725C3C
+SelectedTopGradientColor        #8A6F48
+SelectedBottomGradientColor     #725C3C
 
 
 

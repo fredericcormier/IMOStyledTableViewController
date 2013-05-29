@@ -14,22 +14,11 @@
 
 @implementation ICSheetTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style styleSheet:(NSDictionary *)styleSheet {
-    if (self = [super initWithStyle:style styleSheet:styleSheet]) {
-        
-    }
-    return self;
-}
 
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	[[[self navigationController ]navigationBar] setTintColor:[UIColor colorWithRed:0.600 green:0.492 blue:0.331 alpha:1.000]];
-
+    [[self navigationItem] setTitle:@"Sheet Generated Controller"];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -45,12 +34,9 @@
 }
 
 
-
 - (int)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
-
-
 
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -71,8 +57,7 @@
 
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
 }
@@ -140,7 +125,7 @@
             case 5: {
                 cell = [IMOStyledImageCell cellForTableViewController:self  atIndexPath:indexPath];
                 [[(IMOStyledImageCell *)cell textLabel] setText:@"Priority"];
-                [[(IMOStyledImageCell *)cell customImageView] setImage:[UIImage imageNamed:@"list"]];
+                [[(IMOStyledImageCell *)cell customImageView] setImage:[UIImage imageNamed:@"3StarBig"]];
                 [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
                 break;

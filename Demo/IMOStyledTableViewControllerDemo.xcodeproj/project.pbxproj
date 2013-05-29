@@ -66,6 +66,8 @@
 		6A39EECC1755F57900417A20 /* sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A39EEC91755F57900417A20 /* sheet.png */; };
 		6A39EECD1755F57900417A20 /* sheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A39EECA1755F57900417A20 /* sheet@2x.png */; };
 		6A39EECE1755F57900417A20 /* sheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A39EECA1755F57900417A20 /* sheet@2x.png */; };
+		6A85A0DE17563D0D006ED2E3 /* 3StarBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A85A0DC17563D0D006ED2E3 /* 3StarBig.png */; };
+		6A85A0DF17563D0D006ED2E3 /* 3StarBig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A85A0DD17563D0D006ED2E3 /* 3StarBig@2x.png */; };
 		6AB8728D1754F4B3002B7346 /* style.imo in Resources */ = {isa = PBXBuildFile; fileRef = 6AB8728C1754F4B3002B7346 /* style.imo */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +138,8 @@
 		6A39EEC61755EFC700417A20 /* ICSheetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSheetTableViewController.m; sourceTree = "<group>"; };
 		6A39EEC91755F57900417A20 /* sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheet.png; sourceTree = "<group>"; };
 		6A39EECA1755F57900417A20 /* sheet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet@2x.png"; sourceTree = "<group>"; };
+		6A85A0DC17563D0D006ED2E3 /* 3StarBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3StarBig.png; sourceTree = "<group>"; };
+		6A85A0DD17563D0D006ED2E3 /* 3StarBig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3StarBig@2x.png"; sourceTree = "<group>"; };
 		6AB8728C1754F4B3002B7346 /* style.imo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = style.imo; path = IMOStyledTableViewControllerDemo/style.imo; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -256,6 +260,8 @@
 		6A15D20D1754E82E00B06708 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				6A85A0DC17563D0D006ED2E3 /* 3StarBig.png */,
+				6A85A0DD17563D0D006ED2E3 /* 3StarBig@2x.png */,
 				6A39EEC91755F57900417A20 /* sheet.png */,
 				6A39EECA1755F57900417A20 /* sheet@2x.png */,
 				6A15D20E1754E82E00B06708 /* carot.png */,
@@ -399,6 +405,8 @@
 				6AB8728D1754F4B3002B7346 /* style.imo in Resources */,
 				6A39EECB1755F57900417A20 /* sheet.png in Resources */,
 				6A39EECD1755F57900417A20 /* sheet@2x.png in Resources */,
+				6A85A0DE17563D0D006ED2E3 /* 3StarBig.png in Resources */,
+				6A85A0DF17563D0D006ED2E3 /* 3StarBig@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

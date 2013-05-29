@@ -8,6 +8,7 @@
 
 #import "IMOStyledCellKeys.h"
 
+NSString * const IMOStyledCellNavBarTintColorKey                 = @"IMOStyledCellNavBarTintColorKey";
 
 NSString * const IMOStyledCellTopSeparatorColorKey               = @"IMOStyledCellTopSeparatorColorKey";
 NSString * const IMOStyledCellBottomSeparatorColorKey            = @"IMOStyledCellBottomSeparatorColorKey";
@@ -68,6 +69,8 @@ NSString * const IMOStyledCellNoteViewLineColorKey               = @"IMOStyledCe
 - (id)init{
     if (self = [super init]) {
         allKeys_ = [[NSMutableArray alloc] initWithObjects:
+                    @[IMOStyledCellNavBarTintColorKey,               @(IMOStyledCellTypeColor)],
+                    @[IMOStyledCellTextLabelTextColorKey,            @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellTopSeparatorColorKey,             @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellBottomSeparatorColorKey,          @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellBackgroundColorKey,               @(IMOStyledCellTypeColor)],

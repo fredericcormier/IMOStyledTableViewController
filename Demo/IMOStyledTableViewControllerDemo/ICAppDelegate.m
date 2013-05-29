@@ -28,15 +28,18 @@
 
 - (void)setUpStyleDictionaries {
     plainStyleSheet_    = @{IMOStyledCellBackgroundImageKey:            [UIImage imageNamed:@"clouds.png"],
+                            IMOStyledCellNavBarTintColorKey:            [UIColor colorWithRed:0.145 green:0.185 blue:0.359 alpha:1.000],
                             IMOStyledCellTopGradientColorKey:           [UIColor colorWithWhite:0.945 alpha:0.220],
-                            IMOStyledCellBottomGradientColorKey:        [UIColor colorWithRed:0.573 green:0.609 blue:0.620 alpha:0.570],
+                            IMOStyledCellBottomGradientColorKey:        [UIColor colorWithRed:0.628 green:0.632 blue:0.684 alpha:0.570],
+                            IMOStyledCellTextLabelFontKey:              [UIFont fontWithName:@"HelveticaNeue" size:18.0],
                             IMOStyledCellTextLabelTextColorKey:         [UIColor whiteColor],
                             IMOStyledCellTopSeparatorColorKey:          [UIColor colorWithRed:0.771 green:0.793 blue:0.820 alpha:1.000],
                             IMOStyledCellBottomSeparatorColorKey:       [UIColor lightGrayColor]};
     
     
     groupedStyleSheet_ = @{IMOStyledCellBackgroundImageKey :            [UIImage imageNamed:@"carot"],
-                           IMOStyledCellBackgroundColorKey:             [UIColor orangeColor],
+                           IMOStyledCellNavBarTintColorKey:             [UIColor colorWithRed:0.735 green:0.242 blue:0.004 alpha:1.000],
+                           IMOStyledCellBackgroundColorKey:             [UIColor colorWithRed:0.811 green:0.605 blue:0.343 alpha:1.000],
                            IMOStyledCellTopGradientColorKey :           [UIColor colorWithRed:1.000 green:0.786 blue:0.621 alpha:1.000],
                            IMOStyledCellBottomGradientColorKey:         [UIColor colorWithRed:0.829 green:0.576 blue:0.252 alpha:1.000],
                            IMOStyledCellTextLabelFontKey:               [UIFont fontWithName:@"HelveticaNeue" size:20.0],
@@ -45,10 +48,13 @@
                            IMOStyledCellUseCustomHeaderKey:             @YES,
                            IMOStyledCellHeaderTextColorKey:             [UIColor colorWithRed:0.424 green:0.139 blue:0.054 alpha:1.000],
                            IMOStyledCellHeaderFontKey:                  [UIFont fontWithName:@"ChalkboardSE-Bold" size:20.0f],
+                           IMOStyledCellFooterFontKey:                  [UIFont boldSystemFontOfSize:12.f],
+                           IMOStyledCellFooterTextColorKey:             [UIColor colorWithRed:0.001 green:0.330 blue:0.001 alpha:1.000],
                            IMOStyledCellUseCustomFooterKey:             @YES,
                            IMOStyledCellTextCaptionTextColorKey:        [UIColor colorWithRed:0.451 green:0.365 blue:0.217 alpha:1.000],
                            IMOStyledCellSelectedBottomGradientColorKey: [UIColor colorWithRed:0.633 green:0.000 blue:0.007 alpha:1.000],
-                           IMOStyledCellSelectedTopGradientColorKey:    [UIColor redColor]
+                           IMOStyledCellSelectedTopGradientColorKey:    [UIColor redColor],
+                           IMOStyledCellNoteViewLineColorKey:           [UIColor colorWithRed:0.541 green:0.313 blue:0.098 alpha:1.000]
                            };
 }
 

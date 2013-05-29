@@ -18,6 +18,7 @@
 
 @property(nonatomic, strong)NSMutableDictionary *sheet;
 
+@property(nonatomic, strong)UIColor *navBarColor;
 @property(nonatomic, strong)UIImage *backgroundImage;
 @property(nonatomic, strong)UIColor *backgroundColor;
 @property(nonatomic, assign)BOOL useCustomHeader;
@@ -31,6 +32,7 @@
 
 @implementation IMOStyledTableViewController
 
+@synthesize navBarColor = navBarColor_;
 @synthesize headerText = headerText_;
 @synthesize footerText = footerText_;
 @synthesize sheet = sheet_;
@@ -63,6 +65,7 @@
         }
         backgroundImage_ = [[self sheet] objectForKey:IMOStyledCellBackgroundImageKey];
         backgroundColor_ = [[self  sheet] objectForKey:IMOStyledCellBackgroundColorKey];
+        navBarColor_ = [[self sheet] objectForKey:IMOStyledCellNavBarTintColorKey];
         useCustomHeader_ = (YES == [[[self sheet] objectForKey:IMOStyledCellUseCustomHeaderKey] boolValue] ) ? YES : NO;
         headerFont_ = [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] : DefaultHeaderFont;
         headerFontColor_ = [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] : DefaultHeaderTextColor;
@@ -90,6 +93,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    // The navBar
+    if ([self navBarColor]) {
+        [[[self navigationController] navigationBar] setTintColor:[self navBarColor]];
+    }
+    
+    
     UIColor *bgColor = nil;
     
     // BackgroundImage has priority over background color
@@ -106,6 +115,7 @@
         [[self tableView] setBackgroundView:backgroundView];
     }
     // else, default tableViewColor will apply
+    
 }
 
 

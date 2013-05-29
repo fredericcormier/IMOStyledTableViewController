@@ -38,6 +38,8 @@ typedef enum {
 } IMOStyledParserDataType;
 
 //Keys
+extern NSString * const IMOStyledCellNavBarTintColorKey;
+
 extern NSString * const IMOStyledCellTopSeparatorColorKey;
 extern NSString * const IMOStyledCellBottomSeparatorColorKey;
 

@@ -23,13 +23,6 @@ typedef enum cellEditTags cellEditTags;
 
 @implementation ICExampleStyleGroupedViewController
 
-- (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,7 +53,11 @@ typedef enum cellEditTags cellEditTags;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    [self setFooterText:[NSString stringWithFormat:@"\t\tFooter %d", section]];
+    if (section == 0) {
+        [self setFooterText:@"\t\tI'm Footer 0"];
+    }else {
+        [self setFooterText:[NSString stringWithFormat:@"\t\tBlahblahblah…"]];
+    }
     return [super tableView:tableView viewForFooterInSection:section];
 }
 
@@ -99,9 +96,9 @@ typedef enum cellEditTags cellEditTags;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id cell;
     if ([indexPath section] == 0) {
-            cell = [IMOStyledCell cellForTableViewController:self atIndexPath:indexPath style:IMOStyledCellStyleValue1];
-            [[cell textLabel] setText:@"textLabel"];
-            [[cell detailTextLabel] setText:@"detailTextLabel"];
+        cell = [IMOStyledCell cellForTableViewController:self atIndexPath:indexPath style:IMOStyledCellStyleValue1];
+        [[cell textLabel] setText:@"textLabel"];
+        [[cell detailTextLabel] setText:@"detailTextLabel"];
         
     }
     if ([indexPath section] == 1) {
@@ -121,7 +118,7 @@ typedef enum cellEditTags cellEditTags;
                 [cell setTag:editPasswordCell];
                 [[cell textField] setDelegate:self];
                 break;
-            
+                
             default:
                 break;
         }
@@ -134,7 +131,7 @@ typedef enum cellEditTags cellEditTags;
                 
             default:
                 cell = [IMOStyledCell cellForTableViewController:self atIndexPath:indexPath style:IMOStyledCellStyleValue1];
-
+                
                 break;
         }
     }
