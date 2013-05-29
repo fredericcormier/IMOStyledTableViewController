@@ -12,28 +12,6 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - NSString Category
-
-@implementation NSString(IMOExtensions)
-
-- (double)hexDoubleValue{
-    double result;
-    NSScanner *scanner = [NSScanner scannerWithString:self];
-    [scanner scanHexDouble:&result];
-    return result;
-    
-}
-
-
-- (NSInteger)hexIntegerValue{
-    return round([self hexDoubleValue]);
-}
-
-@end
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Parser
 
 
@@ -206,6 +184,35 @@ static NSString * const IMOStyledCellCommentSymbol = @"//";
     }
     NSAssert(FALSE, @"We should not get here - Supposed to return a UIColor");
     return nil;
+}
+
+@end
+
+
+
+
+/**************************************************************************************************************
+ 
+ 
+ NSString(IMOExtensions)
+ 
+ */
+
+#pragma mark - NSString Category
+
+@implementation NSString(IMOExtensions)
+
+- (double)hexDoubleValue{
+    double result;
+    NSScanner *scanner = [NSScanner scannerWithString:self];
+    [scanner scanHexDouble:&result];
+    return result;
+    
+}
+
+
+- (NSInteger)hexIntegerValue{
+    return round([self hexDoubleValue]);
 }
 
 @end

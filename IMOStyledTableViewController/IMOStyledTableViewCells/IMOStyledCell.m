@@ -45,7 +45,12 @@ bottomGradientColor:(UIColor *)theBottomColor;
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**************************************************************************************************************
+ 
+ 
+            IMOStyledCell
+ 
+ */
 #pragma mark - IMOStyledCell
 
 static NSArray *cellPositionStrings;
@@ -408,7 +413,6 @@ static NSArray *cellPositionStrings;
                                                                                 cellPosition:position
                                                                             topGradientColor:[self gradientSelectedTopColor]
                                                                          bottomGradientColor:[self gradientSelectedBottomColor]]];
-        
     }
 }
 
@@ -441,8 +445,8 @@ static NSArray *cellPositionStrings;
 
 @end
 
-@implementation IMOSelectedCellBackgroundView
 
+@implementation IMOSelectedCellBackgroundView
 
 @synthesize position;
 /* Otherwise rounded corners will let pass the background garbage underneath*/
@@ -486,9 +490,6 @@ bottomGradientColor:(UIColor *)theBottomColor {
     }
     return self;
 }
-
-
-
 
 
 
@@ -563,6 +564,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
 - (void)dealloc {
     CGGradientRelease(gradient);
 }
+
 
 
 - (void) setPosition:(IMOStyledCellPosition)inPosition{

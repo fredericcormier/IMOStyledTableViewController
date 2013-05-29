@@ -14,6 +14,8 @@
 #define defaultCaptionColor        [UIColor colorWithRed:0.521 green:0.577 blue:0.662 alpha:1.000]
 #define defaultCaptionFont         [UIFont boldSystemFontOfSize:11.0]
 
+
+
 @interface IMOStyledEditCell()
 @property(nonatomic, strong)UIFont *textfieldFont;
 @property(nonatomic, strong)UIFont *textCaptionFont;
@@ -21,6 +23,8 @@
 @property(nonatomic, strong)UIColor *textCaptionFontColor;
 @property(nonatomic, strong)UIColor *leftSeparatorColor;
 @property(nonatomic, strong)UIColor *rightSeparatorColor;
+@property(nonatomic, strong)UIFont  *placeHolderFont;
+@property(nonatomic, strong)UIColor *placeHolderTextColor;
 @end
 
 @implementation IMOStyledEditCell
@@ -32,7 +36,8 @@
 @synthesize textCaptionFontColor = textCaptionFontColor_;
 @synthesize leftSeparatorColor = leftSeparatorColor_;
 @synthesize rightSeparatorColor = rightSeparatorColor_;
-
+@synthesize placeHolderFont = placeHolderFont_;
+@synthesize placeHolderTextColor = placeHolderTextColor_;
 
 const CGFloat kSeparator_X = 102.f;
 
@@ -47,6 +52,9 @@ const CGFloat kSeparator_X = 102.f;
     // separators uses the bottom and top gradient colors for now
     leftSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ? [sheet objectForKey:IMOStyledCellBottomGradientColorKey] : [UIColor colorWithWhite:0.838 alpha:1.000];
     rightSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ? [sheet objectForKey:IMOStyledCellTopGradientColorKey] : [UIColor colorWithWhite:0.983 alpha:1.000];
+    
+    placeHolderFont_ = [sheet objectForKey:IMOStyledCellPlaceHolderFontKey];
+    placeHolderTextColor_ = [sheet objectForKey:IMOStyledCellPlaceHolderTextColorKey];
 }
 
 
@@ -58,7 +66,7 @@ const CGFloat kSeparator_X = 102.f;
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier position:cellPosition styleSheet:styleSheet];
     if (self) {
-        textField_ = [[UITextField alloc] initWithFrame:CGRectZero];
+        textField_ = [[IMOStyledTextField alloc] initWithFrame:CGRectZero];
         textCaption_ = [[UILabel alloc] initWithFrame:CGRectZero];
         
         [[self contentView] addSubview:textField_];
@@ -89,6 +97,8 @@ const CGFloat kSeparator_X = 102.f;
     return self;
 }
 
+
+
 - (void)drawRect:(CGRect)rect {
     
     const CGFloat LINE_WIDTH = 1.f;
@@ -112,9 +122,8 @@ const CGFloat kSeparator_X = 102.f;
     CGContextMoveToPoint(c, kSeparator_X + 1.f, offsetY);
     CGContextAddLineToPoint(c, kSeparator_X + 1.f, rect.size.height - offsetY);
     CGContextStrokePath(c);
-    
-    
 }
+
 
 
 - (void) layoutSubviews {
@@ -143,3 +152,36 @@ const CGFloat kSeparator_X = 102.f;
 }
 
 @end
+
+
+/**************************************************************************************************************
+ 
+ 
+            IMOStyledTextField
+ 
+ */
+#pragma mark - IMOStyledTextField -
+
+
+@implementation IMOStyledTextField
+
+- (void) drawPlaceholderInRect:(CGRect)rect {
+    
+    UIColor *color  = [(IMOStyledEditCell *)[[self superview] superview] placeHolderTextColor];
+    UIFont *font    = [(IMOStyledEditCell *)[[self superview] superview] placeHolderFont];
+    
+    if (color || font) {
+        if (color) {
+            [color setFill];
+        }
+        if (font) {
+            [self setFont:font];
+        }
+        [[self placeholder] drawInRect:rect withFont:[self font]];
+    }else{
+        // No modification: call super
+        [super drawPlaceholderInRect:rect];
+    }
+}
+@end
+

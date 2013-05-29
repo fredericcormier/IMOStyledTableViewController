@@ -45,6 +45,9 @@ NSString * const IMOStyledCellNoteViewTextColorKey               = @"IMOStyledCe
 NSString * const IMOStyledCellNoteViewLineColorKey               = @"IMOStyledCellNoteViewLineColorKey";
 
 
+NSString * const IMOStyledCellPlaceHolderFontKey                 = @"IMOStyledCellPlaceHolderFontKey";
+NSString * const IMOStyledCellPlaceHolderTextColorKey            = @"IMOStyledCellPlaceHolderTextColorKey";
+
 @interface IMOStyledCellKeys()
 
 @property(nonatomic, strong)NSMutableArray *allKeys;
@@ -96,6 +99,8 @@ NSString * const IMOStyledCellNoteViewLineColorKey               = @"IMOStyledCe
                     @[IMOStyledCellNoteViewFontKey,                  @(IMOStyledCellTypeFont), @(IMOStyledCellTypeSize)],
                     @[IMOStyledCellNoteViewTextColorKey,             @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellNoteViewLineColorKey,             @(IMOStyledCellTypeColor)],
+                    @[IMOStyledCellPlaceHolderFontKey,               @(IMOStyledCellTypeFont)],
+                    @[IMOStyledCellPlaceHolderTextColorKey,          @(IMOStyledCellTypeColor)],
                     nil];
     }
     return self;

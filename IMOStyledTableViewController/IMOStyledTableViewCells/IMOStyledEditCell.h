@@ -8,11 +8,14 @@
 
 #import "IMOStyledCell.h"
 
+@interface IMOStyledTextField : UITextField
+- (void) drawPlaceholderInRect:(CGRect)rect;
+@end
+
 
 @interface IMOStyledEditCell : IMOStyledCell
 
-@property (nonatomic, strong)UITextField *textField;
+@property (nonatomic, strong)IMOStyledTextField *textField;
 @property (nonatomic, strong)UILabel *textCaption;
-
 
 @end

@@ -73,6 +73,9 @@ extern NSString * const IMOStyledCellNoteViewFontKey;
 extern NSString * const IMOStyledCellNoteViewTextColorKey;
 extern NSString * const IMOStyledCellNoteViewLineColorKey;
 
+extern NSString * const IMOStyledCellPlaceHolderFontKey;
+extern NSString * const IMOStyledCellPlaceHolderTextColorKey;
+
 @interface IMOStyledCellKeys : NSObject
 
 + (IMOStyledCellKeys *)sharedManager;

@@ -56,7 +56,9 @@
                            IMOStyledCellTextCaptionTextColorKey:        [UIColor colorWithRed:0.451 green:0.365 blue:0.217 alpha:1.000],
                            IMOStyledCellSelectedBottomGradientColorKey: [UIColor colorWithRed:0.633 green:0.000 blue:0.007 alpha:1.000],
                            IMOStyledCellSelectedTopGradientColorKey:    [UIColor redColor],
-                           IMOStyledCellNoteViewLineColorKey:           [UIColor colorWithRed:0.541 green:0.313 blue:0.098 alpha:1.000]
+                           IMOStyledCellNoteViewLineColorKey:           [UIColor colorWithRed:0.541 green:0.313 blue:0.098 alpha:1.000],
+                           IMOStyledCellPlaceHolderTextColorKey:        [UIColor colorWithRed:0.775 green:0.509 blue:0.456 alpha:1.000],
+                           IMOStyledCellPlaceHolderFontKey:             [UIFont fontWithName:@"TrebuchetMS-Bold" size:14.f]
                            };
 }
 
