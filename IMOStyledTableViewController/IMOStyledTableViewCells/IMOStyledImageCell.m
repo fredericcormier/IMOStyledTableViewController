@@ -18,8 +18,8 @@
 
         [customImageView_ setOpaque:NO];
         [customImageView_ setContentMode:UIViewContentModeCenter];
-        [customImageView_ addSubview:[self customImageView]];
-        [customImageView_ setOpaque:NO];
+        [[self contentView] addSubview:[self customImageView]];
+        [[self contentView] setOpaque:NO];
     }
     return self;
 }

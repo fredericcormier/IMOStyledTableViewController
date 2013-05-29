@@ -9,56 +9,80 @@
 #import "ICAppDelegate.h"
 #import "ICExampleStyleGroupedViewController.h"
 #import "ICExampleStylePlainViewController.h"
+#import "ICSheetTableViewController.h"
+
+@interface ICAppDelegate()
+
+@property(nonatomic, strong)NSDictionary *plainStyleSheet;
+@property(nonatomic, strong)NSDictionary *groupedStyleSheet;
+
+- (void)setUpStyleDictionaries;
+
+@end
+
 
 @implementation ICAppDelegate
+
+@synthesize plainStyleSheet = plainStyleSheet_;
+@synthesize groupedStyleSheet = groupedStyleSheet_;
+
+- (void)setUpStyleDictionaries {
+    plainStyleSheet_    = @{IMOStyledCellBackgroundImageKey:            [UIImage imageNamed:@"clouds.png"],
+                            IMOStyledCellTopGradientColorKey:           [UIColor colorWithWhite:0.945 alpha:0.220],
+                            IMOStyledCellBottomGradientColorKey:        [UIColor colorWithRed:0.573 green:0.609 blue:0.620 alpha:0.570],
+                            IMOStyledCellTextLabelTextColorKey:         [UIColor whiteColor],
+                            IMOStyledCellTopSeparatorColorKey:          [UIColor colorWithRed:0.771 green:0.793 blue:0.820 alpha:1.000],
+                            IMOStyledCellBottomSeparatorColorKey:       [UIColor lightGrayColor]};
+    
+    
+    groupedStyleSheet_ = @{IMOStyledCellBackgroundImageKey :            [UIImage imageNamed:@"carot"],
+                           IMOStyledCellBackgroundColorKey:             [UIColor orangeColor],
+                           IMOStyledCellTopGradientColorKey :           [UIColor colorWithRed:1.000 green:0.786 blue:0.621 alpha:1.000],
+                           IMOStyledCellBottomGradientColorKey:         [UIColor colorWithRed:0.829 green:0.576 blue:0.252 alpha:1.000],
+                           IMOStyledCellTextLabelFontKey:               [UIFont fontWithName:@"HelveticaNeue" size:20.0],
+                           IMOStyledCellTextLabelTextColorKey:          [UIColor colorWithRed:0.185 green:0.362 blue:0.201 alpha:1.000],
+                           IMOStyledCellDetailTextLabelTextColorKey:    [UIColor colorWithRed:0.264 green:0.271 blue:0.473 alpha:1.000],
+                           IMOStyledCellUseCustomHeaderKey:             @YES,
+                           IMOStyledCellHeaderTextColorKey:             [UIColor colorWithRed:0.424 green:0.139 blue:0.054 alpha:1.000],
+                           IMOStyledCellHeaderFontKey:                  [UIFont fontWithName:@"ChalkboardSE-Bold" size:20.0f],
+                           IMOStyledCellUseCustomFooterKey:             @YES,
+                           IMOStyledCellTextCaptionTextColorKey:        [UIColor colorWithRed:0.451 green:0.365 blue:0.217 alpha:1.000],
+                           IMOStyledCellSelectedBottomGradientColorKey: [UIColor colorWithRed:0.633 green:0.000 blue:0.007 alpha:1.000],
+                           IMOStyledCellSelectedTopGradientColorKey:    [UIColor redColor]
+                           };
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    NSDictionary *plainStyleSheet = @{IMOStyledCellBackgroundImageKey: [UIImage imageNamed:@"clouds.png"],
-                                      IMOStyledCellTopGradientColorKey: [UIColor colorWithWhite:0.865 alpha:0.220],
-                                      IMOStyledCellBottomGradientColorKey: [UIColor colorWithWhite:0.439 alpha:0.570],
-                                      IMOStyledCellTextLabelTextColorKey: [UIColor whiteColor],
-                                      IMOStyledCellTopSeparatorColorKey: [UIColor whiteColor],
-                                      IMOStyledCellBottomSeparatorColorKey: [UIColor lightGrayColor]};
+    [self setUpStyleDictionaries];
     
-    
-    NSDictionary *groupedStyleSheet = @{IMOStyledCellBackgroundImageKey :            [UIImage imageNamed:@"carot"],
-                                        IMOStyledCellBackgroundColorKey:             [UIColor orangeColor],
-                                        IMOStyledCellTopGradientColorKey :           [UIColor colorWithRed:1.000 green:0.786 blue:0.621 alpha:1.000],
-                                        IMOStyledCellBottomGradientColorKey:         [UIColor colorWithRed:0.829 green:0.576 blue:0.252 alpha:1.000],
-                                        IMOStyledCellTextLabelFontKey:               [UIFont fontWithName:@"HelveticaNeue" size:20.0],
-                                        IMOStyledCellTextLabelTextColorKey:          [UIColor colorWithRed:0.185 green:0.362 blue:0.201 alpha:1.000],
-                                        IMOStyledCellDetailTextLabelTextColorKey:    [UIColor colorWithRed:0.264 green:0.271 blue:0.473 alpha:1.000],
-                                        IMOStyledCellUseCustomHeaderKey:             @YES,
-                                        IMOStyledCellHeaderTextColorKey:             [UIColor colorWithRed:0.424 green:0.139 blue:0.054 alpha:1.000],
-                                        IMOStyledCellHeaderFontKey:                  [UIFont fontWithName:@"ChalkboardSE-Bold" size:20.0f],
-                                        IMOStyledCellUseCustomFooterKey:             @YES,
-                                        IMOStyledCellTextCaptionTextColorKey:        [UIColor colorWithRed:0.451 green:0.365 blue:0.217 alpha:1.000],
-                                        IMOStyledCellSelectedBottomGradientColorKey: [UIColor colorWithRed:0.633 green:0.000 blue:0.007 alpha:1.000],
-                                        IMOStyledCellSelectedTopGradientColorKey:    [UIColor redColor]
-                                        };
+    ICSheetTableViewController *sheetTableViewController = [[ICSheetTableViewController alloc] initWithStyle:UITableViewStyleGrouped styleSheet:nil];
+    [[sheetTableViewController tabBarItem] setTitle:@"Sheet Style"];
+    [[sheetTableViewController tabBarItem] setImage:[UIImage imageNamed:@"sheet"]];
     
     ICExampleStylePlainViewController *stylePlainViewController = [[ICExampleStylePlainViewController alloc]
                                                                    initWithStyle:UITableViewStylePlain
-                                                                   styleSheet:nil];
+                                                                   styleSheet:[self plainStyleSheet]];
     [[stylePlainViewController tabBarItem] setTitle:@"Plain Style"];
     [[stylePlainViewController tabBarItem] setImage:[UIImage imageNamed:@"plain"]];
     
     
     ICExampleStyleGroupedViewController *styleGroupedViewController = [[ICExampleStyleGroupedViewController alloc]
                                                                        initWithStyle:UITableViewStyleGrouped
-                                                                       styleSheet:groupedStyleSheet];
-
+                                                                       styleSheet:[self groupedStyleSheet]];
+    
     [[styleGroupedViewController tabBarItem] setTitle:@"Grouped Style"];
     [[styleGroupedViewController tabBarItem] setImage:[UIImage imageNamed:@"list"]];
-
-
+    
+    
     UINavigationController *plainNavController = [[UINavigationController alloc] initWithRootViewController:stylePlainViewController];
     UINavigationController *groupNavController = [[UINavigationController alloc] initWithRootViewController:styleGroupedViewController];
-    
-    NSArray *controllers = @[plainNavController, groupNavController];
+    UINavigationController *sheetNavController = [[UINavigationController alloc] initWithRootViewController:sheetTableViewController];
+        
+    NSArray *controllers = @[sheetNavController, plainNavController, groupNavController];
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     [tabBarController setViewControllers:controllers];
@@ -79,7 +103,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

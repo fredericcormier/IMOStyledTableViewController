@@ -60,6 +60,12 @@
 		6A39EEC2175519DC00417A20 /* UIColor+equality.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEC1175519DC00417A20 /* UIColor+equality.m */; };
 		6A39EEC3175519DC00417A20 /* UIColor+equality.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEC1175519DC00417A20 /* UIColor+equality.m */; };
 		6A39EEC417551A0900417A20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1D31754E78900B06708 /* CoreGraphics.framework */; };
+		6A39EEC71755EFC700417A20 /* ICSheetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEC61755EFC700417A20 /* ICSheetTableViewController.m */; };
+		6A39EEC81755EFC700417A20 /* ICSheetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEC61755EFC700417A20 /* ICSheetTableViewController.m */; };
+		6A39EECB1755F57900417A20 /* sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A39EEC91755F57900417A20 /* sheet.png */; };
+		6A39EECC1755F57900417A20 /* sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A39EEC91755F57900417A20 /* sheet.png */; };
+		6A39EECD1755F57900417A20 /* sheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A39EECA1755F57900417A20 /* sheet@2x.png */; };
+		6A39EECE1755F57900417A20 /* sheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A39EECA1755F57900417A20 /* sheet@2x.png */; };
 		6AB8728D1754F4B3002B7346 /* style.imo in Resources */ = {isa = PBXBuildFile; fileRef = 6AB8728C1754F4B3002B7346 /* style.imo */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +132,10 @@
 		6A39EEBC1755194C00417A20 /* ICTestKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICTestKeys.m; sourceTree = "<group>"; };
 		6A39EEC0175519DC00417A20 /* UIColor+equality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+equality.h"; sourceTree = "<group>"; };
 		6A39EEC1175519DC00417A20 /* UIColor+equality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+equality.m"; sourceTree = "<group>"; };
+		6A39EEC51755EFC700417A20 /* ICSheetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSheetTableViewController.h; sourceTree = "<group>"; };
+		6A39EEC61755EFC700417A20 /* ICSheetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSheetTableViewController.m; sourceTree = "<group>"; };
+		6A39EEC91755F57900417A20 /* sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheet.png; sourceTree = "<group>"; };
+		6A39EECA1755F57900417A20 /* sheet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sheet@2x.png"; sourceTree = "<group>"; };
 		6AB8728C1754F4B3002B7346 /* style.imo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = style.imo; path = IMOStyledTableViewControllerDemo/style.imo; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -189,8 +199,11 @@
 		6A15D1D51754E78900B06708 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				6AB8728C1754F4B3002B7346 /* style.imo */,
 				6A15D1DE1754E78A00B06708 /* ICAppDelegate.h */,
 				6A15D1DF1754E78A00B06708 /* ICAppDelegate.m */,
+				6A39EEC51755EFC700417A20 /* ICSheetTableViewController.h */,
+				6A39EEC61755EFC700417A20 /* ICSheetTableViewController.m */,
 				6A15D2041754E80C00B06708 /* ICExampleStyleGroupedViewController.h */,
 				6A15D2051754E80C00B06708 /* ICExampleStyleGroupedViewController.m */,
 				6A15D2061754E80C00B06708 /* ICExampleStylePlainViewController.h */,
@@ -243,6 +256,8 @@
 		6A15D20D1754E82E00B06708 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				6A39EEC91755F57900417A20 /* sheet.png */,
+				6A39EECA1755F57900417A20 /* sheet@2x.png */,
 				6A15D20E1754E82E00B06708 /* carot.png */,
 				6A15D20F1754E82E00B06708 /* carot@2x.png */,
 				6A15D2101754E82E00B06708 /* clouds.png */,
@@ -272,7 +287,6 @@
 		6A15D22C1754E86800B06708 /* IMOStyledTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				6AB8728C1754F4B3002B7346 /* style.imo */,
 				6A15D22D1754E86800B06708 /* IMOStyledCell.h */,
 				6A15D22E1754E86800B06708 /* IMOStyledCell.m */,
 				6A15D22F1754E86800B06708 /* IMOStyledCellKeys.h */,
@@ -383,6 +397,8 @@
 				6A15D2251754E82E00B06708 /* plain@2x.png in Resources */,
 				6A15D2271754E82E00B06708 /* snow.png in Resources */,
 				6AB8728D1754F4B3002B7346 /* style.imo in Resources */,
+				6A39EECB1755F57900417A20 /* sheet.png in Resources */,
+				6A39EECD1755F57900417A20 /* sheet@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +416,8 @@
 				6A15D2241754E82E00B06708 /* plain.png in Resources */,
 				6A15D2261754E82E00B06708 /* plain@2x.png in Resources */,
 				6A15D2281754E82E00B06708 /* snow.png in Resources */,
+				6A39EECC1755F57900417A20 /* sheet.png in Resources */,
+				6A39EECE1755F57900417A20 /* sheet@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +456,7 @@
 				6A15D2431754E86800B06708 /* IMOStyledNoteViewCell.m in Sources */,
 				6A15D2451754E86800B06708 /* IMOStyledTableViewController.m in Sources */,
 				6A39EEC2175519DC00417A20 /* UIColor+equality.m in Sources */,
+				6A39EEC71755EFC700417A20 /* ICSheetTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +475,7 @@
 				6A39EEBD1755194C00417A20 /* HexValue_Test.m in Sources */,
 				6A39EEBE1755194C00417A20 /* ICTestKeys.m in Sources */,
 				6A39EEC3175519DC00417A20 /* UIColor+equality.m in Sources */,
+				6A39EEC81755EFC700417A20 /* ICSheetTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
