@@ -1,5 +1,6 @@
 //
 // BackgroundImage   
+// BackgroundColor
 // TopGradientColor 
 // BottomGradientColor 
 // SelectedTopGradientColor 
@@ -30,8 +31,9 @@
 
 
 
-BackgroundImage         snow.png
+//BackgroundImage         snow.png
 
+BackgroundColor         #8DA6CE
 TextLabelFont           Helvetica       17.0 
 
 

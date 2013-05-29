@@ -13,6 +13,8 @@ NSString * const IMOStyledCellTopSeparatorColorKey               = @"IMOStyledCe
 NSString * const IMOStyledCellBottomSeparatorColorKey            = @"IMOStyledCellBottomSeparatorColorKey";
 
 NSString * const IMOStyledCellBackgroundImageKey                 = @"IMOStyledCellBackgroundImageKey";
+NSString * const IMOStyledCellBackgroundColorKey                 = @"IMOStyledCellBackgroundColorKey";
+
 NSString * const IMOStyledCellTopGradientColorKey                = @"IMOStyledCellTopGradientColorKey";
 NSString * const IMOStyledCellBottomGradientColorKey             = @"IMOStyledCellBottomGradientColorKey";
 NSString * const IMOStyledCellSelectedTopGradientColorKey        = @"IMOStyledCellSelectedTopGradientColorKey";
@@ -68,6 +70,7 @@ NSString * const IMOStyledCellNoteViewLineColorKey               = @"IMOStyledCe
         allKeys_ = [[NSMutableArray alloc] initWithObjects:
                     @[IMOStyledCellTopSeparatorColorKey,             @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellBottomSeparatorColorKey,          @(IMOStyledCellTypeColor)],
+                    @[IMOStyledCellBackgroundColorKey,               @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellBackgroundImageKey,               @(IMOStyledCellTypeImage)],
                     @[IMOStyledCellTopGradientColorKey,              @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellBottomGradientColorKey,           @(IMOStyledCellTypeColor)],

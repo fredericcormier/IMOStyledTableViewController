@@ -157,11 +157,10 @@
 		6A15D1C31754E78900B06708 = {
 			isa = PBXGroup;
 			children = (
-				6A39EEBF175519DC00417A20 /* Helpers */,
-				6A15D1D51754E78900B06708 /* IMOStyledTableViewControllerDemo */,
 				6A15D2291754E86800B06708 /* IMOStyledTableViewController */,
+				6A15D1D51754E78900B06708 /* DemoApp */,
 				6A15D20D1754E82E00B06708 /* graphics */,
-				6A15D1F31754E78A00B06708 /* IMOStyledTableViewControllerDemoTests */,
+				6A15D1F31754E78A00B06708 /* Tests */,
 				6A15D1CE1754E78900B06708 /* Frameworks */,
 				6A15D1CD1754E78900B06708 /* Products */,
 			);
@@ -187,7 +186,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6A15D1D51754E78900B06708 /* IMOStyledTableViewControllerDemo */ = {
+		6A15D1D51754E78900B06708 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
 				6A15D1DE1754E78A00B06708 /* ICAppDelegate.h */,
@@ -198,6 +197,7 @@
 				6A15D2071754E80C00B06708 /* ICExampleStylePlainViewController.m */,
 				6A15D1D61754E78900B06708 /* Supporting Files */,
 			);
+			name = DemoApp;
 			path = IMOStyledTableViewControllerDemo;
 			sourceTree = "<group>";
 		};
@@ -215,9 +215,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6A15D1F31754E78A00B06708 /* IMOStyledTableViewControllerDemoTests */ = {
+		6A15D1F31754E78A00B06708 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				6A39EEBF175519DC00417A20 /* Helpers */,
 				6A39EEB91755194C00417A20 /* HexValue_Test.h */,
 				6A39EEBA1755194C00417A20 /* HexValue_Test.m */,
 				6A39EEBB1755194C00417A20 /* ICTestKeys.h */,
@@ -226,6 +227,7 @@
 				6A15D1FA1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.m */,
 				6A15D1F41754E78A00B06708 /* Supporting Files */,
 			);
+			name = Tests;
 			path = IMOStyledTableViewControllerDemoTests;
 			sourceTree = "<group>";
 		};
@@ -291,7 +293,8 @@
 				6A39EEC0175519DC00417A20 /* UIColor+equality.h */,
 				6A39EEC1175519DC00417A20 /* UIColor+equality.m */,
 			);
-			path = Helpers;
+			name = Helpers;
+			path = ../Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

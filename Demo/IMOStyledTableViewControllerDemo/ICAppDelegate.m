@@ -25,6 +25,7 @@
     
     
     NSDictionary *groupedStyleSheet = @{IMOStyledCellBackgroundImageKey :            [UIImage imageNamed:@"carot"],
+                                        IMOStyledCellBackgroundColorKey:             [UIColor orangeColor],
                                         IMOStyledCellTopGradientColorKey :           [UIColor colorWithRed:1.000 green:0.786 blue:0.621 alpha:1.000],
                                         IMOStyledCellBottomGradientColorKey:         [UIColor colorWithRed:0.829 green:0.576 blue:0.252 alpha:1.000],
                                         IMOStyledCellTextLabelFontKey:               [UIFont fontWithName:@"HelveticaNeue" size:20.0],
@@ -48,7 +49,8 @@
     
     ICExampleStyleGroupedViewController *styleGroupedViewController = [[ICExampleStyleGroupedViewController alloc]
                                                                        initWithStyle:UITableViewStyleGrouped
-                                                                       styleSheet:nil];
+                                                                       styleSheet:groupedStyleSheet];
+
     [[styleGroupedViewController tabBarItem] setTitle:@"Grouped Style"];
     [[styleGroupedViewController tabBarItem] setImage:[UIImage imageNamed:@"list"]];
 

@@ -42,6 +42,7 @@ extern NSString * const IMOStyledCellTopSeparatorColorKey;
 extern NSString * const IMOStyledCellBottomSeparatorColorKey;
 
 extern NSString * const IMOStyledCellBackgroundImageKey;
+extern NSString * const IMOStyledCellBackgroundColorKey;
 extern NSString * const IMOStyledCellTopGradientColorKey;
 extern NSString * const IMOStyledCellBottomGradientColorKey;
 extern NSString * const IMOStyledCellSelectedTopGradientColorKey;

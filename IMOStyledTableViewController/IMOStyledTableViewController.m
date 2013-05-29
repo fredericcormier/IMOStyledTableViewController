@@ -19,6 +19,7 @@
 @property(nonatomic, strong)NSMutableDictionary *sheet;
 
 @property(nonatomic, strong)UIImage *backgroundImage;
+@property(nonatomic, strong)UIColor *backgroundColor;
 @property(nonatomic, assign)BOOL useCustomHeader;
 @property(nonatomic, strong)UIFont *headerFont;
 @property(nonatomic, strong)UIColor *headerFontColor;
@@ -34,6 +35,7 @@
 @synthesize footerText = footerText_;
 @synthesize sheet = sheet_;
 @synthesize backgroundImage = backgroundImage_;
+@synthesize backgroundColor = backgroundColor_;
 @synthesize useCustomHeader = useCustomHeader_;
 @synthesize headerFont = headerFont_;
 @synthesize headerFontColor = headerFontColor_;
@@ -59,13 +61,14 @@
         if (styleSheet) {
             sheet_ = (NSMutableDictionary *)styleSheet;
         }
-       backgroundImage_ = [[self sheet] objectForKey:IMOStyledCellBackgroundImageKey];
-       useCustomHeader_ = (YES == [[[self sheet] objectForKey:IMOStyledCellUseCustomHeaderKey] boolValue] ) ? YES : NO;
-       headerFont_ = [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] : DefaultHeaderFont;
-       headerFontColor_ = [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] : DefaultHeaderTextColor;
-       useCustomFooter_ = (YES ==[[[self sheet] objectForKey:IMOStyledCellUseCustomFooterKey] boolValue]) ? YES : NO;
-       footerFont_ = [[self sheet] objectForKey:IMOStyledCellFooterFontKey] ? [[self sheet] objectForKey:IMOStyledCellFooterFontKey] : DefaultFooterFont;
-       footerFontColor_ = [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] ? [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] : DefaultFooterTextColor;
+        backgroundImage_ = [[self sheet] objectForKey:IMOStyledCellBackgroundImageKey];
+        backgroundColor_ = [[self  sheet] objectForKey:IMOStyledCellBackgroundColorKey];
+        useCustomHeader_ = (YES == [[[self sheet] objectForKey:IMOStyledCellUseCustomHeaderKey] boolValue] ) ? YES : NO;
+        headerFont_ = [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] : DefaultHeaderFont;
+        headerFontColor_ = [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] : DefaultHeaderTextColor;
+        useCustomFooter_ = (YES ==[[[self sheet] objectForKey:IMOStyledCellUseCustomFooterKey] boolValue]) ? YES : NO;
+        footerFont_ = [[self sheet] objectForKey:IMOStyledCellFooterFontKey] ? [[self sheet] objectForKey:IMOStyledCellFooterFontKey] : DefaultFooterFont;
+        footerFontColor_ = [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] ? [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] : DefaultFooterTextColor;
     }
     return self;
 }
@@ -86,15 +89,23 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    UIColor *bgColor = nil;
     
+    // BackgroundImage has priority over background color
     if ([self backgroundImage]) {
-        UIColor *backgroundColor = [UIColor colorWithPatternImage:[self backgroundImage]];
+        bgColor = [UIColor colorWithPatternImage:[self backgroundImage]];
+    }else if ([self backgroundColor]){
+        bgColor = [self backgroundColor];
+    }
+    if (bgColor) {
         UIView* backgroundView = [[UIView alloc] init];
         // set the background color or image
-        [backgroundView setBackgroundColor:backgroundColor];
+        [backgroundView setBackgroundColor:bgColor];
         //make it the tableView Background view
         [[self tableView] setBackgroundView:backgroundView];
     }
+    // else, default tableViewColor will apply
 }
 
 
