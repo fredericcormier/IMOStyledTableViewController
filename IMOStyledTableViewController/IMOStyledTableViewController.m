@@ -95,6 +95,7 @@
     // The navBar
     if ([self navBarColor]) {
         [[[self navigationController] navigationBar] setTintColor:[self navBarColor]];
+        [[[self navigationController] toolbar] setTintColor:[self navBarColor]];
     }
     
     

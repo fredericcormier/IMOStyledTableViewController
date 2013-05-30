@@ -15,6 +15,7 @@
 
 @interface IMOStyledNoteView : UITextView
 @property(nonatomic, strong)UIColor *lineColor;
+- (id)initWithFrame:(CGRect)frame accessoryToolBarColor:(UIColor *)toolbarColor;
 @end
 
 
@@ -26,6 +27,7 @@
 @property(nonatomic, strong)UIColor *fontColor;
 @property(nonatomic, strong)UIColor *lineColor;
 @property(nonatomic, strong)IMOStyledNoteView *noteView;
+@property(nonatomic, strong)UIColor *toolbarColor;
 
 @end
 
@@ -34,6 +36,7 @@
 @synthesize fontColor = fontColor_;
 @synthesize lineColor = lineColor_;
 @synthesize noteView = noteView_;
+@synthesize toolbarColor = toolbarColor_;
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
@@ -42,12 +45,15 @@
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier position:cellPosition styleSheet:styleSheet];
     if (self) {
-        noteView_ = [[IMOStyledNoteView alloc] initWithFrame:CGRectZero];
+        
+        noteFont_ = [styleSheet objectForKey:IMOStyledCellNoteViewFontKey] ?: defaultNoteViewFont;
+        fontColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewTextColorKey] ?: defaultNoteViewFontColor;
+        lineColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewLineColorKey] ?: defaultNoteViewLineColor;
+        toolbarColor_ = [styleSheet objectForKey:IMOStyledCellNavBarTintColorKey];
+        
+        noteView_ = [[IMOStyledNoteView alloc] initWithFrame:CGRectZero accessoryToolBarColor:toolbarColor_];
         [[self contentView] addSubview:[self noteView]];
         [self setBackgroundColor:[UIColor clearColor]];
-       noteFont_ = [styleSheet objectForKey:IMOStyledCellNoteViewFontKey] ?: defaultNoteViewFont;
-       fontColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewTextColorKey] ?: defaultNoteViewFontColor;
-       lineColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewLineColorKey] ?: defaultNoteViewLineColor;
         
         [[self noteView] setFont:[self noteFont]];
         [[self noteView] setTextColor:[self fontColor]];
@@ -66,6 +72,7 @@
     CGRect noteViewRect = CGRectOffset(insetRect, -10.0, 0);
     [[self noteView] setFrame:noteViewRect];
 }
+
 @end
 
 /**********************************************************************************************/
@@ -74,13 +81,16 @@
 
 @implementation IMOStyledNoteView
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame accessoryToolBarColor:(UIColor *)toolbarColor{
     
     self = [super initWithFrame:frame];
     if (self) {
         [self setBackgroundColor:[UIColor clearColor]];
         [self setContentMode:UIViewContentModeRedraw];
         [self setInputAccessoryView:[self accessoryToolBar]];
+        if (toolbarColor) {
+            [(UIToolbar *)[self inputAccessoryView] setTintColor:toolbarColor];
+        }
     }
     return self;
 }
@@ -111,7 +121,7 @@
     //Start a new Path
     CGContextBeginPath(context);
     
-    NSUInteger numberOfLines = (self.contentSize.height + self.bounds.size.height) / self.font.leading;    
+    NSUInteger numberOfLines = (self.contentSize.height + self.bounds.size.height) / self.font.leading;
     CGFloat baselineOffset = 6.0f;
     
     for (int x = 1; x < numberOfLines; x++) {
