@@ -67,11 +67,11 @@
         backgroundColor_ = [[self  sheet] objectForKey:IMOStyledCellBackgroundColorKey];
         navBarColor_ = [[self sheet] objectForKey:IMOStyledCellNavBarTintColorKey];
         useCustomHeader_ = (YES == [[[self sheet] objectForKey:IMOStyledCellUseCustomHeaderKey] boolValue] ) ? YES : NO;
-        headerFont_ = [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] : DefaultHeaderFont;
-        headerFontColor_ = [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] ? [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] : DefaultHeaderTextColor;
+        headerFont_ = [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] ?: DefaultHeaderFont;
+        headerFontColor_ = [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] ?: DefaultHeaderTextColor;
         useCustomFooter_ = (YES ==[[[self sheet] objectForKey:IMOStyledCellUseCustomFooterKey] boolValue]) ? YES : NO;
-        footerFont_ = [[self sheet] objectForKey:IMOStyledCellFooterFontKey] ? [[self sheet] objectForKey:IMOStyledCellFooterFontKey] : DefaultFooterFont;
-        footerFontColor_ = [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] ? [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] : DefaultFooterTextColor;
+        footerFont_ = [[self sheet] objectForKey:IMOStyledCellFooterFontKey] ?: DefaultFooterFont;
+        footerFontColor_ = [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] ?: DefaultFooterTextColor;
     }
     return self;
 }

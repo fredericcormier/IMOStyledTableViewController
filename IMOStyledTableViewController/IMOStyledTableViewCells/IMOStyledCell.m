@@ -105,14 +105,14 @@ static NSArray *cellPositionStrings;
     }else{
         doDrawSeparators_ = YES;
     }
-   gradientTopColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ? [sheet objectForKey:IMOStyledCellTopGradientColorKey] : defaultGradientTopColor;
-   gradientBottomColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ? [sheet objectForKey:IMOStyledCellBottomGradientColorKey] : defaultGradientBottomColor;
-   gradientSelectedTopColor_ = [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] ? [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] : defaultSelectedGradientTopColor;
-   gradientSelectedBottomColor_ = [sheet objectForKey:IMOStyledCellSelectedBottomGradientColorKey] ? [sheet objectForKey:IMOStyledCellSelectedBottomGradientColorKey] : defaultSelectedGradientBottomColor;
-   textLabelTextColor_ = [sheet objectForKey:IMOStyledCellTextLabelTextColorKey] ? [sheet objectForKey:IMOStyledCellTextLabelTextColorKey] : defaultTextLabelTextColor;
-   detailTextLabelTextColor_ = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ? [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] : defaultDetailTextLabelTextColor;
-   textLabelFont_ = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ? [sheet objectForKey:IMOStyledCellTextLabelFontKey] : defaultTextLabelFont;
-   detailTextLabelFont_ = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ? [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] : defaultDetailTextLabelFont;
+   gradientTopColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: defaultGradientTopColor;
+    gradientBottomColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: defaultGradientBottomColor;
+   gradientSelectedTopColor_ = [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] ?: defaultSelectedGradientTopColor;
+   gradientSelectedBottomColor_ = [sheet objectForKey:IMOStyledCellSelectedBottomGradientColorKey] ?: defaultSelectedGradientBottomColor;
+   textLabelTextColor_ = [sheet objectForKey:IMOStyledCellTextLabelTextColorKey] ?: defaultTextLabelTextColor;
+   detailTextLabelTextColor_ = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ?: defaultDetailTextLabelTextColor;
+   textLabelFont_ = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ?: defaultTextLabelFont;
+   detailTextLabelFont_ = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ?: defaultDetailTextLabelFont;
 }
 
 

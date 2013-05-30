@@ -45,9 +45,9 @@
         noteView_ = [[IMOStyledNoteView alloc] initWithFrame:CGRectZero];
         [[self contentView] addSubview:[self noteView]];
         [self setBackgroundColor:[UIColor clearColor]];
-       noteFont_ = [styleSheet objectForKey:IMOStyledCellNoteViewFontKey] ? [styleSheet objectForKey:IMOStyledCellNoteViewFontKey] : defaultNoteViewFont;
-       fontColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewTextColorKey] ? [styleSheet objectForKey:IMOStyledCellNoteViewTextColorKey] : defaultNoteViewFontColor;
-       lineColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewLineColorKey] ? [styleSheet objectForKey:IMOStyledCellNoteViewLineColorKey] : defaultNoteViewLineColor;
+       noteFont_ = [styleSheet objectForKey:IMOStyledCellNoteViewFontKey] ?: defaultNoteViewFont;
+       fontColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewTextColorKey] ?: defaultNoteViewFontColor;
+       lineColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewLineColorKey] ?: defaultNoteViewLineColor;
         
         [[self noteView] setFont:[self noteFont]];
         [[self noteView] setTextColor:[self fontColor]];

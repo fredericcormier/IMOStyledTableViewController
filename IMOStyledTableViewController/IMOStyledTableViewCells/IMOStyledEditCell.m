@@ -44,14 +44,14 @@ const CGFloat kSeparator_X = 102.f;
 
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet {
     [super setUpCellStyleSheet:sheet];
-    textfieldFont_ = [sheet objectForKey:IMOStyledCellTextFieldFontKey] ? [sheet objectForKey:IMOStyledCellTextFieldFontKey] : defaultTextFieldFont;
-    textfieldFontColor_ = [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] ? [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] : defaultTextFieldColor;
-    textCaptionFont_ = [sheet objectForKey:IMOStyledCellTextCaptionFontKey] ? [sheet objectForKey:IMOStyledCellTextCaptionFontKey] : defaultCaptionFont;
-    textCaptionFontColor_ = [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] ? [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] : defaultCaptionColor;
+    textfieldFont_ = [sheet objectForKey:IMOStyledCellTextFieldFontKey] ?: defaultTextFieldFont;
+    textfieldFontColor_ = [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] ?: defaultTextFieldColor;
+    textCaptionFont_ = [sheet objectForKey:IMOStyledCellTextCaptionFontKey] ?: defaultCaptionFont;
+    textCaptionFontColor_ = [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] ?: defaultCaptionColor;
     
     // separators uses the bottom and top gradient colors for now
-    leftSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ? [sheet objectForKey:IMOStyledCellBottomGradientColorKey] : [UIColor colorWithWhite:0.838 alpha:1.000];
-    rightSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ? [sheet objectForKey:IMOStyledCellTopGradientColorKey] : [UIColor colorWithWhite:0.983 alpha:1.000];
+    leftSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: [UIColor colorWithWhite:0.838 alpha:1.000];
+    rightSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: [UIColor colorWithWhite:0.983 alpha:1.000];
     
     placeHolderFont_ = [sheet objectForKey:IMOStyledCellPlaceHolderFontKey];
     placeHolderTextColor_ = [sheet objectForKey:IMOStyledCellPlaceHolderTextColorKey];
