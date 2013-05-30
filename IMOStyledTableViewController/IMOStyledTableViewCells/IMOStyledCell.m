@@ -75,8 +75,8 @@ static NSArray *cellPositionStrings;
 
 
 
-@implementation IMOStyledCell
-{
+@implementation IMOStyledCell {
+    
     IMOStyledCellPosition position;
     CGGradientRef gradient;
 }
@@ -96,7 +96,7 @@ static NSArray *cellPositionStrings;
 
 
 
-/*  Sublasses may override this next one and must call super's implementation */
+/*  Sublasses may override this one and must call super's implementation */
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet {
     topSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopSeparatorColorKey];
     bottomSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomSeparatorColorKey];
@@ -119,9 +119,8 @@ static NSArray *cellPositionStrings;
 
 
 
-/*  IMOStyledTableViewController subclasses should call the following class method to retrieve a IMOStyledCell
- This class method is only pertinent with IMOStyledCells that have the same style variations as UITableViewCell */
-+ (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style {
+/* Returns  an IMOStyledCell with the desired variation */
+ + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style {
     
     IMOStyledCellPosition position = [IMOStyledCell locationInSectionOfTableView:[controller tableView] atIndexPath:indexPath];
     
@@ -136,9 +135,8 @@ static NSArray *cellPositionStrings;
 
 
 
-/*  When requesting IMOStyledCell's subclasses, use the following class method
-    here we don't care about the parent cell style variation.*/
-+ (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath {
+/* returns the desired IMOStyledCell subclass instance */
+ + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath {
     return [self cellForTableViewController:controller atIndexPath:indexPath style:IMOStyledCellStyleNeverMind];
 }
 
@@ -170,7 +168,9 @@ static NSArray *cellPositionStrings;
 
 
 
-/* The identifier is "cell class name"+ position +"cell position in section string"
+/*
+ Returns the cell identifier
+ The identifier is "cell class name"+ position +"cell position in section string"
  ie: IMOStyledCellPositionPlain
  */
 + (NSString *)cellIdentifierAtPosition:(IMOStyledCellPosition)cellPosition withStyle:(IMOStyledCellStyle)style {
@@ -199,7 +199,8 @@ static NSArray *cellPositionStrings;
 
 
 
-/* IMOStyledCell subclasses must override this one */
+/* IMOStyledCell subclasses must override this one 
+    See IMOStyledEditCell*/
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier position:(IMOStyledCellPosition)cellPosition styleSheet:(NSDictionary *)styleSheet {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -449,7 +450,7 @@ static NSArray *cellPositionStrings;
 @implementation IMOSelectedCellBackgroundView
 
 @synthesize position;
-/* Otherwise rounded corners will let pass the background garbage underneath*/
+/* Otherwise rounded corners will let pass the background residue underneath*/
 - (BOOL) isOpaque{
     return NO;
 }

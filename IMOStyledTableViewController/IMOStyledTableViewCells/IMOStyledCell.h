@@ -21,7 +21,7 @@
 
 
 + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style ;
-/** returns a IMOStyledCell with a style variation corresponding to UITableViewCellStyle's - ie 
+/* Style Variations only apply to IMOStyledCells : 
  IMOStyledCellStyleDefault,
  IMOStyledCellStyleValue1,
  IMOStyledCellStyleValue2,
@@ -29,17 +29,19 @@
 */
 
 + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath;
-/** Returns an instance of the requested IMOStyledCell's subclass*/
+/* No style variation - Use for subclasses */
 
 
 
 
 
-//SUBCLASSING
+
+
 // subclasses might override this next 2 methods
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier position:(IMOStyledCellPosition)cellPosition styleSheet:(NSDictionary *)styleSheet;
-/** subclasses must override this one in order to set up their properties */
+/* subclasses must override this one in order to set up their properties */
 
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet;
-/** subclasses must override this one in order to setup cell styles */
+/* subclasses must override this one in order to setup cell styles */
 @end

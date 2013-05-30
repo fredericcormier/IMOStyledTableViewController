@@ -23,8 +23,6 @@ static NSString * const IMOStyledCellCommentSymbol = @"//";
 @implementation IMOStyledStyleParser
 
 
-
-
 + (IMOStyledStyleParser *)sharedParser {
     static dispatch_once_t once;
     static IMOStyledStyleParser *parser;
@@ -64,7 +62,6 @@ static NSString * const IMOStyledCellCommentSymbol = @"//";
  In the styleSheet, if the property is named "TopGradientColor then
  IMOStyledCell+TopGradientColor+key => IMOStyledCellTopGradientColorKey
  */
-
 - (NSString *)keyNameForProperty:(NSString *)property {
     return [NSString stringWithFormat:@"%@%@%@", IMOStyledCellPrefix, property, IMOStyledCellSuffix];
 }
@@ -78,7 +75,7 @@ static NSString * const IMOStyledCellCommentSymbol = @"//";
     NSArray *lines = [info componentsSeparatedByString:@"\n"];
     
     for (NSString *l in lines) {
-        /* skip empty lines and Comments - carriage return are already gone*/
+        /* skip empty lines and Comments - carriage returns are already gone*/
         if ([l isEqualToString:@""] || [l hasPrefix:IMOStyledCellCommentSymbol]) {
             continue;
         }

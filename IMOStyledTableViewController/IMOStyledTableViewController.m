@@ -59,7 +59,6 @@
             sheet_ = [[IMOStyledStyleParser sharedParser] parsedStyleDictionary];
         }
         
-        // If a stylesheet is provided, assign it to sheet_ - possibly erasing previous dictionary
         if (styleSheet) {
             sheet_ = (NSMutableDictionary *)styleSheet;
         }
@@ -80,7 +79,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Only draw the separators for plainstyle when there's no stylesheet
+    // Only draw the separators for plain style when there's no stylesheet
     if ([[self tableView] style] == UITableViewStylePlain && [self sheet] == nil ) {
         [[self tableView] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     }else{
@@ -101,7 +100,7 @@
     
     UIColor *bgColor = nil;
     
-    // BackgroundImage has priority over background color
+    // BackgroundImage has priority over backgroundColor
     if ([self backgroundImage]) {
         bgColor = [UIColor colorWithPatternImage:[self backgroundImage]];
     }else if ([self backgroundColor]){
@@ -114,8 +113,7 @@
         //make it the tableView Background view
         [[self tableView] setBackgroundView:backgroundView];
     }
-    // else, default tableViewColor will apply
-    
+    // else… default tableViewColor will apply
 }
 
 

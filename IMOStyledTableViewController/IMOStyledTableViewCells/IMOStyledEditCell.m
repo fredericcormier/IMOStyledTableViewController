@@ -49,7 +49,7 @@ const CGFloat kSeparator_X = 102.f;
     textCaptionFont_ = [sheet objectForKey:IMOStyledCellTextCaptionFontKey] ?: defaultCaptionFont;
     textCaptionFontColor_ = [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] ?: defaultCaptionColor;
     
-    // separators uses the bottom and top gradient colors for now
+    // separators uses the bottom and top gradient colors
     leftSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: [UIColor colorWithWhite:0.838 alpha:1.000];
     rightSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: [UIColor colorWithWhite:0.983 alpha:1.000];
     
@@ -93,6 +93,8 @@ const CGFloat kSeparator_X = 102.f;
         [textField_ setOpaque:NO];
         [textCaption_ setOpaque:NO];
         [[self contentView] setOpaque:NO];
+        
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     return self;
 }
@@ -150,6 +152,8 @@ const CGFloat kSeparator_X = 102.f;
     
     [[self textCaption] setFrame:captionRect];
 }
+
+
 
 @end
 

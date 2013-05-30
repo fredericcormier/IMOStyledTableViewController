@@ -57,7 +57,7 @@
 
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
 }
@@ -72,10 +72,8 @@
                 //name-------------------------------------------------
             case 0:{
                 cell = [IMOStyledEditCell cellForTableViewController:self  atIndexPath:indexPath];
-                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                
                 [[(IMOStyledEditCell *)cell textCaption] setText:@"Product"];
-                [[(IMOStyledEditCell *) cell textField] setEnabled:NO];
+                [[(IMOStyledEditCell *)cell textField] setDelegate:self];
                 [[(IMOStyledEditCell *) cell textField] setTag:0];
                 [[(IMOStyledEditCell *)cell textField] setPlaceholder:@"Product"];
                 
@@ -83,7 +81,6 @@
                 break;
             case 1:{
                 cell = [IMOStyledEditCell cellForTableViewController:self  atIndexPath:indexPath] ;
-                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 [[(IMOStyledEditCell *)cell textCaption] setText:@"Quantity"];
                 [[(IMOStyledEditCell *)cell textField] setDelegate:self];
                 [[(IMOStyledEditCell *)cell textField] setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
@@ -93,7 +90,6 @@
                 break;
             case 2:{
                 cell = [IMOStyledEditCell cellForTableViewController:self  atIndexPath:indexPath ];
-                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 [[(IMOStyledEditCell *)cell textCaption] setText:@"Price"];
                 [[(IMOStyledEditCell *)cell textField] setDelegate:self];
                 [[(IMOStyledEditCell *) cell textField] setTag:3];
@@ -106,8 +102,8 @@
                 cell = [IMOStyledCell cellForTableViewController:self  atIndexPath:indexPath style:IMOStyledCellStyleValue1];
                 [[(IMOStyledCell  *)cell textLabel] setText:@"Shop"];
                 
-                    [[(IMOStyledCell  *)cell detailTextLabel] setText:@"Shop"];
-                    
+                [[(IMOStyledCell  *)cell detailTextLabel] setText:@"Shop"];
+                
                 
                 [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
@@ -139,15 +135,15 @@
         }
     }
     
-    if ([indexPath section] == 1 && [indexPath row] == 0) { 
+    if ([indexPath section] == 1 && [indexPath row] == 0) {
         cell = [IMOStyledCell  cellForTableViewController:self  atIndexPath:indexPath style:IMOStyledCellStyleDefault];
-
+        
 #ifdef __IPHONE_6_0
         [[cell textLabel] setTextAlignment:NSTextAlignmentCenter];
 #else
         [[cell textLabel] setTextAlignment:UITextAlignmentCenter];
 #endif
-
+        
         [[cell textLabel] setText:@"Save as favorite..."];
     }
     return cell;
