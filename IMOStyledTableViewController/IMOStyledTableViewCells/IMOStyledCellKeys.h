@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Frederic Cormier. All rights reserved.
 //
 
+#define IMOStyledCellDisclosureImageName    @"disclosure"
+#define IMOStyledCellCheckmarkImageName     @"checkmark"
+
 #import <Foundation/Foundation.h>
 
 typedef enum {
@@ -75,6 +78,8 @@ extern NSString * const IMOStyledCellNoteViewLineColorKey;
 
 extern NSString * const IMOStyledCellPlaceHolderFontKey;
 extern NSString * const IMOStyledCellPlaceHolderTextColorKey;
+
+
 
 @interface IMOStyledCellKeys : NSObject
 

@@ -55,6 +55,10 @@
 		6A15D2441754E86800B06708 /* IMOStyledNoteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2361754E86800B06708 /* IMOStyledNoteViewCell.m */; };
 		6A15D2451754E86800B06708 /* IMOStyledTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2381754E86800B06708 /* IMOStyledTableViewController.m */; };
 		6A15D2461754E86800B06708 /* IMOStyledTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2381754E86800B06708 /* IMOStyledTableViewController.m */; };
+		6A232D9117578385005E292B /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A232D8D17578385005E292B /* checkmark.png */; };
+		6A232D9217578385005E292B /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A232D8E17578385005E292B /* checkmark@2x.png */; };
+		6A232D9317578385005E292B /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A232D8F17578385005E292B /* disclosure.png */; };
+		6A232D9417578385005E292B /* disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A232D9017578385005E292B /* disclosure@2x.png */; };
 		6A39EEBD1755194C00417A20 /* HexValue_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEBA1755194C00417A20 /* HexValue_Test.m */; };
 		6A39EEBE1755194C00417A20 /* ICTestKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEBC1755194C00417A20 /* ICTestKeys.m */; };
 		6A39EEC2175519DC00417A20 /* UIColor+equality.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39EEC1175519DC00417A20 /* UIColor+equality.m */; };
@@ -128,6 +132,10 @@
 		6A15D2361754E86800B06708 /* IMOStyledNoteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledNoteViewCell.m; sourceTree = "<group>"; };
 		6A15D2371754E86800B06708 /* IMOStyledTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMOStyledTableViewController.h; sourceTree = "<group>"; };
 		6A15D2381754E86800B06708 /* IMOStyledTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledTableViewController.m; sourceTree = "<group>"; };
+		6A232D8D17578385005E292B /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
+		6A232D8E17578385005E292B /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
+		6A232D8F17578385005E292B /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
+		6A232D9017578385005E292B /* disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure@2x.png"; sourceTree = "<group>"; };
 		6A39EEB91755194C00417A20 /* HexValue_Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexValue_Test.h; sourceTree = "<group>"; };
 		6A39EEBA1755194C00417A20 /* HexValue_Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexValue_Test.m; sourceTree = "<group>"; };
 		6A39EEBB1755194C00417A20 /* ICTestKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICTestKeys.h; sourceTree = "<group>"; };
@@ -260,6 +268,10 @@
 		6A15D20D1754E82E00B06708 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				6A232D8D17578385005E292B /* checkmark.png */,
+				6A232D8E17578385005E292B /* checkmark@2x.png */,
+				6A232D8F17578385005E292B /* disclosure.png */,
+				6A232D9017578385005E292B /* disclosure@2x.png */,
 				6A85A0DC17563D0D006ED2E3 /* 3StarBig.png */,
 				6A85A0DD17563D0D006ED2E3 /* 3StarBig@2x.png */,
 				6A39EEC91755F57900417A20 /* sheet.png */,
@@ -407,6 +419,10 @@
 				6A39EECD1755F57900417A20 /* sheet@2x.png in Resources */,
 				6A85A0DE17563D0D006ED2E3 /* 3StarBig.png in Resources */,
 				6A85A0DF17563D0D006ED2E3 /* 3StarBig@2x.png in Resources */,
+				6A232D9117578385005E292B /* checkmark.png in Resources */,
+				6A232D9217578385005E292B /* checkmark@2x.png in Resources */,
+				6A232D9317578385005E292B /* disclosure.png in Resources */,
+				6A232D9417578385005E292B /* disclosure@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

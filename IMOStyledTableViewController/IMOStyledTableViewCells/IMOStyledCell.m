@@ -417,6 +417,37 @@ static NSArray *cellPositionStrings;
     }
 }
 
+
+
+- (void)setAccessoryType:(UITableViewCellAccessoryType)accessoryType {
+    
+    UIImage *disclosureImage = [UIImage imageNamed:IMOStyledCellDisclosureImageName];
+    UIImage *checkmarkImage = [UIImage imageNamed:IMOStyledCellCheckmarkImageName];
+    
+    if (accessoryType == UITableViewCellAccessoryDisclosureIndicator) {
+        if (nil == disclosureImage) {
+            [super setAccessoryType:accessoryType];
+            return;
+        }else {
+            UIImageView *disclosureView = [[UIImageView alloc] initWithFrame:(CGRect){0,0, disclosureImage.size}];
+            [disclosureView setImage:disclosureImage];
+            [self setAccessoryView:disclosureView];
+        }
+    }else if (accessoryType == UITableViewCellAccessoryCheckmark) {
+        if (nil == checkmarkImage) {
+            [super setAccessoryType:accessoryType];
+            return;
+        }else{
+            UIImageView *checkmarkView = [[UIImageView alloc] initWithFrame:(CGRect){0,0, checkmarkImage.size}];
+            [checkmarkView setImage:checkmarkImage];
+            [self setAccessoryView:checkmarkView];
+        }
+    }else{
+        [super setAccessoryType:accessoryType];
+    }
+}
+
+
 @end
 
 

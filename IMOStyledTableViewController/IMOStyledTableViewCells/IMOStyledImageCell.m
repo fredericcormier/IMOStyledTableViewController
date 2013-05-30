@@ -15,7 +15,6 @@
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier position:cellPosition styleSheet:styleSheet] ) {
         customImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
-
         [customImageView_ setOpaque:NO];
         [customImageView_ setContentMode:UIViewContentModeCenter];
         [[self contentView] addSubview:[self customImageView]];
@@ -29,12 +28,15 @@
 - (void)layoutSubviews {
     
     const CGFloat H = [[self contentView] bounds].size.height;
+    const CGFloat W = [[self contentView] bounds].size.width;
+    const CGFloat START = 130.f;
+    const CGFloat GAP = 10.f;
     
     [super layoutSubviews];
     
-    CGRect imageViewRect = CGRectMake(round(130.f),
+    CGRect imageViewRect = CGRectMake(round(START),
                                       round(0),
-                                      round(200.f),
+                                      round(W -(START + (GAP * 2))),
                                       round(H));
     [[self customImageView] setFrame:imageViewRect];
 }

@@ -131,6 +131,7 @@ typedef enum cellEditTags cellEditTags;
                 
             default:
                 cell = [IMOStyledCell cellForTableViewController:self atIndexPath:indexPath style:IMOStyledCellStyleValue1];
+                [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
                 
                 break;
         }
