@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationItem] setTitle:@"Sheet Generated Controller"];
+    [[self navigationItem] setTitle:@"My Custom Controller"];
 }
 
 - (void)didReceiveMemoryWarning

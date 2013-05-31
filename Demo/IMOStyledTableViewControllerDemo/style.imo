@@ -1,3 +1,5 @@
+// TopSeparatorColor
+// BottomSeparatorColor
 // NavBarTintColor
 // BackgroundImage   
 // BackgroundColor
@@ -19,15 +21,17 @@
 // FooterTextColor 
 //
 //
-// TextFieldFontKey 
-// TextFieldTextColorKey 
+// TextFieldFont
+// TextFieldTextColor 
 //
 // TextCaptionFontKey 
-// TextCaptionTextColorKey 
+// TextCaptionTextColor 
 //
-// NoteViewFontKey 
-// NoteViewTextColorKey 
-// NoteViewLineColorKey 
+// NoteViewFont 
+// NoteViewTextColor 
+// NoteViewLineColor 
+// PlaceHolderFont
+// PlaceHolderTextColor
 
 
 
