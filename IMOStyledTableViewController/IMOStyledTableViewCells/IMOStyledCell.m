@@ -48,7 +48,7 @@ bottomGradientColor:(UIColor *)theBottomColor;
 /**************************************************************************************************************
  
  
-            IMOStyledCell
+ IMOStyledCell
  
  */
 #pragma mark - IMOStyledCell
@@ -105,14 +105,14 @@ static NSArray *cellPositionStrings;
     }else{
         doDrawSeparators_ = YES;
     }
-   gradientTopColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: defaultGradientTopColor;
+    gradientTopColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: defaultGradientTopColor;
     gradientBottomColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: defaultGradientBottomColor;
-   gradientSelectedTopColor_ = [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] ?: defaultSelectedGradientTopColor;
-   gradientSelectedBottomColor_ = [sheet objectForKey:IMOStyledCellSelectedBottomGradientColorKey] ?: defaultSelectedGradientBottomColor;
-   textLabelTextColor_ = [sheet objectForKey:IMOStyledCellTextLabelTextColorKey] ?: defaultTextLabelTextColor;
-   detailTextLabelTextColor_ = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ?: defaultDetailTextLabelTextColor;
-   textLabelFont_ = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ?: defaultTextLabelFont;
-   detailTextLabelFont_ = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ?: defaultDetailTextLabelFont;
+    gradientSelectedTopColor_ = [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] ?: defaultSelectedGradientTopColor;
+    gradientSelectedBottomColor_ = [sheet objectForKey:IMOStyledCellSelectedBottomGradientColorKey] ?: defaultSelectedGradientBottomColor;
+    textLabelTextColor_ = [sheet objectForKey:IMOStyledCellTextLabelTextColorKey] ?: defaultTextLabelTextColor;
+    detailTextLabelTextColor_ = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ?: defaultDetailTextLabelTextColor;
+    textLabelFont_ = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ?: defaultTextLabelFont;
+    detailTextLabelFont_ = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ?: defaultDetailTextLabelFont;
 }
 
 
@@ -120,7 +120,7 @@ static NSArray *cellPositionStrings;
 
 
 /* Returns  an IMOStyledCell with the desired variation */
- + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style {
++ (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style {
     
     IMOStyledCellPosition position = [IMOStyledCell locationInSectionOfTableView:[controller tableView] atIndexPath:indexPath];
     
@@ -136,7 +136,7 @@ static NSArray *cellPositionStrings;
 
 
 /* returns the desired IMOStyledCell subclass instance */
- + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath {
++ (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath {
     return [self cellForTableViewController:controller atIndexPath:indexPath style:IMOStyledCellStyleNeverMind];
 }
 
@@ -199,8 +199,8 @@ static NSArray *cellPositionStrings;
 
 
 
-/* IMOStyledCell subclasses must override this one 
-    See IMOStyledEditCell*/
+/* IMOStyledCell subclasses must override this one
+ See IMOStyledEditCell*/
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier position:(IMOStyledCellPosition)cellPosition styleSheet:(NSDictionary *)styleSheet {
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -532,7 +532,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
     CGContextRef context = UIGraphicsGetCurrentContext();
     const CGFloat MINX = CGRectGetMinX(rect) , MIDX = CGRectGetMidX(rect), MAXX = CGRectGetMaxX(rect) ;
     const CGFloat MINY = CGRectGetMinY(rect) , MIDY = CGRectGetMidY(rect), MAXY = CGRectGetMaxY(rect) ;
-
+    
     switch (position) {
         case IMOStyledCellPositionTop:
             CGContextMoveToPoint(context, MINX, MAXY);
@@ -580,7 +580,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
             CGContextClip(context);
             CGContextDrawLinearGradient(context, gradient, CGPointMake(MINX,MINY), CGPointMake(MINX,MAXY), kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
             CGContextRestoreGState(context);
-
+            
             break;
         case IMOStyledCellPositionPlain:
             CGContextDrawLinearGradient(context, gradient, CGPointMake(MINX,MINY), CGPointMake(MINX,MAXY), kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
