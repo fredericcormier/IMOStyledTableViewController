@@ -43,7 +43,7 @@
 		6A15D2281754E82E00B06708 /* snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A15D2161754E82E00B06708 /* snow.png */; };
 		6A15D2391754E86800B06708 /* IMOStyledParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D22B1754E86800B06708 /* IMOStyledParser.m */; };
 		6A15D23A1754E86800B06708 /* IMOStyledParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D22B1754E86800B06708 /* IMOStyledParser.m */; };
-		6A15D23B1754E86800B06708 /* IMOStyledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D22E1754E86800B06708 /* IMOStyledCell.m */; };
+		6A15D23B1754E86800B06708 /* IMOStyledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D22E1754E86800B06708 /* IMOStyledCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc "; }; };
 		6A15D23C1754E86800B06708 /* IMOStyledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D22E1754E86800B06708 /* IMOStyledCell.m */; };
 		6A15D23D1754E86800B06708 /* IMOStyledCellKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2301754E86800B06708 /* IMOStyledCellKeys.m */; };
 		6A15D23E1754E86800B06708 /* IMOStyledCellKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A15D2301754E86800B06708 /* IMOStyledCellKeys.m */; };
