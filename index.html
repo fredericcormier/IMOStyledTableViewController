@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>IMOSTVC by fredericcormier</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>IMOSTVC</h1>
+        <p>Style sheet based like Table View Controller.</p>
+
+        <p class="view"><a href="https://github.com/fredericcormier/IMOStyledTableViewController">View the Project on GitHub <small>fredericcormier/IMOStyledTableViewController</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/fredericcormier/IMOStyledTableViewController/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/fredericcormier/IMOStyledTableViewController/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/fredericcormier/IMOStyledTableViewController">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="imostyledtableviewcontroller" class="anchor" href="#imostyledtableviewcontroller"><span class="octicon octicon-link"></span></a>IMOStyledTableViewController</h1>
+
+<h1>
+<a name="an-easy-to-customize-style-sheet-based-like-table-view-controller" class="anchor" href="#an-easy-to-customize-style-sheet-based-like-table-view-controller"><span class="octicon octicon-link"></span></a>An easy-to-customize style sheet based like Table View Controller.</h1>
+
+<h3>
+<a name="when-this" class="anchor" href="#when-this"><span class="octicon octicon-link"></span></a>When this:</h3>
+
+<pre><code>//style.imo
+NavBarTintColor                 0.600   0.492   0.331   1.000
+BackgroundColor                 #CDC3B9
+TextLabelFont                   HelveticaNeue-Bold       17.0
+
+TextLabelTextColor              #3F3B35
+
+TopGradientColor                1.000   0.995   0.995   1.000
+BottomGradientColor             0.825   0.780   0.724   1.000
+
+SelectedTopGradientColor        #8A6F48
+SelectedBottomGradientColor     #725C3C
+</code></pre>
+
+<h3>
+<a name="generates-this" class="anchor" href="#generates-this"><span class="octicon octicon-link"></span></a>Generates this:</h3>
+
+<p></p>
+<img src="http://www.i-mo.eu/zings/imostvc_small.png" alt="screenshot">
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a name="manually" class="anchor" href="#manually"><span class="octicon octicon-link"></span></a>Manually</h3>
+
+<p>Copy  the IMOStyledTableViewController directory to your project  </p>
+
+<h3>
+<a name="using-cocoapods" class="anchor" href="#using-cocoapods"><span class="octicon octicon-link"></span></a>Using cocoapods</h3>
+
+<p><del>add <code>pod 'IMOStyledTableViewController'</code> to your Podfile</del>----  <strong>Coming very soon</strong></p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>1 - Add a file named <code>style.imo</code> to your project, containing all the properties you want to customize (see the wiki or the demo for details on syntax and which properties are available).</p>
+
+<p>2 - Make your table view controller, a subclass of IMOStyledTableViewController</p>
+
+<div class="highlight"><pre><span class="cp">#import "IMOStyledTableViewController.h"</span>
+
+<span class="k">@interface</span> <span class="nc">MyStyledTableViewController</span> : <span class="nc">IMOStyledTableViewController</span>
+</pre></div>
+
+<p>3 - In your <code>- tableView:cellForRowAtIndexPath:</code> method, instead of using the regular boilerplate code to fire a UITableViewCell, use this:</p>
+
+<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">cellForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span><span class="p">{</span>
+
+    <span class="n">IMOStyledCell</span> <span class="o">*</span><span class="n">cell</span><span class="p">;</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">IMOStyledCell</span> <span class="n">cellForTableViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">atIndexPath</span><span class="o">:</span><span class="n">indexPath</span> <span class="n">style</span><span class="o">:</span><span class="n">IMOStyledCellStyleValue1</span><span class="p">];</span>
+    <span class="cm">/*</span>
+<span class="cm">        Do whatever you have to do with your cell   </span>
+<span class="cm">    */</span>
+    <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><em>Notice that you don't have to handle dequeuing cells and declaring cell identifiers, IMOStyledTableViewController takes care of that for you.</em></p>
+
+<h2>
+<a name="imostyledtableviewcontroller-comes-with-several-predefined-cell-subclasses" class="anchor" href="#imostyledtableviewcontroller-comes-with-several-predefined-cell-subclasses"><span class="octicon octicon-link"></span></a>IMOStyledTableViewController comes with several predefined cell subclasses:</h2>
+
+<ul>
+<li>IMOStyledCell</li>
+<li>IMOStyledEditCell</li>
+<li>IMOStyledNoteViewCell</li>
+<li>IMOStyledImageCell</li>
+</ul><p>Check the demo  for examples on using these subclasses</p>
+
+<h2>
+<a name="properties-at-your-disposal" class="anchor" href="#properties-at-your-disposal"><span class="octicon octicon-link"></span></a>Properties at your disposal</h2>
+
+<table>
+<tr>
+<th>property</th>
+<th>Comments</th>
+</tr>
+<tr>
+<td>NavBarTintColor</td>
+<td>Color of the navigation bar and of the IMOStyledNoteViewCell's accessory view</td>
+</tr>
+<tr>
+<td>BackgroundImage</td>
+<td>Table View Controller background image name</td>
+</tr>
+<tr>
+<td>BackgroundColor</td>
+<td>Table View Controller background color</td>
+</tr>
+<tr>
+<td>TopGradientColor</td>
+<td>Cell's top gradient color</td>
+</tr>
+<tr>
+<td>BottomGradientColor</td>
+<td>Cell's bottom gradient color</td>
+</tr>
+<tr>
+<td>SelectedTopGradientColor</td>
+<td>Selected cell's top gradient color</td>
+</tr>
+<tr>
+<td>SelectedBottomGradientCo</td>
+<td>Selected cell's bottom gradient color</td>
+</tr>
+<tr>
+<td>TopSeparatorColor</td>
+<td>Cell's top line separator color</td>
+</tr>
+<tr>
+<td>BottomSeparatorColor</td>
+<td>Cell's bottom line separator color</td>
+</tr>
+<tr>
+<td>TextLabelTextColor</td>
+<td>same as in UITableViewCells</td>
+</tr>
+<tr>
+<td>DetailTextLabelTextColor</td>
+<td>same as in UITableViewCells</td>
+</tr>
+<tr>
+<td>TextLabelFont</td>
+<td>same as in UITableViewCells</td>
+</tr>
+<tr>
+<td>DetailTextLabelFont</td>
+<td>same as in UITableViewCells</td>
+</tr>
+<tr>
+<td>UseCustomHeader</td>
+<td>the property name says it all</td>
+</tr>
+<tr>
+<td>HeaderFont</td>
+<td>if UseCustomHeader is YES</td>
+</tr>
+<tr>
+<td>HeaderTextColor</td>
+<td>if UseCustomHeader is YES</td>
+</tr>
+<tr>
+<td>UseCustomFooter</td>
+<td>Guess what ?</td>
+</tr>
+<tr>
+<td>FooterFont</td>
+<td>Again</td>
+</tr>
+<tr>
+<td>FooterTextColor</td>
+<td>No comment</td>
+</tr>
+<tr>
+<td>TextFieldFont</td>
+<td>This is the textfield of an IMOStyledEditCell</td>
+</tr>
+<tr>
+<td>TextFieldTextColor</td>
+<td>This is the textfield of an IMOStyledEditCell</td>
+</tr>
+<tr>
+<td>TextCaptionFont</td>
+<td>The TextCaption is the label on the left of the textfield in an IMOStyledEditCell</td>
+</tr>
+<tr>
+<td>TextCaptionTextColor</td>
+<td>same</td>
+</tr>
+<tr>
+<td>NoteViewFont</td>
+<td>Note views cell with multiple editing lines</td>
+</tr>
+<tr>
+<td>NoteViewTextColor</td>
+<td>guess</td>
+</tr>
+<tr>
+<td>NoteViewLineColor</td>
+<td>guess</td>
+</tr>
+<tr>
+<td>PlaceHolderFont</td>
+<td>Change to your taste</td>
+</tr>
+<tr>
+<td>PlaceHolderTextColor</td>
+<td>Depending on your cell color… you may want to change this</td>
+</tr>
+</table><h2>
+<a name="syntax-of-an-imo-file" class="anchor" href="#syntax-of-an-imo-file"><span class="octicon octicon-link"></span></a>Syntax of an .imo file</h2>
+
+<p>soon</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+
+<p>Copyright (C) 2013 Frederic Cormier</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/fredericcormier">fredericcormier</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
