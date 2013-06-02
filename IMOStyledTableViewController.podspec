@@ -9,4 +9,5 @@ Pod::Spec.new do |s|
   s.description  = 'An easy-to-customize style sheet based like Table View Controller.'
   s.source       = { :git => "https://github.com/fredericcormier/IMOStyledTableViewController.git", :tag => '0.0.2' }
   s.source_files = 'IMOStyledTableViewController/*.{h,m}','IMOStyledTableViewController/IMOStyledTableViewCells/*.{h,m}'
+  s.requires_arc  = true
 end
