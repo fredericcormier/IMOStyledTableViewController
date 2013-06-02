@@ -12,7 +12,7 @@
 // TextLabelFont 
 // DetailTextLabelFont 
 //
-// UseCustomHeader 
+//UseCustomHeader            NO
 // HeaderFont 
 // HeaderTextColor 
 //
@@ -38,7 +38,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 NavBarTintColor                 0.600   0.492   0.331   1.000
-BackgroundColor                 #CDC3B9
+//BackgroundColor                 #CDC3B9
+BackgroundImage                 clouds
 TextLabelFont                   HelveticaNeue-Bold       17.0
 
 

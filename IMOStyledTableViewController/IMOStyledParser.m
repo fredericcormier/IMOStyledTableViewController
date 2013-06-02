@@ -100,6 +100,7 @@ static NSString * const IMOStyledCellCommentSymbol = @"//";
     
     IMOStyledParserDataType propertyType;
     NSString *propertyKey;
+   
     
     
     for (NSArray *statement in statements) {
@@ -135,7 +136,7 @@ static NSString * const IMOStyledCellCommentSymbol = @"//";
                 break;
 #warning-- check type BOOL and Image -- Danger Zone Here
             case IMOStyledCellTypeBool:
-                [ [self parsedStyleDictionary] setObject:@((BOOL)statement[1]) forKey:propertyKey];
+                [ [self parsedStyleDictionary]setObject:@([(NSString *)statement[1] boolValue]) forKey:propertyKey];
                 break;
                 
             case IMOStyledCellTypeImage:
