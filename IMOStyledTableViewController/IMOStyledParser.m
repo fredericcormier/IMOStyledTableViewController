@@ -134,7 +134,7 @@ static NSString * const IMOStyledCellCommentSymbol = @"//";
                     }
                 }
                 break;
-#warning-- check type BOOL and Image -- Danger Zone Here
+
             case IMOStyledCellTypeBool:
                 [ [self parsedStyleDictionary]setObject:@([(NSString *)statement[1] boolValue]) forKey:propertyKey];
                 break;
