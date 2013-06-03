@@ -60,8 +60,8 @@ add `pod 'IMOStyledTableViewController', '~> 0.0.2'` to your Podfile
 
 ####B - Dictionary  
 
-Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize just that very single Table View Controller.  
-Just call the `-initWithStyle:styleSheet:`method and pass a dictionary of key/value 's to it:
+Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize that very single Table View Controller that may differ from the rest.  
+Use the `-initWithStyle:styleSheet:`method and pass a dictionary of key/value 's to it:
 ```objective-c
 NSDictionary *plainStyleSheet = 
 @{
@@ -77,12 +77,37 @@ IMOStyledCellBottomSeparatorColorKey:[UIColor lightGrayColor]
 
  MyCustomStylePlainViewController *mcspvc = [[MyCustomStylePlainViewController alloc]
                                                  initWithStyle:UITableViewStylePlain
-                                                    styleSheet:[self plainStyleSheet]];
+                                                    styleSheet:plainStyleSheet];
 
 ```  
-##Keys and Properties
+##Keys and style properties
 
-Soon
+A style property name consists of a key name as declared in `IMOStyledCellKeys.h` minus the prefix *"IMOStyledCell"*  and the suffix *"key"*.  
+Thus **"IMOStyledCellTopGradientColorKey"** gives **"CellTopGradientColor"**.
+
+##style.imo parameters and syntax
+
+You can enter colors in several ways
+- RGBA Colors  between 0 and 1.0
+- Hex Color 6 Digits 
+- Hex Color 3 Digits 
+
+For font, pass the font name and the size in float
+
+For images, pass the name, no quote, no extension
+
+Valid Boolean are :YES, yes, y, TRUE, true, t, NO, no, n, FALSE , F, f and of course 0 or 1,2,3,4,5,6,7,8,9.  
+( see `NSString boolValue` for details)
+
+#####Examples:
+```
+NavBarTintColor                 0.600   0.492   0.331   1.000 	//RGBA
+BackgroundColor                 0xCDC3B9    					// Hex, 6 digits only
+BackgroundImage                 clouds							// Image Name - Doesn't need extension
+TextLabelFont                   HelveticaNeue-Bold       17.0	// Font name and size
+TextLabelTextColor              #3F3B35							// Hex, 3 or 6 digits
+``` 
+
  
 ##IMOStyledTableViewController comes with several predefined cell subclasses:
 * IMOStyledCell
@@ -125,9 +150,9 @@ NoteViewLineColor 			|guess
 PlaceHolderFont				|Change to your taste
 PlaceHolderTextColor		|Depending on your cell color… you may want to change this
 
-##Syntax of an .imo file
 
-soon
+
+
 
 
 ##LICENSE
