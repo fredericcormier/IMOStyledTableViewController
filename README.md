@@ -28,10 +28,12 @@ SelectedBottomGradientColor     #725C3C
 Copy  the IMOStyledTableViewController directory to your project  
 
 ###Using cocoapods
-~~add `pod 'IMOStyledTableViewController'` to your Podfile~~----  **Coming very soon**
+add `pod 'IMOStyledTableViewController', '~> 0.0.2'` to your Podfile
 ##Usage
 
-1 - Add a file named `style.imo` to your project, containing all the properties you want to customize (see the wiki or the demo for details on syntax and which properties are available).
+####A - Style sheet
+
+1 - Add a file named `style.imo` to your project, containing all the properties you want to customize (see the ~~wiki or~~ the demo for details on syntax and which properties are available).
 
 2 - Make your table view controller, a subclass of IMOStyledTableViewController
 ```objective-c
@@ -45,7 +47,9 @@ Copy  the IMOStyledTableViewController directory to your project
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     IMOStyledCell *cell;
-    cell = [IMOStyledCell cellForTableViewController:self atIndexPath:indexPath style:IMOStyledCellStyleValue1];
+    cell = [IMOStyledCell cellForTableViewController:self 
+    									 atIndexPath:indexPath 
+    									       style:IMOStyledCellStyleValue1];
     /*
    		Do whatever you have to do with your cell   
 	*/
@@ -54,15 +58,40 @@ Copy  the IMOStyledTableViewController directory to your project
 ```
 *Notice that you don't have to handle dequeuing cells and declaring cell identifiers, IMOStyledTableViewController takes care of that for you.*
 
-  
-  
+####B - Dictionary  
+
+Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize just that very single Table View Controller.  
+Just call the `-initWithStyle:styleSheet:`method and pass a dictionary of key/value 's to it:
+```objective-c
+NSDictionary *plainStyleSheet = 
+@{
+IMOStyledCellBackgroundImageKey: [UIImage imageNamed:@"clouds.png"],
+IMOStyledCellNavBarTintColorKey:[UIColor colorWithRed:0.145 green:0.185 blue:0.359 alpha:1.000],
+IMOStyledCellTopGradientColorKey:[UIColor colorWithWhite:0.945 alpha:0.220],
+IMOStyledCellBottomGradientColorKey:[UIColor colorWithRed:0.628 green:0.632 blue:0.684 alpha:0.570],
+IMOStyledCellTextLabelFontKey:[UIFont fontWithName:@"HelveticaNeue" size:18.0],
+IMOStyledCellTextLabelTextColorKey:[UIColor whiteColor],
+IMOStyledCellTopSeparatorColorKey:[UIColor colorWithRed:0.771 green:0.793 blue:0.820 alpha:1.000],
+IMOStyledCellBottomSeparatorColorKey:[UIColor lightGrayColor]
+};
+
+ MyCustomStylePlainViewController *mcspvc = [[MyCustomStylePlainViewController alloc]
+                                                 initWithStyle:UITableViewStylePlain
+                                                    styleSheet:[self plainStyleSheet]];
+
+```  
+##Keys and Properties
+
+Soon
+ 
 ##IMOStyledTableViewController comes with several predefined cell subclasses:
 * IMOStyledCell
 * IMOStyledEditCell
 * IMOStyledNoteViewCell
 * IMOStyledImageCell
 
-Check the demo  for examples on using these subclasses
+Check the demo  for examples on using these subclasses  
+  
 
 ##Properties at your disposal
 property					| Comments
