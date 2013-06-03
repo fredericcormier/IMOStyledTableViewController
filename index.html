@@ -68,12 +68,15 @@ SelectedBottomGradientColor     #725C3C
 <h3>
 <a name="using-cocoapods" class="anchor" href="#using-cocoapods"><span class="octicon octicon-link"></span></a>Using cocoapods</h3>
 
-<p><del>add <code>pod 'IMOStyledTableViewController','~&gt;0.0.2'</code> to your Podfile</del>----  <strong>Coming very soon</strong></p>
+<p>add <code>pod 'IMOStyledTableViewController', '~&gt; 0.0.2'</code> to your Podfile</p>
 
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>1 - Add a file named <code>style.imo</code> to your project, containing all the properties you want to customize (see the wiki or the demo for details on syntax and which properties are available).</p>
+<h4>
+<a name="a---style-sheet" class="anchor" href="#a---style-sheet"><span class="octicon octicon-link"></span></a>A - Style sheet</h4>
+
+<p>1 - Add a file named <code>style.imo</code> to your project, containing all the properties you want to customize (see the <del>wiki or</del> the demo for details on syntax and which properties are available).</p>
 
 <p>2 - Make your table view controller, a subclass of IMOStyledTableViewController</p>
 
@@ -87,7 +90,9 @@ SelectedBottomGradientColor     #725C3C
 <div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">cellForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span><span class="p">{</span>
 
     <span class="n">IMOStyledCell</span> <span class="o">*</span><span class="n">cell</span><span class="p">;</span>
-    <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">IMOStyledCell</span> <span class="n">cellForTableViewController</span><span class="o">:</span><span class="n">self</span> <span class="n">atIndexPath</span><span class="o">:</span><span class="n">indexPath</span> <span class="n">style</span><span class="o">:</span><span class="n">IMOStyledCellStyleValue1</span><span class="p">];</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">IMOStyledCell</span> <span class="n">cellForTableViewController</span><span class="o">:</span><span class="n">self</span> 
+                                         <span class="n">atIndexPath</span><span class="o">:</span><span class="n">indexPath</span> 
+                                               <span class="n">style</span><span class="o">:</span><span class="n">IMOStyledCellStyleValue1</span><span class="p">];</span>
     <span class="cm">/*</span>
 <span class="cm">        Do whatever you have to do with your cell   </span>
 <span class="cm">    */</span>
@@ -97,6 +102,35 @@ SelectedBottomGradientColor     #725C3C
 
 <p><em>Notice that you don't have to handle dequeuing cells and declaring cell identifiers, IMOStyledTableViewController takes care of that for you.</em></p>
 
+<h4>
+<a name="b---dictionary" class="anchor" href="#b---dictionary"><span class="octicon octicon-link"></span></a>B - Dictionary</h4>
+
+<p>Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize just that very single Table View Controller.<br>
+Just call the <code>-initWithStyle:styleSheet:</code>method and pass a dictionary of key/value 's to it:</p>
+
+<div class="highlight"><pre><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">plainStyleSheet</span> <span class="o">=</span> 
+<span class="err">@</span><span class="p">{</span>
+<span class="nl">IMOStyledCellBackgroundImageKey:</span> <span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@"clouds.png"</span><span class="p">],</span>
+<span class="nl">IMOStyledCellNavBarTintColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">0.145</span> <span class="n">green</span><span class="o">:</span><span class="mf">0.185</span> <span class="n">blue</span><span class="o">:</span><span class="mf">0.359</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">1.000</span><span class="p">],</span>
+<span class="nl">IMOStyledCellTopGradientColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithWhite</span><span class="o">:</span><span class="mf">0.945</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">0.220</span><span class="p">],</span>
+<span class="nl">IMOStyledCellBottomGradientColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">0.628</span> <span class="n">green</span><span class="o">:</span><span class="mf">0.632</span> <span class="n">blue</span><span class="o">:</span><span class="mf">0.684</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">0.570</span><span class="p">],</span>
+<span class="nl">IMOStyledCellTextLabelFontKey:</span><span class="p">[</span><span class="n">UIFont</span> <span class="n">fontWithName</span><span class="o">:</span><span class="s">@"HelveticaNeue"</span> <span class="n">size</span><span class="o">:</span><span class="mf">18.0</span><span class="p">],</span>
+<span class="nl">IMOStyledCellTextLabelTextColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">whiteColor</span><span class="p">],</span>
+<span class="nl">IMOStyledCellTopSeparatorColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">0.771</span> <span class="n">green</span><span class="o">:</span><span class="mf">0.793</span> <span class="n">blue</span><span class="o">:</span><span class="mf">0.820</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">1.000</span><span class="p">],</span>
+<span class="nl">IMOStyledCellBottomSeparatorColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">lightGrayColor</span><span class="p">]</span>
+<span class="p">};</span>
+
+ <span class="n">MyCustomStylePlainViewController</span> <span class="o">*</span><span class="n">mcspvc</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyCustomStylePlainViewController</span> <span class="n">alloc</span><span class="p">]</span>
+                                                 <span class="nl">initWithStyle:</span><span class="n">UITableViewStylePlain</span>
+                                                    <span class="nl">styleSheet:</span><span class="p">[</span><span class="n">self</span> <span class="n">plainStyleSheet</span><span class="p">]];</span>
+
+</pre></div>
+
+<h2>
+<a name="keys-and-properties" class="anchor" href="#keys-and-properties"><span class="octicon octicon-link"></span></a>Keys and Properties</h2>
+
+<p>Soon</p>
+
 <h2>
 <a name="imostyledtableviewcontroller-comes-with-several-predefined-cell-subclasses" class="anchor" href="#imostyledtableviewcontroller-comes-with-several-predefined-cell-subclasses"><span class="octicon octicon-link"></span></a>IMOStyledTableViewController comes with several predefined cell subclasses:</h2>
 
@@ -105,7 +139,7 @@ SelectedBottomGradientColor     #725C3C
 <li>IMOStyledEditCell</li>
 <li>IMOStyledNoteViewCell</li>
 <li>IMOStyledImageCell</li>
-</ul><p>Check the demo  for examples on using these subclasses</p>
+</ul><p>Check the demo  for examples on using these subclasses  </p>
 
 <h2>
 <a name="properties-at-your-disposal" class="anchor" href="#properties-at-your-disposal"><span class="octicon octicon-link"></span></a>Properties at your disposal</h2>
