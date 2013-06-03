@@ -105,8 +105,8 @@ SelectedBottomGradientColor     #725C3C
 <h4>
 <a name="b---dictionary" class="anchor" href="#b---dictionary"><span class="octicon octicon-link"></span></a>B - Dictionary</h4>
 
-<p>Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize just that very single Table View Controller.<br>
-Just call the <code>-initWithStyle:styleSheet:</code>method and pass a dictionary of key/value 's to it:</p>
+<p>Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize that very single Table View Controller that may differ from the rest.<br>
+Use the <code>-initWithStyle:styleSheet:</code>method and pass a dictionary of key/value 's to it:</p>
 
 <div class="highlight"><pre><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">plainStyleSheet</span> <span class="o">=</span> 
 <span class="err">@</span><span class="p">{</span>
@@ -122,14 +122,41 @@ Just call the <code>-initWithStyle:styleSheet:</code>method and pass a dictionar
 
  <span class="n">MyCustomStylePlainViewController</span> <span class="o">*</span><span class="n">mcspvc</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyCustomStylePlainViewController</span> <span class="n">alloc</span><span class="p">]</span>
                                                  <span class="nl">initWithStyle:</span><span class="n">UITableViewStylePlain</span>
-                                                    <span class="nl">styleSheet:</span><span class="p">[</span><span class="n">self</span> <span class="n">plainStyleSheet</span><span class="p">]];</span>
+                                                    <span class="nl">styleSheet:</span><span class="n">plainStyleSheet</span><span class="p">];</span>
 
 </pre></div>
 
 <h2>
-<a name="keys-and-properties" class="anchor" href="#keys-and-properties"><span class="octicon octicon-link"></span></a>Keys and Properties</h2>
+<a name="keys-and-style-properties" class="anchor" href="#keys-and-style-properties"><span class="octicon octicon-link"></span></a>Keys and style properties</h2>
 
-<p>Soon</p>
+<p>A style property name consists of a key name as declared in <code>IMOStyledCellKeys.h</code> minus the prefix <em>"IMOStyledCell"</em>  and the suffix <em>"key"</em>.<br>
+Thus <strong>"IMOStyledCellTopGradientColorKey"</strong> gives <strong>"CellTopGradientColor"</strong>.</p>
+
+<h2>
+<a name="styleimo-parameters-and-syntax" class="anchor" href="#styleimo-parameters-and-syntax"><span class="octicon octicon-link"></span></a>style.imo parameters and syntax</h2>
+
+<p>You can enter colors in several ways</p>
+
+<ul>
+<li>RGBA Colors  between 0 and 1.0</li>
+<li>Hex Color 6 Digits </li>
+<li>Hex Color 3 Digits </li>
+</ul><p>For font, pass the font name and the size in float</p>
+
+<p>For images, pass the name, no quote, no extension</p>
+
+<p>Valid Boolean are :YES, yes, y, TRUE, true, t, NO, no, n, FALSE , F, f and of course 0 or 1,2,3,4,5,6,7,8,9.<br>
+( see <code>NSString boolValue</code> for details)</p>
+
+<h5>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples:</h5>
+
+<pre><code>NavBarTintColor                 0.600   0.492   0.331   1.000   //RGBA
+BackgroundColor                 0xCDC3B9                        // Hex, 6 digits only
+BackgroundImage                 clouds                          // Image Name - Doesn't need extension
+TextLabelFont                   HelveticaNeue-Bold       17.0   // Font name and size
+TextLabelTextColor              #3F3B35                         // Hex, 3 or 6 digits
+</code></pre>
 
 <h2>
 <a name="imostyledtableviewcontroller-comes-with-several-predefined-cell-subclasses" class="anchor" href="#imostyledtableviewcontroller-comes-with-several-predefined-cell-subclasses"><span class="octicon octicon-link"></span></a>IMOStyledTableViewController comes with several predefined cell subclasses:</h2>
@@ -262,11 +289,6 @@ Just call the <code>-initWithStyle:styleSheet:</code>method and pass a dictionar
 <td>Depending on your cell color… you may want to change this</td>
 </tr>
 </table><h2>
-<a name="syntax-of-an-imo-file" class="anchor" href="#syntax-of-an-imo-file"><span class="octicon octicon-link"></span></a>Syntax of an .imo file</h2>
-
-<p>soon</p>
-
-<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>LICENSE</h2>
 
 <p>Copyright (C) 2013 Frederic Cormier</p>
