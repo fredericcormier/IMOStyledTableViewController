@@ -41,7 +41,14 @@ add `pod 'IMOStyledTableViewController', :head` to your Podfile
 
 @interface MyStyledTableViewController : IMOStyledTableViewController
 ```
-3 - In your `- tableView:cellForRowAtIndexPath:` method, instead of using the regular boilerplate code to fire a UITableViewCell, use this:
+3 - Instantiate like this
+```objective-c
+MyStyledTableViewController *mstvc = [[MyStyledTableViewController alloc] initWithStyle:UITableViewStyleGrouped
+																			 styleSheet:nil];
+
+```
+
+4 - In your `- tableView:cellForRowAtIndexPath:` method, instead of using the regular boilerplate code to fire a UITableViewCell, use this:
 
 ```objective-c
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
