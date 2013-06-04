@@ -28,7 +28,7 @@ SelectedBottomGradientColor     #725C3C
 Copy  the IMOStyledTableViewController directory to your project  
 
 ###Using cocoapods
-add `pod 'IMOStyledTableViewController', '~> 0.0.2'` to your Podfile
+add `pod 'IMOStyledTableViewController', :head` to your Podfile
 ##Usage
 
 ####A - Style sheet
