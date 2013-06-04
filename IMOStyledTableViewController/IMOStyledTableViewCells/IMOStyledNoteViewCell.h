@@ -12,5 +12,6 @@
 
 @interface IMOStyledNoteViewCell : IMOStyledCell
 
+@property(nonatomic, strong)NSString *noteText;
 
 @end

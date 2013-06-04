@@ -62,6 +62,14 @@
     return self;
 }
 
+- (NSString *)noteText {
+    return [[self noteView] text];
+}
+
+
+- (void)setNoteText:(NSString *)aText {
+    [[self noteView] setText:aText];
+}
 
 
 
