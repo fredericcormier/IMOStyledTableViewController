@@ -291,15 +291,19 @@ static NSArray *cellPositionStrings;
 -(void)drawRect:(CGRect)rect {
     
     const CGFloat   LINE_WIDTH      = 2.0f;
-    const NSInteger CORNER_RADIUS   = 6;
+    const NSInteger CORNER_RADIUS   = 8;
     
     const BOOL TABLE_VIEW_IS_STYLE_GROUPED = [(UITableView *)[ self superview] style] == UITableViewStyleGrouped;
     
     
     if (TABLE_VIEW_IS_STYLE_GROUPED) {
-        // insetRect only  when in grouped style mode
-        rect = CGRectInset(rect, 10.f, 0);
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            rect = CGRectInset(rect, 45.f, 0);
+        }else{
+            rect = CGRectInset(rect, 10.f, 0);
+        }
     }
+    
     const CGFloat MINX = CGRectGetMinX(rect) , MIDX = CGRectGetMidX(rect), MAXX = CGRectGetMaxX(rect) ;
     const CGFloat MINY = CGRectGetMinY(rect) , MIDY = CGRectGetMidY(rect) , MAXY = CGRectGetMaxY(rect) ;
     

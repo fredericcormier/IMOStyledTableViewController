@@ -74,11 +74,23 @@
 
 
 - (void)layoutSubviews {
+    CGFloat kDistanceFromBorder = 30.f;
+    CGFloat kHeightPad = 2.f;
+    CGFloat kiPadGap;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        kiPadGap = 43.f;
+    else
+        kiPadGap = 10.f;
+    
+
     [super layoutSubviews];
     
-    CGRect insetRect = CGRectInset([self bounds], 30.0, 4.0);
-    CGRect noteViewRect = CGRectOffset(insetRect, -10.0, 0);
-    [[self noteView] setFrame:noteViewRect];
+    CGRect noteViewRect = CGRectMake(round(kDistanceFromBorder),
+                                     round(kHeightPad),
+                                     round([self bounds].size.width - ((kiPadGap + kDistanceFromBorder) * 2 )),
+                                     round([self bounds].size.height - (kHeightPad * 2)));
+    
+     [[self noteView] setFrame:noteViewRect];
 }
 
 @end
