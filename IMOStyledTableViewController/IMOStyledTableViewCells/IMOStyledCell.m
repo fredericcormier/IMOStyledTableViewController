@@ -297,7 +297,12 @@ static NSArray *cellPositionStrings;
     
     
     if (TABLE_VIEW_IS_STYLE_GROUPED) {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
+        // so the cells are not drawn correctly.
+        
+        // Check against real width
+        if(rect.size.width == 768 || rect.size.width == 1024){
             rect = CGRectInset(rect, 45.f, 0);
         }else{
             rect = CGRectInset(rect, 10.f, 0);
