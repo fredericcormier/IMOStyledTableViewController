@@ -146,7 +146,8 @@ CGFloat separator_X;
     const float kPad = 4.f;
     float kiPadGap;
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    // If we are on an iPad but not in a UIPopoverController
+    if(cellWidth == 768 || cellWidth == 1024) {
         kiPadGap = 35.f;
     }else{
         kiPadGap = 0;
