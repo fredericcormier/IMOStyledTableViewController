@@ -77,7 +77,9 @@
     CGFloat kDistanceFromBorder = 30.f;
     CGFloat kHeightPad = 2.f;
     CGFloat kiPadGap;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    CGFloat cellWidth = [self bounds].size.width;
+    
+    if (cellWidth > 320)
         kiPadGap = 43.f;
     else
         kiPadGap = 10.f;
