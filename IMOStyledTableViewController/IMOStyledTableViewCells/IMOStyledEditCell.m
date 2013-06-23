@@ -183,12 +183,36 @@ CGFloat separator_X;
 #pragma mark - IMOStyledTextField -
 
 
+
+
+@interface UIView (container)
+- (id)parentViewContainerOfClass:(Class)containerClass;
+@end
+
+
+@implementation UIView (container)
+
+- (id)parentViewContainerOfClass:(Class)containerClass {
+    UIView *aView = [self superview];
+    while(aView != nil) {
+        if([aView isKindOfClass:containerClass]) {
+            return aView;
+        }
+        aView = [aView superview];
+    }
+    return nil;
+}
+@end
+
+
+
 @implementation IMOStyledTextField
 
 - (void) drawPlaceholderInRect:(CGRect)rect {
     
-    UIColor *color  = [(IMOStyledEditCell *)[[self superview] superview] placeHolderTextColor];
-    UIFont *font    = [(IMOStyledEditCell *)[[self superview] superview] placeHolderFont];
+    IMOStyledEditCell *cell = [self parentViewContainerOfClass:[IMOStyledEditCell class]];
+    UIColor *color  = [cell placeHolderTextColor];
+    UIFont *font    = [cell placeHolderFont];
     
     if (color || font) {
         if (color) {
