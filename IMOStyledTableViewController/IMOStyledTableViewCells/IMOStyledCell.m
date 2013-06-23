@@ -24,6 +24,7 @@
 #define defaultTopSeparatorColor                [UIColor colorWithRed:0.821 green:0.817 blue:0.798 alpha:1.000];
 #define defaultBottomSeparatorColor             [UIColor colorWithRed:0.845 green:0.840 blue:0.821 alpha:1.000];
 
+// cell horizontal separators
 enum IMOStyledCellSeparatorType {
     IMORoundedSeparator,
     IMOFlatSeparator
@@ -34,7 +35,7 @@ typedef enum IMOStyledCellSeparatorType IMOStyledCellSeparatorType;
 
 
 /**This category defines  a method that let us inspect the hierarchy backwards
- Handy when you want to access a TableView from a textfield in cell
+ Handy when you want to access a TableView from a textfield in a cell
  */
 @implementation UIView (container)
 
@@ -133,7 +134,6 @@ static NSArray *cellPositionStrings;
     detailTextLabelTextColor_ = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ?: defaultDetailTextLabelTextColor;
     textLabelFont_ = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ?: defaultTextLabelFont;
     detailTextLabelFont_ = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ?: defaultDetailTextLabelFont;
-
 }
 
 
@@ -190,7 +190,7 @@ static NSArray *cellPositionStrings;
 
 
 /*
- Returns the cell identifier
+ Returns the cell identifier.
  The identifier is "cell class name"+ position +"cell position in section string"
  ie: IMOStyledCellPositionPlain
  */
@@ -215,7 +215,6 @@ static NSArray *cellPositionStrings;
 
 - (id)initWithCellIdentifier:(NSString *)cellID atPosition:(IMOStyledCellPosition)cellPosition withStyle:(IMOStyledCellStyle)style andStyleSheet:(NSDictionary *)styleSheet {
     return [self initWithStyle:(UITableViewCellStyle)style reuseIdentifier:cellID position:cellPosition styleSheet:styleSheet];
-    
 }
 
 
@@ -309,6 +308,7 @@ static NSArray *cellPositionStrings;
 
 
 
+
 -(void)drawRect:(CGRect)rect {
     
     const CGFloat   LINE_WIDTH      = 2.0f;
@@ -317,10 +317,7 @@ static NSArray *cellPositionStrings;
     UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
     BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
 
-    
-    
     if (tableViewIsGroupedStyle) {
-        // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
         // so the cells are not drawn correctly.
         
@@ -540,7 +537,6 @@ bottomGradientColor:(UIColor *)theBottomColor {
         position = aPosition;
     }
     return self;
-    
 }
 
 
@@ -564,7 +560,6 @@ bottomGradientColor:(UIColor *)theBottomColor {
     BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
     
     if (tableViewIsGroupedStyle == YES) {
-        // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
         // so the cells are not drawn correctly.
         
@@ -573,7 +568,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
             rect = CGRectInset(rect, 45.f, 0);
         }else{
             if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.f)
-            // before ios 7, extract 10 pixels on each side
+            //  on device running ios before ios 7, extract 10 pixels on each side
             rect = CGRectInset(rect, 10.f, 0);
         }
     }
