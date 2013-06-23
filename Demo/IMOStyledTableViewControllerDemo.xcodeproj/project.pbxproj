@@ -16,7 +16,6 @@
 		6A15D1E21754E78A00B06708 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A15D1E11754E78A00B06708 /* Default.png */; };
 		6A15D1E41754E78A00B06708 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A15D1E31754E78A00B06708 /* Default@2x.png */; };
 		6A15D1E61754E78A00B06708 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A15D1E51754E78A00B06708 /* Default-568h@2x.png */; };
-		6A15D1EE1754E78A00B06708 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1ED1754E78A00B06708 /* SenTestingKit.framework */; };
 		6A15D1EF1754E78A00B06708 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1CF1754E78900B06708 /* UIKit.framework */; };
 		6A15D1F01754E78A00B06708 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1D11754E78900B06708 /* Foundation.framework */; };
 		6A15D1F81754E78A00B06708 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A15D1F61754E78A00B06708 /* InfoPlist.strings */; };
@@ -99,7 +98,7 @@
 		6A15D1E11754E78A00B06708 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		6A15D1E31754E78A00B06708 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		6A15D1E51754E78A00B06708 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		6A15D1EC1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IMOStyledTableViewControllerDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A15D1EC1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IMOStyledTableViewControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A15D1ED1754E78A00B06708 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6A15D1F51754E78A00B06708 /* IMOStyledTableViewControllerDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IMOStyledTableViewControllerDemoTests-Info.plist"; sourceTree = "<group>"; };
 		6A15D1F71754E78A00B06708 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -167,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A39EEC417551A0900417A20 /* CoreGraphics.framework in Frameworks */,
-				6A15D1EE1754E78A00B06708 /* SenTestingKit.framework in Frameworks */,
 				6A15D1EF1754E78A00B06708 /* UIKit.framework in Frameworks */,
 				6A15D1F01754E78A00B06708 /* Foundation.framework in Frameworks */,
 			);
@@ -192,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				6A15D1CC1754E78900B06708 /* IMOStyledTableViewControllerDemo.app */,
-				6A15D1EC1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.octest */,
+				6A15D1EC1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -365,8 +363,8 @@
 			);
 			name = IMOStyledTableViewControllerDemoTests;
 			productName = IMOStyledTableViewControllerDemoTests;
-			productReference = 6A15D1EC1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 6A15D1EC1754E78A00B06708 /* IMOStyledTableViewControllerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -619,16 +617,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IMOStyledTableViewControllerDemo.app/IMOStyledTableViewControllerDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SDKROOT)/Developer/Library/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMOStyledTableViewControllerDemo/IMOStyledTableViewControllerDemo-Prefix.pch";
 				INFOPLIST_FILE = "IMOStyledTableViewControllerDemoTests/IMOStyledTableViewControllerDemoTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -636,16 +630,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IMOStyledTableViewControllerDemo.app/IMOStyledTableViewControllerDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SDKROOT)/Developer/Library/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMOStyledTableViewControllerDemo/IMOStyledTableViewControllerDemo-Prefix.pch";
 				INFOPLIST_FILE = "IMOStyledTableViewControllerDemoTests/IMOStyledTableViewControllerDemoTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

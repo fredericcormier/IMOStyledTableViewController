@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Frederic Cormier. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface IMOStyledTableViewControllerDemoTests : SenTestCase
+@interface IMOStyledTableViewControllerDemoTests : XCTestCase
 
 @end

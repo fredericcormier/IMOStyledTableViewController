@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Frederic Cormier. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface HexValue_Test : SenTestCase
+@interface HexValue_Test : XCTestCase
 
 @end

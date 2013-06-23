@@ -27,22 +27,22 @@
 
 - (void)testKeyValidity
 {
-    STAssertTrue([[IMOStyledCellKeys sharedManager] isValidKey:@"IMOStyledCellNoteViewFontKey"], @" The key IMOStyledCellNoteViewFontKey is valid");
-    STAssertTrue([[IMOStyledCellKeys sharedManager] isValidKey:@"IMOStyledCellHeaderFontKey"], @" The key IMOStyledCellNoteViewFontKey is valid");
-    STAssertFalse([[IMOStyledCellKeys sharedManager] isValidKey:@"ThisIsNotACorrectKey"], @"This is not correct key");
+    XCTAssertTrue([[IMOStyledCellKeys sharedManager] isValidKey:@"IMOStyledCellNoteViewFontKey"], @" The key IMOStyledCellNoteViewFontKey is valid");
+    XCTAssertTrue([[IMOStyledCellKeys sharedManager] isValidKey:@"IMOStyledCellHeaderFontKey"], @" The key IMOStyledCellNoteViewFontKey is valid");
+    XCTAssertFalse([[IMOStyledCellKeys sharedManager] isValidKey:@"ThisIsNotACorrectKey"], @"This is not correct key");
 }
 
 - (void)testStatementArity {
-    STAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:@"IMOStyledCellTextLabelFontKey"], 2, @"IMOStyledCellTextLabelFontKey has 2 arguments");
-    STAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:IMOStyledCellNoteViewLineColorKey], 1, @"IMOStyledCellTextLabelFontKey has 1 arguments");
-    STAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:IMOStyledCellFooterFontKey], 2, @"IMOStyledCellFooterFontKey has 2 arguments");
-    STAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:@"NotAkey"], 0, @"This should return 0");
+    XCTAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:@"IMOStyledCellTextLabelFontKey"], 2, @"IMOStyledCellTextLabelFontKey has 2 arguments");
+    XCTAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:IMOStyledCellNoteViewLineColorKey], 1, @"IMOStyledCellTextLabelFontKey has 1 arguments");
+    XCTAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:IMOStyledCellFooterFontKey], 2, @"IMOStyledCellFooterFontKey has 2 arguments");
+    XCTAssertEquals([[IMOStyledCellKeys sharedManager] arityForKey:@"NotAkey"], 0, @"This should return 0");
 }
 
 - (void)testTypeChecking {
-    STAssertEquals([[IMOStyledCellKeys sharedManager] argumentTypeAtPosition:2 forKey:IMOStyledCellTextLabelFontKey], IMOStyledCellTypeSize, @"The second arguments of IMOStyledCellTextLabelFontKey is a float");
-    STAssertEquals([[IMOStyledCellKeys sharedManager] argumentTypeAtPosition:1 forKey:IMOStyledCellTextLabelFontKey], IMOStyledCellTypeFont, @"The first arguments of IMOStyledCellTextLabelFontKey is a string");
-    STAssertEquals([[IMOStyledCellKeys sharedManager] argumentTypeAtPosition:2 forKey:IMOStyledCellTopSeparatorColorKey], IMOStyledCellTypeUnknown, @"The second argument of IMOStyledCellTextLabelFontKey does not exist");
+    XCTAssertEquals([[IMOStyledCellKeys sharedManager] argumentTypeAtPosition:2 forKey:IMOStyledCellTextLabelFontKey], IMOStyledCellTypeSize, @"The second arguments of IMOStyledCellTextLabelFontKey is a float");
+    XCTAssertEquals([[IMOStyledCellKeys sharedManager] argumentTypeAtPosition:1 forKey:IMOStyledCellTextLabelFontKey], IMOStyledCellTypeFont, @"The first arguments of IMOStyledCellTextLabelFontKey is a string");
+    XCTAssertEquals([[IMOStyledCellKeys sharedManager] argumentTypeAtPosition:2 forKey:IMOStyledCellTopSeparatorColorKey], IMOStyledCellTypeUnknown, @"The second argument of IMOStyledCellTextLabelFontKey does not exist");
 }
 
 
