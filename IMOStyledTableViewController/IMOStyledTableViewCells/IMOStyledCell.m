@@ -31,6 +31,27 @@ enum IMOStyledCellSeparatorType {
 typedef enum IMOStyledCellSeparatorType IMOStyledCellSeparatorType;
 
 
+
+
+/**This category defines  a method that let us inspect the hierarchy backwards
+ Handy when you want to access a TableView from a textfield in cell
+ */
+@implementation UIView (container)
+
+- (id)parentViewContainerOfClass:(Class)containerClass {
+    UIView *aView = [self superview];
+    while(aView != nil) {
+        if([aView isKindOfClass:containerClass]) {
+            return aView;
+        }
+        aView = [aView superview];
+    }
+    return nil;
+}
+@end
+
+
+
 //Forward declaration
 @interface IMOSelectedCellBackgroundView : UIView
 
@@ -95,7 +116,6 @@ static NSArray *cellPositionStrings;
 
 
 
-
 /*  Sublasses may override this one and must call super's implementation */
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet {
     topSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopSeparatorColorKey];
@@ -113,6 +133,7 @@ static NSArray *cellPositionStrings;
     detailTextLabelTextColor_ = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ?: defaultDetailTextLabelTextColor;
     textLabelFont_ = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ?: defaultTextLabelFont;
     detailTextLabelFont_ = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ?: defaultDetailTextLabelFont;
+
 }
 
 
@@ -293,10 +314,12 @@ static NSArray *cellPositionStrings;
     const CGFloat   LINE_WIDTH      = 2.0f;
     const NSInteger CORNER_RADIUS   = 8;
     
-    const BOOL TABLE_VIEW_IS_STYLE_GROUPED = [(UITableView *)[ self superview] style] == UITableViewStyleGrouped;
+    UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
+    BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
+
     
     
-    if (TABLE_VIEW_IS_STYLE_GROUPED) {
+    if (tableViewIsGroupedStyle) {
         // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
         // so the cells are not drawn correctly.
@@ -535,8 +558,25 @@ bottomGradientColor:(UIColor *)theBottomColor {
 
 
 -(void)drawRect:(CGRect)rect {
-    
     const int CORNER_RADIUS = 6;
+
+    UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
+    BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
+    
+    if (tableViewIsGroupedStyle == YES) {
+        // if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
+        // so the cells are not drawn correctly.
+        
+        // Check against real width
+        if(rect.size.width == 768 || rect.size.width == 1024){
+            rect = CGRectInset(rect, 45.f, 0);
+        }else{
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.f)
+            // before ios 7, extract 10 pixels on each side
+            rect = CGRectInset(rect, 10.f, 0);
+        }
+    }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     const CGFloat MINX = CGRectGetMinX(rect) , MIDX = CGRectGetMidX(rect), MAXX = CGRectGetMaxX(rect) ;

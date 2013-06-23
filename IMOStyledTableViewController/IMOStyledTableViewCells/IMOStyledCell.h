@@ -45,3 +45,10 @@
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet;
 /* subclasses must override this one in order to setup cell styles */
 @end
+
+
+
+@interface UIView (container)
+- (id)parentViewContainerOfClass:(Class)containerClass;
+@end
+

@@ -185,24 +185,6 @@ CGFloat separator_X;
 
 
 
-@interface UIView (container)
-- (id)parentViewContainerOfClass:(Class)containerClass;
-@end
-
-
-@implementation UIView (container)
-
-- (id)parentViewContainerOfClass:(Class)containerClass {
-    UIView *aView = [self superview];
-    while(aView != nil) {
-        if([aView isKindOfClass:containerClass]) {
-            return aView;
-        }
-        aView = [aView superview];
-    }
-    return nil;
-}
-@end
 
 
 
