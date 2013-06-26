@@ -567,7 +567,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
         if(rect.size.width == 768 || rect.size.width == 1024){
             rect = CGRectInset(rect, 45.f, 0);
         }else{
-            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.f)
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
             //  on device running ios before ios 7, extract 10 pixels on each side
             rect = CGRectInset(rect, 10.f, 0);
         }
