@@ -74,10 +74,13 @@
 
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
     CGFloat kDistanceFromBorder = 30.f;
     CGFloat kHeightPad = 2.f;
     CGFloat kiPadGap;
-    CGFloat cellWidth = [self bounds].size.width;
+    CGFloat cellWidth = [[self contentView] bounds].size.width;
+    CGFloat cellHeight = [[self contentView] bounds].size.height;
     
     if (cellWidth > 320)
         kiPadGap = 43.f;
@@ -85,12 +88,11 @@
         kiPadGap = 10.f;
     
 
-    [super layoutSubviews];
     
-    CGRect noteViewRect = CGRectMake(round(kDistanceFromBorder),
+    CGRect noteViewRect = CGRectMake(round(kDistanceFromBorder ),
                                      round(kHeightPad),
-                                     round([self bounds].size.width - ((kiPadGap + kDistanceFromBorder) * 2 )),
-                                     round([self bounds].size.height - (kHeightPad * 2)));
+                                     round(cellWidth - ((kDistanceFromBorder) * 2 )),
+                                     round(cellHeight - (kHeightPad * 2)));
     
      [[self noteView] setFrame:noteViewRect];
 }

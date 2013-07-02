@@ -52,6 +52,17 @@ typedef enum IMOStyledCellSeparatorType IMOStyledCellSeparatorType;
 @end
 
 
+@implementation UITableViewCell (tableViewAccess)
+
+- (BOOL)parentTableViewIsGrouped {
+    return  ([[self tableView] style] == UITableViewStyleGrouped);
+}
+
+- (UITableView *)tableView{
+    return (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
+}
+@end
+
 
 //Forward declaration
 @interface IMOSelectedCellBackgroundView : UIView
@@ -306,7 +317,24 @@ static NSArray *cellPositionStrings;
 }
 
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+     CGRect cellFrame = [self frame];
+//    UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
+//    BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
 
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")                             //IOS7 or greater
+        && IMOStyledCellRoundedGroupedCellIOS6Style                                 // wants to look like IOS6
+        && (cellFrame.size.width == 768 || cellFrame.size.width == 1024)            // iPad size (UIPopover is ipad idiom but not iPad Size)
+        && [self parentTableViewIsGrouped])                                                 // only for grouped tables
+    {
+       
+        CGRect correctedRect = CGRectInset(cellFrame, 4.f, 0);
+        [self setFrame:correctedRect];
+    }
+}
 
 
 -(void)drawRect:(CGRect)rect {
@@ -314,16 +342,16 @@ static NSArray *cellPositionStrings;
     const CGFloat   LINE_WIDTH      = 2.0f;
     const NSInteger CORNER_RADIUS   = 8;
     
-    UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
-    BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
+//    UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
+//    BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
     
-    if (tableViewIsGroupedStyle) {
+    if ([self parentTableViewIsGrouped]) {
         if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
             // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
             // so the cells are not drawn correctly.
             
             // Check against real width
-            if(rect.size.width == 768 || rect.size.width == 1024){
+            if(IPAD_SCREEN_SIZE){
                 rect = CGRectInset(rect, 45.f, 0);
             }else{
                 rect = CGRectInset(rect, 10.f, 0);
@@ -331,7 +359,7 @@ static NSArray *cellPositionStrings;
         }
  //       this is the setup for iphone to look ios 6 on ios 7
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style) {
-            if(rect.size.width == 768 || rect.size.width == 1024){
+            if(IPAD_SCREEN_SIZE){
                 rect = CGRectInset(rect, 45.f, 0);
             }else{
                 rect = CGRectInset(rect, 10.f, 0);
@@ -580,7 +608,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
         // so the cells are not drawn correctly.
         
         // Check against real width
-        if(rect.size.width == 768 || rect.size.width == 1024){
+        if(IPAD_SCREEN_SIZE){
             rect = CGRectInset(rect, 45.f, 0);
         }else{
             if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style){

@@ -123,8 +123,8 @@
 		6A15D22A1754E86800B06708 /* IMOStyledParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMOStyledParser.h; sourceTree = "<group>"; };
 		6A15D22B1754E86800B06708 /* IMOStyledParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledParser.m; sourceTree = "<group>"; };
 		6A15D22D1754E86800B06708 /* IMOStyledCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMOStyledCell.h; sourceTree = "<group>"; };
-		6A15D22E1754E86800B06708 /* IMOStyledCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledCell.m; sourceTree = "<group>"; };
-		6A15D22F1754E86800B06708 /* IMOStyledCellKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMOStyledCellKeys.h; sourceTree = "<group>"; };
+		6A15D22E1754E86800B06708 /* IMOStyledCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IMOStyledCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6A15D22F1754E86800B06708 /* IMOStyledCellKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IMOStyledCellKeys.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6A15D2301754E86800B06708 /* IMOStyledCellKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledCellKeys.m; sourceTree = "<group>"; };
 		6A15D2311754E86800B06708 /* IMOStyledEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMOStyledEditCell.h; sourceTree = "<group>"; };
 		6A15D2321754E86800B06708 /* IMOStyledEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMOStyledEditCell.m; sourceTree = "<group>"; };

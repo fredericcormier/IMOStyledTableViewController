@@ -117,7 +117,14 @@
     // else… default tableViewColor will apply
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
 
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskAll;
+}
 
 
 #pragma mark - UITableViewDelegate stuff

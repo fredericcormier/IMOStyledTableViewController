@@ -52,3 +52,8 @@
 - (id)parentViewContainerOfClass:(Class)containerClass;
 @end
 
+
+@interface UITableViewCell (tableViewAccess)
+- (BOOL)parentTableViewIsGrouped;
+- (UITableView *)tableView;
+@end

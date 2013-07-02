@@ -148,7 +148,12 @@ CGFloat separator_X;
     
     // If we are on an iPad but not in a UIPopoverController
     if(cellWidth == 768 || cellWidth == 1024) {
-        kiPadGap = 35.f;
+        // running IOS7 ?
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            kiPadGap = -10.f;
+        }else{//IOS6 or less
+            kiPadGap = 35.f;
+        }
     }else{
         kiPadGap = 0;
     }
@@ -160,8 +165,7 @@ CGFloat separator_X;
                                       round(cellHeight - (kPad * 2.f )));
     
     [[self textField] setFrame:textFieldRect];
-    
-    
+      
     CGRect captionRect = CGRectMake(round(kPad * 2.f),
                                     round(kPad),
                                     round(separator_X -(kPad * 6.f) - kiPadGap),
@@ -184,10 +188,6 @@ CGFloat separator_X;
 
 
 
-
-
-
-
 @implementation IMOStyledTextField
 
 - (void) drawPlaceholderInRect:(CGRect)rect {
@@ -203,7 +203,24 @@ CGFloat separator_X;
         if (font) {
             [self setFont:font];
         }
-        [[self placeholder] drawInRect:rect withFont:[self font]];
+        
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            // have to do the vertical alignement manually
+            NSDictionary *attributes = @{NSFontAttributeName :font,
+                                         NSForegroundColorAttributeName :color};
+            
+            CGFloat stringHeight = [font pointSize];
+            CGFloat verticalPad = (rect.size.height - stringHeight) / 2.f;
+            CGRect centeredRect = CGRectMake(rect.origin.x,
+                                             verticalPad,
+                                             rect.size.width,
+                                             rect.size.height - verticalPad);
+            
+            [[self placeholder] drawInRect:centeredRect withAttributes:attributes];
+        }else{ // IOS6 - deprecated (and broken) in IOS7
+            [[self placeholder] drawInRect:rect withFont:[self font]];
+        }
+       
     }else{
         // No modification: call super
         [super drawPlaceholderInRect:rect];

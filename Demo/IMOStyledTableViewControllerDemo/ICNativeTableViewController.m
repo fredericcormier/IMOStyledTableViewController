@@ -7,6 +7,7 @@
 //
 
 #import "ICNativeTableViewController.h"
+#import "IMOStyledCellKeys.h"
 
 @interface ICNativeTableViewController ()
 
@@ -26,7 +27,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [[self tableView] registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        [[self tableView] registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    }
 }
 
 
@@ -51,10 +54,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    if (!cell) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2  reuseIdentifier:CellIdentifier];
-//    }
+    UITableViewCell *cell;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+    }
+
     [[cell textLabel] setText:@"Native"];
     [[ cell detailTextLabel] setText:@"Cell"];
     
