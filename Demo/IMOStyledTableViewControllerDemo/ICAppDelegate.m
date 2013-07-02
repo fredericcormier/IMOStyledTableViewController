@@ -10,6 +10,7 @@
 #import "ICExampleStyleGroupedViewController.h"
 #import "ICExampleStylePlainViewController.h"
 #import "ICSheetTableViewController.h"
+#import "ICNativeTableViewController.h"
 
 @interface ICAppDelegate()
 
@@ -88,11 +89,21 @@
     [[styleGroupedViewController tabBarItem] setImage:[UIImage imageNamed:@"list"]];
     
     
+
+    ICNativeTableViewController *nativeTableViewController = [[ICNativeTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [[nativeTableViewController tabBarItem] setTitle:@"Native style"];
+    [[nativeTableViewController tabBarItem] setImage:[UIImage imageNamed:@"list"]];
+    
+    UINavigationController *nativeNavController = [[UINavigationController alloc] initWithRootViewController:nativeTableViewController];
     UINavigationController *plainNavController = [[UINavigationController alloc] initWithRootViewController:stylePlainViewController];
     UINavigationController *groupNavController = [[UINavigationController alloc] initWithRootViewController:styleGroupedViewController];
     UINavigationController *sheetNavController = [[UINavigationController alloc] initWithRootViewController:sheetTableViewController];
-        
-    NSArray *controllers = @[sheetNavController, plainNavController, groupNavController];
+    
+    
+
+    NSArray *controllers = @[nativeNavController, sheetNavController, plainNavController, groupNavController];
+
+    
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     [tabBarController setViewControllers:controllers];

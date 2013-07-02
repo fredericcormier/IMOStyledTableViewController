@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A135C31177AD9CC0004D0BA /* ICNativeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A135C2F177AD8470004D0BA /* ICNativeTableViewController.m */; };
 		6A15D1D01754E78900B06708 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1CF1754E78900B06708 /* UIKit.framework */; };
 		6A15D1D21754E78900B06708 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1D11754E78900B06708 /* Foundation.framework */; };
 		6A15D1D41754E78900B06708 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A15D1D31754E78900B06708 /* CoreGraphics.framework */; };
@@ -85,6 +86,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A135C2E177AD8470004D0BA /* ICNativeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICNativeTableViewController.h; sourceTree = "<group>"; };
+		6A135C2F177AD8470004D0BA /* ICNativeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICNativeTableViewController.m; sourceTree = "<group>"; };
 		6A15D1CC1754E78900B06708 /* IMOStyledTableViewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMOStyledTableViewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A15D1CF1754E78900B06708 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6A15D1D11754E78900B06708 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -212,6 +215,8 @@
 				6AB8728C1754F4B3002B7346 /* style.imo */,
 				6A15D1DE1754E78A00B06708 /* ICAppDelegate.h */,
 				6A15D1DF1754E78A00B06708 /* ICAppDelegate.m */,
+				6A135C2E177AD8470004D0BA /* ICNativeTableViewController.h */,
+				6A135C2F177AD8470004D0BA /* ICNativeTableViewController.m */,
 				6A39EEC51755EFC700417A20 /* ICSheetTableViewController.h */,
 				6A39EEC61755EFC700417A20 /* ICSheetTableViewController.m */,
 				6A15D2041754E80C00B06708 /* ICExampleStyleGroupedViewController.h */,
@@ -466,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A135C31177AD9CC0004D0BA /* ICNativeTableViewController.m in Sources */,
 				6A15D1DC1754E78A00B06708 /* main.m in Sources */,
 				6A15D1E01754E78A00B06708 /* ICAppDelegate.m in Sources */,
 				6A15D2081754E80C00B06708 /* ICExampleStyleGroupedViewController.m in Sources */,

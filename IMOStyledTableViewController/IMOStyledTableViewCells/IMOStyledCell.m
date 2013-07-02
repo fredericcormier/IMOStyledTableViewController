@@ -316,16 +316,27 @@ static NSArray *cellPositionStrings;
     
     UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
     BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
-
+    
     if (tableViewIsGroupedStyle) {
-        // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
-        // so the cells are not drawn correctly.
-        
-        // Check against real width
-        if(rect.size.width == 768 || rect.size.width == 1024){
-            rect = CGRectInset(rect, 45.f, 0);
-        }else{
-            rect = CGRectInset(rect, 10.f, 0);
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+            // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
+            // so the cells are not drawn correctly.
+            
+            // Check against real width
+            if(rect.size.width == 768 || rect.size.width == 1024){
+                rect = CGRectInset(rect, 45.f, 0);
+            }else{
+                rect = CGRectInset(rect, 10.f, 0);
+            }
+        }
+ //       this is the setup for iphone to look ios 6 on ios 7
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style) {
+            if(rect.size.width == 768 || rect.size.width == 1024){
+                rect = CGRectInset(rect, 45.f, 0);
+            }else{
+                rect = CGRectInset(rect, 10.f, 0);
+            }
+
         }
     }
     
@@ -333,7 +344,12 @@ static NSArray *cellPositionStrings;
     const CGFloat MINY = CGRectGetMinY(rect) , MIDY = CGRectGetMidY(rect) , MAXY = CGRectGetMaxY(rect) ;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
+
     
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style  == NO) {
+        // in ios7 all cells are plain like
+        position = IMOStyledCellPositionPlain;
+    }
     switch (position) {
         case IMOStyledCellPositionTop:
             CGContextMoveToPoint(context, MINX, MAXY);
@@ -555,7 +571,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
 
 -(void)drawRect:(CGRect)rect {
     const int CORNER_RADIUS = 6;
-
+    
     UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
     BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
     
@@ -567,9 +583,10 @@ bottomGradientColor:(UIColor *)theBottomColor {
         if(rect.size.width == 768 || rect.size.width == 1024){
             rect = CGRectInset(rect, 45.f, 0);
         }else{
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-            //  on device running ios before ios 7, extract 10 pixels on each side
-            rect = CGRectInset(rect, 10.f, 0);
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style){
+                //  on device running ios before ios 7, extract 10 pixels on each side
+                rect = CGRectInset(rect, 10.f, 0);
+            }
         }
     }
     
@@ -577,6 +594,10 @@ bottomGradientColor:(UIColor *)theBottomColor {
     const CGFloat MINX = CGRectGetMinX(rect) , MIDX = CGRectGetMidX(rect), MAXX = CGRectGetMaxX(rect) ;
     const CGFloat MINY = CGRectGetMinY(rect) , MIDY = CGRectGetMidY(rect), MAXY = CGRectGetMaxY(rect) ;
     
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style  == NO) {
+        // in ios7 all cells are plain like
+        position = IMOStyledCellPositionPlain;
+    }
     switch (position) {
         case IMOStyledCellPositionTop:
             CGContextMoveToPoint(context, MINX, MAXY);
