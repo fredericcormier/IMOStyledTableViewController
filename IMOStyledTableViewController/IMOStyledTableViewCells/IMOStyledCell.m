@@ -54,7 +54,7 @@ typedef enum IMOStyledCellSeparatorType IMOStyledCellSeparatorType;
 
 @implementation UITableViewCell (tableViewAccess)
 
-- (BOOL)parentTableViewIsGrouped {
+- (BOOL)parentTableViewIsGroupedStyle {
     return  ([[self tableView] style] == UITableViewStyleGrouped);
 }
 
@@ -90,7 +90,6 @@ static NSArray *cellPositionStrings;
 
 
 @interface IMOStyledCell()
-
 @property(nonatomic, strong)UIColor *gradientTopColor;
 @property(nonatomic, strong)UIColor *gradientBottomColor;
 @property(nonatomic, strong)UIColor *topSeparatorColor;
@@ -102,7 +101,6 @@ static NSArray *cellPositionStrings;
 @property(nonatomic, strong)UIFont *textLabelFont;
 @property(nonatomic, strong)UIFont *detailTextLabelFont;
 @property(nonatomic, assign)BOOL doDrawSeparators;
-
 @end
 
 
@@ -114,46 +112,30 @@ static NSArray *cellPositionStrings;
     CGGradientRef gradient;
 }
 
-@synthesize gradientTopColor = gradientTopColor_;
-@synthesize gradientBottomColor = gradientBottomColor_;
-@synthesize topSeparatorColor = topSeparatorColor_;
-@synthesize bottomSeparatorColor = bottomSeparatorColor_;
-@synthesize gradientSelectedTopColor = gradientSelectedTopColor_;
-@synthesize gradientSelectedBottomColor = gradientSelectedBottomColor_;
-@synthesize textLabelTextColor = textLabelTextColor_;
-@synthesize detailTextLabelTextColor = detailTextLabelTextColor_;
-@synthesize textLabelFont = textLabelFont_;
-@synthesize detailTextLabelFont = detailTextLabelFont_;
-@synthesize doDrawSeparators = doDrawSeparators_;
-
-
 
 /*  Sublasses may override this one and must call super's implementation */
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet {
-    topSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopSeparatorColorKey];
-    bottomSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomSeparatorColorKey];
-    if (bottomSeparatorColor_ == nil && topSeparatorColor_ == nil) {
-        doDrawSeparators_ = NO;
+    _topSeparatorColor = [sheet objectForKey:IMOStyledCellTopSeparatorColorKey];
+    _bottomSeparatorColor = [sheet objectForKey:IMOStyledCellBottomSeparatorColorKey];
+    if (_bottomSeparatorColor == nil && _topSeparatorColor == nil) {
+        _doDrawSeparators = NO;
     }else{
-        doDrawSeparators_ = YES;
+        _doDrawSeparators = YES;
     }
-    gradientTopColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: defaultGradientTopColor;
-    gradientBottomColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: defaultGradientBottomColor;
-    gradientSelectedTopColor_ = [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] ?: defaultSelectedGradientTopColor;
-    gradientSelectedBottomColor_ = [sheet objectForKey:IMOStyledCellSelectedBottomGradientColorKey] ?: defaultSelectedGradientBottomColor;
-    textLabelTextColor_ = [sheet objectForKey:IMOStyledCellTextLabelTextColorKey] ?: defaultTextLabelTextColor;
-    detailTextLabelTextColor_ = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ?: defaultDetailTextLabelTextColor;
-    textLabelFont_ = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ?: defaultTextLabelFont;
-    detailTextLabelFont_ = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ?: defaultDetailTextLabelFont;
+    _gradientTopColor = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: defaultGradientTopColor;
+    _gradientBottomColor = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: defaultGradientBottomColor;
+    _gradientSelectedTopColor = [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] ?: defaultSelectedGradientTopColor;
+    _gradientSelectedBottomColor = [sheet objectForKey:IMOStyledCellSelectedBottomGradientColorKey] ?: defaultSelectedGradientBottomColor;
+    _textLabelTextColor = [sheet objectForKey:IMOStyledCellTextLabelTextColorKey] ?: defaultTextLabelTextColor;
+    _detailTextLabelTextColor = [sheet objectForKey:IMOStyledCellDetailTextLabelTextColorKey] ?: defaultDetailTextLabelTextColor;
+    _textLabelFont = [sheet objectForKey:IMOStyledCellTextLabelFontKey] ?: defaultTextLabelFont;
+    _detailTextLabelFont = [sheet objectForKey:IMOStyledCellDetailTextLabelFontKey] ?: defaultDetailTextLabelFont;
 }
-
-
 
 
 
 /* Returns  an IMOStyledCell with the desired variation */
 + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style {
-    
     IMOStyledCellPosition position = [IMOStyledCell locationInSectionOfTableView:[controller tableView] atIndexPath:indexPath];
     
     NSString *cellID = [self cellIdentifierAtPosition:position withStyle:style];
@@ -175,25 +157,17 @@ static NSArray *cellPositionStrings;
 
 
 
-
 + (IMOStyledCellPosition)locationInSectionOfTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     if ([tableView style] == UITableViewStylePlain) {
         return IMOStyledCellPositionPlain;
     }else {
         int rows = [tableView numberOfRowsInSection:[indexPath section]];
         
-        if (indexPath.row == 0 && rows == 1) {
-            return IMOStyledCellPositionSingle;
-        }
-        else if (indexPath.row == 0) {
-            return IMOStyledCellPositionTop;
-        }
-        else if (indexPath.row != rows - 1) {
-            return IMOStyledCellPositionMiddle;
-        }
-        else {
-            return IMOStyledCellPositionBottom;
-        }
+        if (indexPath.row == 0 && rows == 1)        return IMOStyledCellPositionSingle;
+        else if (indexPath.row == 0)                return IMOStyledCellPositionTop;
+        else if (indexPath.row != rows - 1)         return IMOStyledCellPositionMiddle;
+        else                                        return IMOStyledCellPositionBottom;
+        
     }
 }
 
@@ -325,10 +299,10 @@ static NSArray *cellPositionStrings;
 //    BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
 
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")                             //IOS7 or greater
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")                             // IOS7 or greater
         && IMOStyledCellRoundedGroupedCellIOS6Style                                 // wants to look like IOS6
         && (cellFrame.size.width == 768 || cellFrame.size.width == 1024)            // iPad size (UIPopover is ipad idiom but not iPad Size)
-        && [self parentTableViewIsGrouped])                                                 // only for grouped tables
+        && [self parentTableViewIsGroupedStyle])                                         // only for grouped tables
     {
        
         CGRect correctedRect = CGRectInset(cellFrame, 4.f, 0);
@@ -342,10 +316,8 @@ static NSArray *cellPositionStrings;
     const CGFloat   LINE_WIDTH      = 2.0f;
     const NSInteger CORNER_RADIUS   = 8;
     
-//    UITableView *tableView = (UITableView *)[self parentViewContainerOfClass:[UITableView class]];
-//    BOOL tableViewIsGroupedStyle = ([tableView style] == UITableViewStyleGrouped);
     
-    if ([self parentTableViewIsGrouped]) {
+    if ([self parentTableViewIsGroupedStyle]) {
         if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
             // if we are in a UIPopoverController, we're running on an iPad, but the rect width is 320
             // so the cells are not drawn correctly.
@@ -357,7 +329,7 @@ static NSArray *cellPositionStrings;
                 rect = CGRectInset(rect, 10.f, 0);
             }
         }
- //       this is the setup for iphone to look ios 6 on ios 7
+        // IOS6 style on IOS7
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style) {
             if(IPAD_SCREEN_SIZE(rect)){
                 rect = CGRectInset(rect, 45.f, 0);
@@ -375,7 +347,7 @@ static NSArray *cellPositionStrings;
 
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style  == NO) {
-        // in ios7 all cells are plain like
+        // in ios7 all cells are plain style
         position = IMOStyledCellPositionPlain;
     }
     switch (position) {

@@ -9,14 +9,14 @@
 #import "IMOStyledImageCell.h"
 
 @implementation IMOStyledImageCell
-@synthesize customImageView = customImageView_;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier position:(IMOStyledCellPosition)cellPosition styleSheet:(NSDictionary *)styleSheet {
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier position:cellPosition styleSheet:styleSheet] ) {
-        customImageView_ = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [customImageView_ setOpaque:NO];
-        [customImageView_ setContentMode:UIViewContentModeRight];
+        _customImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [_customImageView setOpaque:NO];
+        [_customImageView setContentMode:UIViewContentModeRight];
         [[self contentView] addSubview:[self customImageView]];
         [[self contentView] setOpaque:NO];
     }

@@ -9,13 +9,10 @@
 #import "IMOStyledCellKeys.h"
 
 NSString * const IMOStyledCellNavBarTintColorKey                 = @"IMOStyledCellNavBarTintColorKey";
-
 NSString * const IMOStyledCellTopSeparatorColorKey               = @"IMOStyledCellTopSeparatorColorKey";
 NSString * const IMOStyledCellBottomSeparatorColorKey            = @"IMOStyledCellBottomSeparatorColorKey";
-
 NSString * const IMOStyledCellBackgroundImageKey                 = @"IMOStyledCellBackgroundImageKey";
 NSString * const IMOStyledCellBackgroundColorKey                 = @"IMOStyledCellBackgroundColorKey";
-
 NSString * const IMOStyledCellTopGradientColorKey                = @"IMOStyledCellTopGradientColorKey";
 NSString * const IMOStyledCellBottomGradientColorKey             = @"IMOStyledCellBottomGradientColorKey";
 NSString * const IMOStyledCellSelectedTopGradientColorKey        = @"IMOStyledCellSelectedTopGradientColorKey";
@@ -24,27 +21,19 @@ NSString * const IMOStyledCellTextLabelTextColorKey              = @"IMOStyledCe
 NSString * const IMOStyledCellDetailTextLabelTextColorKey        = @"IMOStyledCellDetailTextLabelTextColorKey";
 NSString * const IMOStyledCellTextLabelFontKey                   = @"IMOStyledCellTextLabelFontKey";
 NSString * const IMOStyledCellDetailTextLabelFontKey             = @"IMOStyledCellDetailTextLabelFontKey";
-
 NSString * const IMOStyledCellUseCustomHeaderKey                 = @"IMOStyledCellUseCustomHeaderKey";
 NSString * const IMOStyledCellHeaderFontKey                      = @"IMOStyledCellHeaderFontKey";
 NSString * const IMOStyledCellHeaderTextColorKey                 = @"IMOStyledCellHeaderTextColorKey";
-
 NSString * const IMOStyledCellUseCustomFooterKey                 = @"IMOStyledCellUseCustomFooterKey";
 NSString * const IMOStyledCellFooterFontKey                      = @"IMOStyledCellFooterFontKey";
 NSString * const IMOStyledCellFooterTextColorKey                 = @"IMOStyledCellFooterTextColorKey";
-
-
 NSString * const IMOStyledCellTextFieldFontKey                   = @"IMOStyledCellTextFieldFontKey";
 NSString * const IMOStyledCellTextFieldTextColorKey              = @"IMOStyledCellTextFieldTextColorKey";
 NSString * const IMOStyledCellTextCaptionFontKey                 = @"IMOStyledCellTextCaptionFontKey";
 NSString * const IMOStyledCellTextCaptionTextColorKey            = @"IMOStyledCellTextCaptionTextColorKey";
-
-
 NSString * const IMOStyledCellNoteViewFontKey                    = @"IMOStyledCellNoteViewFontKey";
 NSString * const IMOStyledCellNoteViewTextColorKey               = @"IMOStyledCellNoteViewTextColorKey";
 NSString * const IMOStyledCellNoteViewLineColorKey               = @"IMOStyledCellNoteViewLineColorKey";
-
-
 NSString * const IMOStyledCellPlaceHolderFontKey                 = @"IMOStyledCellPlaceHolderFontKey";
 NSString * const IMOStyledCellPlaceHolderTextColorKey            = @"IMOStyledCellPlaceHolderTextColorKey";
 
@@ -57,7 +46,6 @@ NSString * const IMOStyledCellPlaceHolderTextColorKey            = @"IMOStyledCe
 
 @implementation IMOStyledCellKeys
 
-@synthesize allKeys = allKeys_;
 
 + (IMOStyledCellKeys *)sharedManager {
     static dispatch_once_t once;
@@ -71,7 +59,7 @@ NSString * const IMOStyledCellPlaceHolderTextColorKey            = @"IMOStyledCe
 
 - (id)init{
     if (self = [super init]) {
-        allKeys_ = [[NSMutableArray alloc] initWithObjects:
+        _allKeys = [[NSMutableArray alloc] initWithObjects:
                     @[IMOStyledCellNavBarTintColorKey,               @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellTextLabelTextColorKey,            @(IMOStyledCellTypeColor)],
                     @[IMOStyledCellTopSeparatorColorKey,             @(IMOStyledCellTypeColor)],

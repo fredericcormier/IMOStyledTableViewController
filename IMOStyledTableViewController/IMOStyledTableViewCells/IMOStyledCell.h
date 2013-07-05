@@ -54,6 +54,6 @@
 
 
 @interface UITableViewCell (tableViewAccess)
-- (BOOL)parentTableViewIsGrouped;
+- (BOOL)parentTableViewIsGroupedStyle;
 - (UITableView *)tableView;
 @end

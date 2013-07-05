@@ -22,21 +22,14 @@
 #pragma mark - NoteViewCell
 
 @interface IMOStyledNoteViewCell()
-
 @property(nonatomic, strong)UIFont *noteFont;
 @property(nonatomic, strong)UIColor *fontColor;
 @property(nonatomic, strong)UIColor *lineColor;
 @property(nonatomic, strong)IMOStyledNoteView *noteView;
 @property(nonatomic, strong)UIColor *toolbarColor;
-
 @end
 
 @implementation IMOStyledNoteViewCell
-@synthesize noteFont = noteFont_;
-@synthesize fontColor = fontColor_;
-@synthesize lineColor = lineColor_;
-@synthesize noteView = noteView_;
-@synthesize toolbarColor = toolbarColor_;
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
@@ -45,13 +38,12 @@
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier position:cellPosition styleSheet:styleSheet];
     if (self) {
+        _noteFont = [styleSheet objectForKey:IMOStyledCellNoteViewFontKey] ?: defaultNoteViewFont;
+        _fontColor = [styleSheet objectForKey:IMOStyledCellNoteViewTextColorKey] ?: defaultNoteViewFontColor;
+        _lineColor = [styleSheet objectForKey:IMOStyledCellNoteViewLineColorKey] ?: defaultNoteViewLineColor;
+        _toolbarColor = [styleSheet objectForKey:IMOStyledCellNavBarTintColorKey];
         
-        noteFont_ = [styleSheet objectForKey:IMOStyledCellNoteViewFontKey] ?: defaultNoteViewFont;
-        fontColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewTextColorKey] ?: defaultNoteViewFontColor;
-        lineColor_ = [styleSheet objectForKey:IMOStyledCellNoteViewLineColorKey] ?: defaultNoteViewLineColor;
-        toolbarColor_ = [styleSheet objectForKey:IMOStyledCellNavBarTintColorKey];
-        
-        noteView_ = [[IMOStyledNoteView alloc] initWithFrame:CGRectZero accessoryToolBarColor:toolbarColor_];
+        _noteView = [[IMOStyledNoteView alloc] initWithFrame:CGRectZero accessoryToolBarColor:_toolbarColor];
         [[self contentView] addSubview:[self noteView]];
         [self setBackgroundColor:[UIColor clearColor]];
         
@@ -61,6 +53,7 @@
     }
     return self;
 }
+
 
 - (NSString *)noteText {
     return [[self noteView] text];

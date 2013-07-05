@@ -32,18 +32,6 @@
 
 @implementation IMOStyledTableViewController
 
-@synthesize navBarColor = navBarColor_;
-@synthesize headerText = headerText_;
-@synthesize footerText = footerText_;
-@synthesize sheet = sheet_;
-@synthesize backgroundImage = backgroundImage_;
-@synthesize backgroundColor = backgroundColor_;
-@synthesize useCustomHeader = useCustomHeader_;
-@synthesize headerFont = headerFont_;
-@synthesize headerFontColor = headerFontColor_;
-@synthesize useCustomFooter = useCustomFooter_;
-@synthesize footerFont = footerFont_;
-@synthesize footerFontColor = footerFontColor_;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     return [self initWithStyle:style styleSheet:nil];
@@ -56,21 +44,21 @@
     if (self) {
         // start by checking if we have a ".imo" file
         if ([[IMOStyledStyleParser sharedParser] parsedStyleDictionary]) {
-            sheet_ = [[IMOStyledStyleParser sharedParser] parsedStyleDictionary];
+            _sheet = [[IMOStyledStyleParser sharedParser] parsedStyleDictionary];
         }
         
         if (styleSheet) {
-            sheet_ = (NSMutableDictionary *)styleSheet;
+            _sheet = (NSMutableDictionary *)styleSheet;
         }
-        backgroundImage_ = [[self sheet] objectForKey:IMOStyledCellBackgroundImageKey];
-        backgroundColor_ = [[self  sheet] objectForKey:IMOStyledCellBackgroundColorKey];
-        navBarColor_ = [[self sheet] objectForKey:IMOStyledCellNavBarTintColorKey];
-        useCustomHeader_ = (YES == [[[self sheet] objectForKey:IMOStyledCellUseCustomHeaderKey] boolValue] ) ? YES : NO;
-        headerFont_ = [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] ?: DefaultHeaderFont;
-        headerFontColor_ = [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] ?: DefaultHeaderTextColor;
-        useCustomFooter_ = (YES ==[[[self sheet] objectForKey:IMOStyledCellUseCustomFooterKey] boolValue]) ? YES : NO;
-        footerFont_ = [[self sheet] objectForKey:IMOStyledCellFooterFontKey] ?: DefaultFooterFont;
-        footerFontColor_ = [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] ?: DefaultFooterTextColor;
+        _backgroundImage = [[self sheet] objectForKey:IMOStyledCellBackgroundImageKey];
+        _backgroundColor = [[self  sheet] objectForKey:IMOStyledCellBackgroundColorKey];
+        _navBarColor = [[self sheet] objectForKey:IMOStyledCellNavBarTintColorKey];
+        _useCustomHeader = (YES == [[[self sheet] objectForKey:IMOStyledCellUseCustomHeaderKey] boolValue] ) ? YES : NO;
+        _headerFont = [[self sheet] objectForKey:IMOStyledCellHeaderFontKey] ?: DefaultHeaderFont;
+        _headerFontColor = [[self sheet] objectForKey:IMOStyledCellHeaderTextColorKey] ?: DefaultHeaderTextColor;
+        _useCustomFooter = (YES ==[[[self sheet] objectForKey:IMOStyledCellUseCustomFooterKey] boolValue]) ? YES : NO;
+        _footerFont = [[self sheet] objectForKey:IMOStyledCellFooterFontKey] ?: DefaultFooterFont;
+        _footerFontColor = [[self sheet] objectForKey:IMOStyledCellFooterTextColorKey] ?: DefaultFooterTextColor;
     }
     return self;
 }
@@ -183,7 +171,7 @@
 
 
 - (NSDictionary *)styleSheet {
-    return sheet_;
+    return _sheet;
 }
 
 

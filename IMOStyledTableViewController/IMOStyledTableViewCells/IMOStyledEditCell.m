@@ -28,33 +28,22 @@
 @end
 
 @implementation IMOStyledEditCell
-@synthesize textField = textField_;
-@synthesize textCaption = textCaption_;
-@synthesize textfieldFont = textfieldFont_;
-@synthesize textCaptionFont = textCaptionFont_;
-@synthesize textfieldFontColor = textfieldFontColor_;
-@synthesize textCaptionFontColor = textCaptionFontColor_;
-@synthesize leftSeparatorColor = leftSeparatorColor_;
-@synthesize rightSeparatorColor = rightSeparatorColor_;
-@synthesize placeHolderFont = placeHolderFont_;
-@synthesize placeHolderTextColor = placeHolderTextColor_;
-
 CGFloat separator_X;
 
 
 - (void)setUpCellStyleSheet:(NSDictionary *)sheet {
     [super setUpCellStyleSheet:sheet];
-    textfieldFont_ = [sheet objectForKey:IMOStyledCellTextFieldFontKey] ?: defaultTextFieldFont;
-    textfieldFontColor_ = [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] ?: defaultTextFieldColor;
-    textCaptionFont_ = [sheet objectForKey:IMOStyledCellTextCaptionFontKey] ?: defaultCaptionFont;
-    textCaptionFontColor_ = [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] ?: defaultCaptionColor;
+    _textfieldFont = [sheet objectForKey:IMOStyledCellTextFieldFontKey] ?: defaultTextFieldFont;
+    _textfieldFontColor = [sheet objectForKey:IMOStyledCellTextFieldTextColorKey] ?: defaultTextFieldColor;
+    _textCaptionFont = [sheet objectForKey:IMOStyledCellTextCaptionFontKey] ?: defaultCaptionFont;
+    _textCaptionFontColor = [sheet objectForKey:IMOStyledCellTextCaptionTextColorKey] ?: defaultCaptionColor;
     
     // separators uses the bottom and top gradient colors
-    leftSeparatorColor_ = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: [UIColor colorWithWhite:0.838 alpha:1.000];
-    rightSeparatorColor_ = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: [UIColor colorWithWhite:0.983 alpha:1.000];
+    _leftSeparatorColor = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: [UIColor colorWithWhite:0.838 alpha:1.000];
+    _rightSeparatorColor = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: [UIColor colorWithWhite:0.983 alpha:1.000];
     
-    placeHolderFont_ = [sheet objectForKey:IMOStyledCellPlaceHolderFontKey];
-    placeHolderTextColor_ = [sheet objectForKey:IMOStyledCellPlaceHolderTextColorKey];
+    _placeHolderFont = [sheet objectForKey:IMOStyledCellPlaceHolderFontKey];
+    _placeHolderTextColor = [sheet objectForKey:IMOStyledCellPlaceHolderTextColorKey];
 }
 
 
@@ -67,32 +56,32 @@ CGFloat separator_X;
     
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier position:cellPosition styleSheet:styleSheet];
     if (self) {
-        textField_ = [[IMOStyledTextField alloc] initWithFrame:CGRectZero];
-        textCaption_ = [[UILabel alloc] initWithFrame:CGRectZero];
+        _textField = [[IMOStyledTextField alloc] initWithFrame:CGRectZero];
+        _textCaption = [[UILabel alloc] initWithFrame:CGRectZero];
         
-        [[self contentView] addSubview:textField_];
-        [[self contentView] addSubview:textCaption_];
+        [[self contentView] addSubview:_textField];
+        [[self contentView] addSubview:_textCaption];
         
         [self setBackgroundColor:[UIColor clearColor]];
         
         
-        [textField_ setBackgroundColor:[UIColor clearColor]];
-        [textField_ setTextColor:textfieldFontColor_];
-        [textField_ setFont:textfieldFont_];
-        [textField_ setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-        [textField_ setAdjustsFontSizeToFitWidth:YES];
-        [textField_ setClearButtonMode:UITextFieldViewModeWhileEditing];
+        [_textField setBackgroundColor:[UIColor clearColor]];
+        [_textField setTextColor:_textfieldFontColor];
+        [_textField setFont:_textfieldFont];
+        [_textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+        [_textField setAdjustsFontSizeToFitWidth:YES];
+        [_textField setClearButtonMode:UITextFieldViewModeWhileEditing];
         
-        [textCaption_ setFont:textCaptionFont_];
-        [textCaption_ setTextColor:textCaptionFontColor_];
-        [textCaption_ setBackgroundColor:[UIColor clearColor]];
+        [_textCaption setFont:_textCaptionFont];
+        [_textCaption setTextColor:_textCaptionFontColor];
+        [_textCaption setBackgroundColor:[UIColor clearColor]];
 #ifdef __IPHONE_6_0
-        [textCaption_ setTextAlignment:NSTextAlignmentRight];
+        [_textCaption setTextAlignment:NSTextAlignmentRight];
 #else
         [textCaption_ setTextAlignment:UITextAlignmentRight];
 #endif
-        [textField_ setOpaque:NO];
-        [textCaption_ setOpaque:NO];
+        [_textField setOpaque:NO];
+        [_textCaption setOpaque:NO];
         [[self contentView] setOpaque:NO];
         
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -172,9 +161,6 @@ CGFloat separator_X;
                                     round(cellHeight - (kPad * 2.f)));
     [[self textCaption] setFrame:captionRect];
 }
-
-
-
 @end
 
 
@@ -197,33 +183,29 @@ CGFloat separator_X;
     UIFont *font    = [cell placeHolderFont];
     
     if (color || font) {
-        if (color) {
-            [color setFill];
-        }
-        if (font) {
-            [self setFont:font];
-        }
+        if (color)      [color setFill];
+        if (font)       [self setFont:font];
         
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
             // have to do the vertical alignement manually
             NSDictionary *attributes = @{NSFontAttributeName :font,
                                          NSForegroundColorAttributeName :color};
-            
+#pragma unused(attributes)
             CGFloat stringHeight = [font pointSize];
             CGFloat verticalPad = (rect.size.height - stringHeight) / 2.f;
             CGRect centeredRect = CGRectMake(rect.origin.x,
                                              verticalPad,
                                              rect.size.width,
                                              rect.size.height - verticalPad);
+#pragma unused(centeredRect)
+            
 #ifdef __IPHONE_7_0
             [[self placeholder] drawInRect:centeredRect withAttributes:attributes];
 #endif
         }else{ // IOS6 - deprecated (and broken) in IOS7
             [[self placeholder] drawInRect:rect withFont:[self font]];
         }
-       
-    }else{
-        // No modification: call super
+    }else{ // No modification: call super
         [super drawPlaceholderInRect:rect];
     }
 }

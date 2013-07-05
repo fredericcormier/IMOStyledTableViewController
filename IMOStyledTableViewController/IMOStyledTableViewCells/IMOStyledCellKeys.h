@@ -16,8 +16,7 @@
 
 #define IMOStyledCellRoundedGroupedCellIOS6Style    NO
 
-
-#define IPAD_SCREEN_SIZE(r)                            (r.size.width == 768 || r.size.width == 1024)
+#define IPAD_SCREEN_SIZE(r)                         (r.size.width == 768 || r.size.width == 1024)
 
 #import <Foundation/Foundation.h>
 
@@ -47,15 +46,12 @@ typedef enum {
     IMOStyledCellTypeSize,
     IMOStyledCellTypeBool,
     IMOStyledCellTypeImage
-    
 } IMOStyledParserDataType;
 
 //Keys
 extern NSString * const IMOStyledCellNavBarTintColorKey;
-
 extern NSString * const IMOStyledCellTopSeparatorColorKey;
 extern NSString * const IMOStyledCellBottomSeparatorColorKey;
-
 extern NSString * const IMOStyledCellBackgroundImageKey;
 extern NSString * const IMOStyledCellBackgroundColorKey;
 extern NSString * const IMOStyledCellTopGradientColorKey;
@@ -66,26 +62,19 @@ extern NSString * const IMOStyledCellTextLabelTextColorKey;
 extern NSString * const IMOStyledCellDetailTextLabelTextColorKey;
 extern NSString * const IMOStyledCellTextLabelFontKey;
 extern NSString * const IMOStyledCellDetailTextLabelFontKey;
-
 extern NSString * const IMOStyledCellUseCustomHeaderKey;
 extern NSString * const IMOStyledCellHeaderFontKey;
 extern NSString * const IMOStyledCellHeaderTextColorKey;
-
 extern NSString * const IMOStyledCellUseCustomFooterKey;
 extern NSString * const IMOStyledCellFooterFontKey;
 extern NSString * const IMOStyledCellFooterTextColorKey;
-
-//textfield
 extern NSString * const IMOStyledCellTextFieldFontKey;
 extern NSString * const IMOStyledCellTextFieldTextColorKey;
-//textCaption
 extern NSString * const IMOStyledCellTextCaptionFontKey;
 extern NSString * const IMOStyledCellTextCaptionTextColorKey;
-
 extern NSString * const IMOStyledCellNoteViewFontKey;
 extern NSString * const IMOStyledCellNoteViewTextColorKey;
 extern NSString * const IMOStyledCellNoteViewLineColorKey;
-
 extern NSString * const IMOStyledCellPlaceHolderFontKey;
 extern NSString * const IMOStyledCellPlaceHolderTextColorKey;
 
