@@ -351,7 +351,7 @@ static NSArray *cellPositionStrings;
             // so the cells are not drawn correctly.
             
             // Check against real width
-            if(IPAD_SCREEN_SIZE){
+            if(IPAD_SCREEN_SIZE(rect)){
                 rect = CGRectInset(rect, 45.f, 0);
             }else{
                 rect = CGRectInset(rect, 10.f, 0);
@@ -359,7 +359,7 @@ static NSArray *cellPositionStrings;
         }
  //       this is the setup for iphone to look ios 6 on ios 7
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style) {
-            if(IPAD_SCREEN_SIZE){
+            if(IPAD_SCREEN_SIZE(rect)){
                 rect = CGRectInset(rect, 45.f, 0);
             }else{
                 rect = CGRectInset(rect, 10.f, 0);
@@ -608,7 +608,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
         // so the cells are not drawn correctly.
         
         // Check against real width
-        if(IPAD_SCREEN_SIZE){
+        if(IPAD_SCREEN_SIZE(rect)){
             rect = CGRectInset(rect, 45.f, 0);
         }else{
             if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style){

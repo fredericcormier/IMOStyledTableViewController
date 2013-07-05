@@ -147,7 +147,7 @@ CGFloat separator_X;
     float kiPadGap;
     
     // If we are on an iPad but not in a UIPopoverController
-    if(cellWidth == 768 || cellWidth == 1024) {
+    if(IPAD_SCREEN_SIZE([self bounds])) {
         // running IOS7 ?
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
             kiPadGap = -10.f;
@@ -215,8 +215,9 @@ CGFloat separator_X;
                                              verticalPad,
                                              rect.size.width,
                                              rect.size.height - verticalPad);
-            
+#ifdef __IPHONE_7_0
             [[self placeholder] drawInRect:centeredRect withAttributes:attributes];
+#endif
         }else{ // IOS6 - deprecated (and broken) in IOS7
             [[self placeholder] drawInRect:rect withFont:[self font]];
         }

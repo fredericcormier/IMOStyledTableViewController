@@ -17,7 +17,7 @@
 #define IMOStyledCellRoundedGroupedCellIOS6Style    NO
 
 
-#define IPAD_SCREEN_SIZE                            (rect.size.width == 768 || rect.size.width == 1024)
+#define IPAD_SCREEN_SIZE(r)                            (r.size.width == 768 || r.size.width == 1024)
 
 #import <Foundation/Foundation.h>
 
