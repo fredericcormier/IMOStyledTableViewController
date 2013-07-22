@@ -143,8 +143,13 @@ CGFloat separator_X;
         }else{//IOS6 or less
             kiPadGap = 35.f;
         }
-    }else{
-        kiPadGap = 0;
+    }else{//iphone
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            kiPadGap = -10.f;
+        }else{
+            kiPadGap = 0;
+        }
+
     }
 
     
