@@ -1,43 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>IMOSTVC by fredericcormier</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="IMOSTVC : Style sheet based like Table View Controller." />
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>IMOSTVC</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/fredericcormier/IMOStyledTableViewController">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/fredericcormier/IMOStyledTableViewController/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/fredericcormier/IMOStyledTableViewController/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/fredericcormier/IMOStyledTableViewController">View on GitHub</a>
 
-      <section>
-        <div id="title">
-          <h1>IMOSTVC</h1>
-          <p>Style sheet based like Table View Controller.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/fredericcormier">fredericcormier</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+          <h1 id="project_title">IMOSTVC</h1>
+          <h2 id="project_tagline">Style sheet based like Table View Controller.</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/fredericcormier/IMOStyledTableViewController/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/fredericcormier/IMOStyledTableViewController/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="imostyledtableviewcontroller" class="anchor" href="#imostyledtableviewcontroller"><span class="octicon octicon-link"></span></a>IMOStyledTableViewController</h1>
 
@@ -90,21 +83,21 @@ SelectedBottomGradientColor     #725C3C
 
 <p>2 - Make your table view controller, a subclass of IMOStyledTableViewController</p>
 
-<div class="highlight"><pre><span class="cp">#import "IMOStyledTableViewController.h"</span>
+<div class="highlight highlight-objective-c"><pre><span class="cp">#import "IMOStyledTableViewController.h"</span>
 
 <span class="k">@interface</span> <span class="nc">MyStyledTableViewController</span> : <span class="nc">IMOStyledTableViewController</span>
 </pre></div>
 
 <p>3 - Instantiate like this</p>
 
-<div class="highlight"><pre><span class="n">MyStyledTableViewController</span> <span class="o">*</span><span class="n">mstvc</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyStyledTableViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithStyle</span><span class="o">:</span><span class="n">UITableViewStyleGrouped</span>
+<div class="highlight highlight-objective-c"><pre><span class="n">MyStyledTableViewController</span> <span class="o">*</span><span class="n">mstvc</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyStyledTableViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithStyle</span><span class="o">:</span><span class="n">UITableViewStyleGrouped</span>
                                                                              <span class="nl">styleSheet:</span><span class="nb">nil</span><span class="p">];</span>
 
 </pre></div>
 
 <p>4 - In your <code>- tableView:cellForRowAtIndexPath:</code> method, instead of using the regular boilerplate code to fire a UITableViewCell, use this:</p>
 
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">cellForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span><span class="p">{</span>
+<div class="highlight highlight-objective-c"><pre><span class="k">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">cellForRowAtIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span><span class="p">{</span>
 
     <span class="n">IMOStyledCell</span> <span class="o">*</span><span class="n">cell</span><span class="p">;</span>
     <span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">IMOStyledCell</span> <span class="n">cellForTableViewController</span><span class="o">:</span><span class="n">self</span> 
@@ -125,8 +118,8 @@ SelectedBottomGradientColor     #725C3C
 <p>Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize that very single Table View Controller that may differ from the rest.<br>
 Use the <code>-initWithStyle:styleSheet:</code>method and pass a dictionary of key/value 's to it:</p>
 
-<div class="highlight"><pre><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">plainStyleSheet</span> <span class="o">=</span> 
-<span class="err">@</span><span class="p">{</span>
+<div class="highlight highlight-objective-c"><pre><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">plainStyleSheet</span> <span class="o">=</span> 
+<span class="p">@{</span>
 <span class="nl">IMOStyledCellBackgroundImageKey:</span> <span class="p">[</span><span class="n">UIImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="s">@"clouds.png"</span><span class="p">],</span>
 <span class="nl">IMOStyledCellNavBarTintColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithRed</span><span class="o">:</span><span class="mf">0.145</span> <span class="n">green</span><span class="o">:</span><span class="mf">0.185</span> <span class="n">blue</span><span class="o">:</span><span class="mf">0.359</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">1.000</span><span class="p">],</span>
 <span class="nl">IMOStyledCellTopGradientColorKey:</span><span class="p">[</span><span class="n">UIColor</span> <span class="n">colorWithWhite</span><span class="o">:</span><span class="mf">0.945</span> <span class="n">alpha</span><span class="o">:</span><span class="mf">0.220</span><span class="p">],</span>
@@ -189,10 +182,11 @@ TextLabelTextColor              #3F3B35                         // Hex, 3 or 6 d
 <a name="properties-at-your-disposal" class="anchor" href="#properties-at-your-disposal"><span class="octicon octicon-link"></span></a>Properties at your disposal</h2>
 
 <table>
-<tr>
+<thead><tr>
 <th>property</th>
 <th>Comments</th>
-</tr>
+</tr></thead>
+<tbody>
 <tr>
 <td>NavBarTintColor</td>
 <td>Color of the navigation bar and of the IMOStyledNoteViewCell's accessory view</td>
@@ -305,6 +299,7 @@ TextLabelTextColor              #3F3B35                         // Hex, 3 or 6 d
 <td>PlaceHolderTextColor</td>
 <td>Depending on your cell color… you may want to change this</td>
 </tr>
+</tbody>
 </table><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>LICENSE</h2>
 
@@ -316,9 +311,17 @@ TextLabelTextColor              #3F3B35                         // Hex, 3 or 6 d
 
 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">IMOSTVC maintained by <a href="https://github.com/fredericcormier">fredericcormier</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
