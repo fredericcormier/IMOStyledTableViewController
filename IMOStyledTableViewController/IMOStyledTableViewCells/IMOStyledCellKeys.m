@@ -121,7 +121,7 @@ NSString * const IMOStyledCellPlaceHolderTextColorKey            = @"IMOStyledCe
     for (NSArray *k in [self allKeys]) {
         if ([k[0]isEqualToString:key]) {
             if ([k count] > position) {
-                return [k[position] integerValue];
+                return (IMOStyledParserDataType)[k[position] integerValue];
             }
         }
     }

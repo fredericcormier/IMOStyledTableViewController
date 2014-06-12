@@ -161,7 +161,7 @@ static NSArray *cellPositionStrings;
     if ([tableView style] == UITableViewStylePlain) {
         return IMOStyledCellPositionPlain;
     }else {
-        int rows = [tableView numberOfRowsInSection:[indexPath section]];
+        NSInteger rows = [tableView numberOfRowsInSection:[indexPath section]];
         
         if (indexPath.row == 0 && rows == 1)        return IMOStyledCellPositionSingle;
         else if (indexPath.row == 0)                return IMOStyledCellPositionTop;
@@ -516,7 +516,7 @@ static NSArray *cellPositionStrings;
 
 
 @interface IMOSelectedCellBackgroundView(){
-    const float *topCol, *bottomCol;
+    const CGFloat *topCol, *bottomCol;
     CGGradientRef gradient;
 }
 

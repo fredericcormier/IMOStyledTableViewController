@@ -43,7 +43,7 @@ typedef enum cellEditTags cellEditTags;
 
 // Set the Header text before returning parent's method
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    [self setHeaderText:[NSString stringWithFormat:@"\tSection %d", section]];
+    [self setHeaderText:[NSString stringWithFormat:@"\tSection %ld", (long)section]];
     return [super tableView:tableView viewForHeaderInSection:section];
 }
 
