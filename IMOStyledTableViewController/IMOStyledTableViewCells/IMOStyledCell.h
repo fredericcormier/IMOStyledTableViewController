@@ -14,12 +14,6 @@
 
 @interface IMOStyledCell : UITableViewCell
 
-
-
-
-
-
-
 + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath style:(IMOStyledCellStyle)style ;
 /* Style Variations only apply to IMOStyledCells : 
  IMOStyledCellStyleDefault,
@@ -30,12 +24,6 @@
 
 + (id)cellForTableViewController:(IMOStyledTableViewController *)controller atIndexPath:(NSIndexPath *)indexPath;
 /* No style variation - Use for subclasses */
-
-
-
-
-
-
 
 // subclasses might override this next 2 methods
 

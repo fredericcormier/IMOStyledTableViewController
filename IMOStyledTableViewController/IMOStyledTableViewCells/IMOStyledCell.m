@@ -68,11 +68,13 @@ typedef enum IMOStyledCellSeparatorType IMOStyledCellSeparatorType;
 @interface IMOSelectedCellBackgroundView : UIView
 
 @property(nonatomic,assign) IMOStyledCellPosition position;
+@property(nonatomic,assign) BOOL useRoundedCell;
 
 - (id)initWithFrame:(CGRect)frame
        cellPosition:(IMOStyledCellPosition)aPosition
    topGradientColor:(UIColor *)theTopColor
-bottomGradientColor:(UIColor *)theBottomColor;
+bottomGradientColor:(UIColor *)theBottomColor
+        roundedCell:(BOOL)roundedCell;
 
 @end
 
@@ -90,6 +92,7 @@ static NSArray *cellPositionStrings;
 
 
 @interface IMOStyledCell()
+@property(nonatomic,assign)BOOL useRoundedCell;
 @property(nonatomic, strong)UIColor *gradientTopColor;
 @property(nonatomic, strong)UIColor *gradientBottomColor;
 @property(nonatomic, strong)UIColor *topSeparatorColor;
@@ -122,6 +125,7 @@ static NSArray *cellPositionStrings;
     }else{
         _doDrawSeparators = YES;
     }
+    _useRoundedCell  = (YES == [[sheet objectForKey:IMOStyledCellRoundedGroupedCellIOS6StyleKey] boolValue] ) ? YES : NO;
     _gradientTopColor = [sheet objectForKey:IMOStyledCellTopGradientColorKey] ?: defaultGradientTopColor;
     _gradientBottomColor = [sheet objectForKey:IMOStyledCellBottomGradientColorKey] ?: defaultGradientBottomColor;
     _gradientSelectedTopColor = [sheet objectForKey:IMOStyledCellSelectedTopGradientColorKey] ?: defaultSelectedGradientTopColor;
@@ -234,7 +238,8 @@ static NSArray *cellPositionStrings;
         [self setSelectedBackgroundView:[[IMOSelectedCellBackgroundView alloc] initWithFrame:[self bounds]
                                                                                 cellPosition:cellPosition
                                                                             topGradientColor:[self gradientSelectedTopColor]
-                                                                         bottomGradientColor:[self gradientSelectedBottomColor]]];
+                                                                         bottomGradientColor:[self gradientSelectedBottomColor]
+                                                                                roundedCell:[self useRoundedCell]]];
     }
     return self;
 }
@@ -300,7 +305,7 @@ static NSArray *cellPositionStrings;
 
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")                             // IOS7 or greater
-        && IMOStyledCellRoundedGroupedCellIOS6Style                                 // wants to look like IOS6
+        && [self useRoundedCell]                                 // wants to look like IOS6
         && (cellFrame.size.width == 768 || cellFrame.size.width == 1024)            // iPad size (UIPopover is ipad idiom but not iPad Size)
         && [self parentTableViewIsGroupedStyle])                                         // only for grouped tables
     {
@@ -330,7 +335,7 @@ static NSArray *cellPositionStrings;
             }
         }
         // IOS6 style on IOS7
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style) {
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && [self useRoundedCell]) {
             if(IPAD_SCREEN_SIZE(rect)){
                 rect = CGRectInset(rect, 45.f, 0);
             }else{
@@ -346,7 +351,7 @@ static NSArray *cellPositionStrings;
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style  == NO) {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && [self useRoundedCell]  == NO) {
         // in ios7 all cells are plain style
         position = IMOStyledCellPositionPlain;
     }
@@ -458,7 +463,8 @@ static NSArray *cellPositionStrings;
         [self setSelectedBackgroundView:[[IMOSelectedCellBackgroundView alloc] initWithFrame:[self bounds]
                                                                                 cellPosition:position
                                                                             topGradientColor:[self gradientSelectedTopColor]
-                                                                         bottomGradientColor:[self gradientSelectedBottomColor]]];
+                                                                         bottomGradientColor:[self gradientSelectedBottomColor]
+                                                                                 roundedCell:[self useRoundedCell]]];
     }
 }
 
@@ -524,7 +530,6 @@ static NSArray *cellPositionStrings;
 
 
 @implementation IMOSelectedCellBackgroundView
-
 @synthesize position;
 /* Otherwise rounded corners will let pass the background residue underneath*/
 - (BOOL) isOpaque{
@@ -535,12 +540,14 @@ static NSArray *cellPositionStrings;
 - (id)initWithFrame:(CGRect)frame
        cellPosition:(IMOStyledCellPosition)aPosition
    topGradientColor:(UIColor *)theTopColor
-bottomGradientColor:(UIColor *)theBottomColor {
+bottomGradientColor:(UIColor *)theBottomColor
+roundedCell:(BOOL)roundedCell{
     
     if (self = [super initWithFrame:frame]) {
         // Initialization code
         topCol = CGColorGetComponents([theTopColor CGColor]);
         bottomCol = CGColorGetComponents([theBottomColor CGColor]);
+        _useRoundedCell = roundedCell;
         
         CGColorSpaceRef rgb = CGColorSpaceCreateDeviceRGB();
         
@@ -562,7 +569,8 @@ bottomGradientColor:(UIColor *)theBottomColor {
         self  = [self initWithFrame:frame
                        cellPosition:IMOStyledCellPositionPlain
                    topGradientColor:defaultTopUIColor
-                bottomGradientColor:defaultBottomUIColor];
+                bottomGradientColor:defaultBottomUIColor
+                 roundedCell:NO];
     }
     return self;
 }
@@ -583,7 +591,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
         if(IPAD_SCREEN_SIZE(rect)){
             rect = CGRectInset(rect, 45.f, 0);
         }else{
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style){
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && [self useRoundedCell]){
                 //  on device running ios before ios 7, extract 10 pixels on each side
                 rect = CGRectInset(rect, 10.f, 0);
             }
@@ -594,7 +602,7 @@ bottomGradientColor:(UIColor *)theBottomColor {
     const CGFloat MINX = CGRectGetMinX(rect) , MIDX = CGRectGetMidX(rect), MAXX = CGRectGetMaxX(rect) ;
     const CGFloat MINY = CGRectGetMinY(rect) , MIDY = CGRectGetMidY(rect), MAXY = CGRectGetMaxY(rect) ;
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && IMOStyledCellRoundedGroupedCellIOS6Style  == NO) {
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") && [self useRoundedCell]  == NO) {
         // in ios7 all cells are plain like
         position = IMOStyledCellPositionPlain;
     }

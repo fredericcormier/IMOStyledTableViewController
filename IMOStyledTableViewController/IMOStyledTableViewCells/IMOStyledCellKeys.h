@@ -14,7 +14,7 @@
 #define IMOStyledCellDisclosureImageName            @"disclosure"
 #define IMOStyledCellCheckmarkImageName             @"checkmark"
 
-#define IMOStyledCellRoundedGroupedCellIOS6Style    NO
+//#define IMOStyledCellRoundedGroupedCellIOS6Style    NO
 
 #define IPAD_SCREEN_SIZE(r)                         (r.size.width == 768 || r.size.width == 1024)
 
@@ -49,6 +49,7 @@ typedef enum {
 } IMOStyledParserDataType;
 
 //Keys
+extern NSString * const IMOStyledCellRoundedGroupedCellIOS6StyleKey;
 extern NSString * const IMOStyledCellNavBarTintColorKey;
 extern NSString * const IMOStyledCellTopSeparatorColorKey;
 extern NSString * const IMOStyledCellBottomSeparatorColorKey;

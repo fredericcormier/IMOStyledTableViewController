@@ -1,3 +1,4 @@
+// RoundedGroupedCellIOS6Style
 // TopSeparatorColor
 // BottomSeparatorColor
 // NavBarTintColor
@@ -36,6 +37,8 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
+
+RoundedGroupedCellIOS6Style     NO
 
 NavBarTintColor                 0.600   0.492   0.331   1.000
 BackgroundColor                 0xCDC3B9    

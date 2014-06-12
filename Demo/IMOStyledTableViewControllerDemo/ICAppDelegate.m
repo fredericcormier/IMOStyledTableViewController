@@ -38,7 +38,8 @@
                             IMOStyledCellBottomSeparatorColorKey:       [UIColor lightGrayColor]};
     
     
-    groupedStyleSheet_ = @{IMOStyledCellBackgroundImageKey :            [UIImage imageNamed:@"carot"],
+    groupedStyleSheet_ = @{IMOStyledCellRoundedGroupedCellIOS6StyleKey: @YES,
+                           IMOStyledCellBackgroundImageKey :            [UIImage imageNamed:@"carot"],
                            IMOStyledCellNavBarTintColorKey:             [UIColor colorWithRed:0.735 green:0.242 blue:0.004 alpha:1.000],
                            IMOStyledCellBackgroundColorKey:             [UIColor colorWithRed:0.811 green:0.605 blue:0.343 alpha:1.000],
                            IMOStyledCellTopGradientColorKey :           [UIColor colorWithRed:1.000 green:0.786 blue:0.621 alpha:1.000],
