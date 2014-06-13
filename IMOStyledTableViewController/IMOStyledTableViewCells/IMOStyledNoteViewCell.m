@@ -71,16 +71,10 @@
     
     CGFloat kDistanceFromBorder = 30.f;
     CGFloat kHeightPad = 2.f;
-    CGFloat kiPadGap;
+
     CGFloat cellWidth = [[self contentView] bounds].size.width;
     CGFloat cellHeight = [[self contentView] bounds].size.height;
     
-    if (cellWidth > 320)
-        kiPadGap = 43.f;
-    else
-        kiPadGap = 10.f;
-    
-
     
     CGRect noteViewRect = CGRectMake(round(kDistanceFromBorder ),
                                      round(kHeightPad),
