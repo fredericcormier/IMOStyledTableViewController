@@ -1,5 +1,5 @@
 #IMOStyledTableViewController
-#An easy-to-customize style sheet based like Table View Controller.
+#An easy-to-customize style sheet based Table View Controller.
 
 
 ### When this:
@@ -115,6 +115,7 @@ BackgroundColor                 0xCDC3B9    					// Hex, 6 digits only
 BackgroundImage                 clouds							// Image Name - Doesn't need extension
 TextLabelFont                   HelveticaNeue-Bold       17.0	// Font name and size
 TextLabelTextColor              #3F3B35							// Hex, 3 or 6 digits
+RoundedGroupedCellIOS6Style     NO								// rounded cells - nostalgia mode
 ``` 
 
  
@@ -130,6 +131,7 @@ Check the demo  for examples on using these subclasses
 ##Properties at your disposal
 property					| Comments
 ----------------------------|-------------------------
+RoundedGroupedCellIOS6Style |IOS7 or later: rounded cells in grouped style
 NavBarTintColor				|Color of the navigation bar and of the IMOStyledNoteViewCell's accessory view
 BackgroundImage   			|Table View Controller background image name
 BackgroundColor				|Table View Controller background color
