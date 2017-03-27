@@ -18,10 +18,10 @@ SelectedTopGradientColor        #8A6F48
 SelectedBottomGradientColor     #725C3C
 ```
 ### Generates this:
-<center>
+
 ![screenshot](http://www.i-mo.eu/zings/imostvc7_small.png)
 ![screenshot](http://www.i-mo.eu/zings/imostvc_small.png)
-</center>
+
 ## Installation
 
 ### Manually  
