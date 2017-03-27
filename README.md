@@ -1,5 +1,5 @@
-#IMOStyledTableViewController
-#An easy-to-customize style sheet based Table View Controller.
+# IMOStyledTableViewController
+# An easy-to-customize style sheet based Table View Controller.
 
 
 ### When this:
@@ -17,23 +17,21 @@ BottomGradientColor             0.825   0.780   0.724   1.000
 SelectedTopGradientColor        #8A6F48
 SelectedBottomGradientColor     #725C3C
 ```
-###Generates this:
+### Generates this:
 <center>
-![screenshot]  
-(http://www.i-mo.eu/zings/imostvc7_small.png)
-![screenshot]  
-(http://www.i-mo.eu/zings/imostvc_small.png)
+![screenshot](http://www.i-mo.eu/zings/imostvc7_small.png)
+![screenshot](http://www.i-mo.eu/zings/imostvc_small.png)
 </center>
-##Installation
+## Installation
 
-###Manually  
+### Manually  
 Copy  the IMOStyledTableViewController directory to your project  
 
-###Using cocoapods
+### Using cocoapods
 add `pod 'IMOStyledTableViewController', :head` to your Podfile
 ##Usage
 
-####A - Style sheet
+#### A - Style sheet
 
 1 - Add a file named `style.imo` to your project, containing all the properties you want to customize (see the ~~wiki or~~ the demo for details on syntax and which properties are available).
 
@@ -67,7 +65,7 @@ MyStyledTableViewController *mstvc = [[MyStyledTableViewController alloc] initWi
 ```
 *Notice that you don't have to handle dequeuing cells and declaring cell identifiers, IMOStyledTableViewController takes care of that for you.*
 
-####B - Dictionary  
+#### B - Dictionary  
 
 Although it's a good idea to use the style sheet strategy when all your Table View Controllers should use the same style, you might use the dictionary approach to customize that very single Table View Controller that may differ from the rest.  
 Use the `-initWithStyle:styleSheet:`method and pass a dictionary of key/value 's to it:
@@ -89,12 +87,12 @@ IMOStyledCellBottomSeparatorColorKey:[UIColor lightGrayColor]
                                                     styleSheet:plainStyleSheet];
 
 ```  
-##Keys and style properties
+## Keys and style properties
 
 A style property name consists of a key name as declared in `IMOStyledCellKeys.h` minus the prefix *"IMOStyledCell"*  and the suffix *"key"*.  
 Thus **"IMOStyledCellTopGradientColorKey"** gives **"CellTopGradientColor"**.
 
-##style.imo parameters and syntax
+## style.imo parameters and syntax
 
 You can enter colors in several ways
 - RGBA Colors  between 0 and 1.0
@@ -108,7 +106,7 @@ For images, pass the name, no quote, no extension
 Valid Boolean are :YES, yes, y, TRUE, true, t, NO, no, n, FALSE , F, f and of course 0 or 1,2,3,4,5,6,7,8,9.  
 ( see `NSString boolValue` for details)
 
-#####Examples:
+##### Examples:
 ```
 NavBarTintColor                 0.600   0.492   0.331   1.000 	//RGBA
 BackgroundColor                 0xCDC3B9    					// Hex, 6 digits only
@@ -119,7 +117,7 @@ RoundedGroupedCellIOS6Style     NO								// rounded cells - nostalgia mode
 ``` 
 
  
-##IMOStyledTableViewController comes with several predefined cell subclasses:
+## IMOStyledTableViewController comes with several predefined cell subclasses:
 * IMOStyledCell
 * IMOStyledEditCell
 * IMOStyledNoteViewCell
@@ -128,7 +126,7 @@ RoundedGroupedCellIOS6Style     NO								// rounded cells - nostalgia mode
 Check the demo  for examples on using these subclasses  
   
 
-##Properties at your disposal
+## Properties at your disposal
 property					| Comments
 ----------------------------|-------------------------
 RoundedGroupedCellIOS6Style |IOS7 or later: rounded cells in grouped style
@@ -166,7 +164,7 @@ PlaceHolderTextColor		|Depending on your cell color… you may want to change th
 
 
 
-##LICENSE
+## LICENSE
 Copyright (C) 2013 Frederic Cormier
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -174,3 +172,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-
